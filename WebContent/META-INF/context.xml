@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
 <Context privileged="true" reloadable="true">
 	<WatchedResource>WEB-INF/web.xml</WatchedResource>
 	<Manager pathname="" />
