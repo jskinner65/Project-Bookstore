@@ -7,7 +7,7 @@
 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
 		type="javax.sql.DataSource"
 		driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
-		url="jdbc:derby:C:\Users\jason\Bookstore-Database" />
+		url="jdbc:mysql://localhost:3306/bookstoredb" />
 	<ResourceLink global="jdbc/EECS" name="jdbc/EECS"
 		type="javax.sql.DataSource" />
 </Context>
