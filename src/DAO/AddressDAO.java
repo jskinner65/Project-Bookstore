@@ -11,13 +11,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import beans.BookBean;
+import beans.AddressBean;
 
-public class BookDAO {
+public class AddressDAO {
 
 	DataSource ds;
 
-	public BookDAO() throws ClassNotFoundException {
+	public AddressDAO() throws ClassNotFoundException {
 		try {
 			ds = (DataSource) (new InitialContext()).lookup("java:/comp/env/jdbc/EECS");
 		} catch (NamingException e) {
@@ -25,20 +25,20 @@ public class BookDAO {
 		}
 	}
 
-	public Map<String, BookBean> retrieve(String namePrefix) throws SQLException {
-		if ((namePrefix != null) || (namePrefix != "")) {
-			namePrefix = " WHERE title='%" + namePrefix + "%'";
-		}
-		String query = "select * from Book" + namePrefix;
-		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+	public Map<String, AddressBean> retrieve() throws SQLException {
+
+		String query = "select * from Address";
+		Map<String, AddressBean> rv = new HashMap<String, AddressBean>();
 		Connection con = this.ds.getConnection();
+		System.out.println("1");
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
-			String name = r.getString("bid");
-			BookBean book = new BookBean(r.getString("bid"), r.getString("title"), r.getInt("price"),
-					r.getString("category"));
+			String name = r.getInt("id") + "";
+			AddressBean book = new AddressBean(r.getInt("id"), r.getString("street"), r.getString("province"),
+					r.getString("country"), r.getString("zip"), r.getString("phone"));
 			rv.put(name, book);
+			System.out.println(book);
 		}
 		r.close();
 		p.close();
@@ -46,5 +46,4 @@ public class BookDAO {
 		return rv;
 
 	}
-
 }

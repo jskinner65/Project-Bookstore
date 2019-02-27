@@ -66,4 +66,10 @@ public class AddressBean {
 		this.phone = phone;
 	}
 
+	@Override
+	public String toString() {
+		String result = this.getId() + ", " + this.getStreet() + ", " + this.getProvince() + ", " + this.getCountry()
+				+ ", " + this.getPhone();
+		return result;
+	}
 }

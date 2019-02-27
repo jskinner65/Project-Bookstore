@@ -5,9 +5,11 @@
 	<Manager pathname="" />
 	<Resource name="jdbc/EECS"
 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-		type="javax.sql.DataSource"
-		driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
-		url="jdbc:mysql://localhost:3306/bookstoredb" />
+		type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/bookstoredb?user=root"
+		password="admin"  ENCRYPT_PASSWORD="true"
+		 />
+
 	<ResourceLink global="jdbc/EECS" name="jdbc/EECS"
 		type="javax.sql.DataSource" />
 </Context>

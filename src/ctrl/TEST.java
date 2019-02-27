@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.AddressDAO;
+import DAO.TestDAO;
 
 /**
- * Servlet implementation class Start
+ * Servlet implementation class TEST
  */
-@WebServlet("/Start")
-public class Start extends HttpServlet {
+@WebServlet("/TEST")
+public class TEST extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Start() {
+	public TEST() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,19 +33,13 @@ public class Start extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Welcome to our Bookstore");
-
 		try {
-			AddressDAO add = new AddressDAO();
-			add.retrieve();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			TestDAO.main(null);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
