@@ -11,13 +11,12 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import beans.BookBean;
+import beans.VisitEventBean;
 
-public class BookDAO {
-
+public class VisitEventDAO {
 	DataSource ds;
 
-	public BookDAO() throws ClassNotFoundException {
+	public VisitEventDAO() throws ClassNotFoundException {
 		try {
 			ds = (DataSource) (new InitialContext()).lookup("java:/comp/env/jdbc/EECS");
 		} catch (NamingException e) {
@@ -26,19 +25,16 @@ public class BookDAO {
 
 	}
 
-	public Map<String, BookBean> retrieve(String namePrefix) throws SQLException {
-		if ((namePrefix != null) || (namePrefix != "")) {
-			namePrefix = " WHERE title='%" + namePrefix + "%'";
-		}
-		String query = "select * from Book" + namePrefix;
-		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+	public Map<String, VisitEventBean> retrieve() throws SQLException {
+
+		String query = "select * from VisitEvent";
+		Map<String, VisitEventBean> rv = new HashMap<String, VisitEventBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
-			String name = r.getString("bid");
-			BookBean book = new BookBean(r.getString("bid"), r.getString("title"), r.getInt("price"),
-					r.getString("category"));
+			String name = r.getString("id");
+			VisitEventBean book = new VisitEventBean(r.getString("day"), r.getString("bid"), r.getString("eventtype"));
 			rv.put(name, book);
 		}
 		r.close();
@@ -47,5 +43,4 @@ public class BookDAO {
 		return rv;
 
 	}
-
 }
