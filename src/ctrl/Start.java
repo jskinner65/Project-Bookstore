@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.AddressDAO;
+import model.bookstoreModel;
 
 /**
  * Servlet implementation class Start
@@ -36,8 +36,8 @@ public class Start extends HttpServlet {
 		response.getWriter().append("Welcome to our Bookstore");
 
 		try {
-			AddressDAO add = new AddressDAO();
-			add.retrieve();
+			bookstoreModel model = new bookstoreModel();
+			System.out.println(model.getAddressDAO().retrieve());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

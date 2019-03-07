@@ -30,7 +30,6 @@ public class AddressDAO {
 		String query = "select * from Address";
 		Map<String, AddressBean> rv = new HashMap<String, AddressBean>();
 		Connection con = this.ds.getConnection();
-		System.out.println("1");
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
@@ -38,7 +37,6 @@ public class AddressDAO {
 			AddressBean book = new AddressBean(r.getInt("id"), r.getString("street"), r.getString("province"),
 					r.getString("country"), r.getString("zip"), r.getString("phone"));
 			rv.put(name, book);
-			System.out.println(book);
 		}
 		r.close();
 		p.close();

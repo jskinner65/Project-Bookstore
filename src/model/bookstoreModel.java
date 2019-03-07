@@ -13,4 +13,33 @@ public class bookstoreModel {
 	private POitemDAO poitemDAO;
 	private VisitEventDAO visitEventDAO;
 
+	public bookstoreModel() throws ClassNotFoundException {
+		super();
+		this.addressDAO = new AddressDAO();
+		this.bookDAO = new BookDAO();
+		this.poDAO = new PODAO();
+		this.poitemDAO = new POitemDAO();
+		this.visitEventDAO = new VisitEventDAO();
+	}
+
+	public AddressDAO getAddressDAO() {
+		return addressDAO;
+	}
+
+	public BookDAO getBookDAO() {
+		return bookDAO;
+	}
+
+	public PODAO getPoDAO() {
+		return poDAO;
+	}
+
+	public POitemDAO getPoitemDAO() {
+		return poitemDAO;
+	}
+
+	public VisitEventDAO getVisitEventDAO() {
+		return visitEventDAO;
+	}
+
 }
