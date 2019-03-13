@@ -7,7 +7,7 @@
 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
 		type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost:3306/bookstoredb?user=root"
-		password="admin"  ENCRYPT_PASSWORD="true"
+		password="admin123"  ENCRYPT_PASSWORD="true"
 		 />
 
 	<ResourceLink global="jdbc/EECS" name="jdbc/EECS"
