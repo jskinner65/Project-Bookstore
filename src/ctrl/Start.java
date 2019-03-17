@@ -35,7 +35,7 @@ public class Start extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Welcome to our Bookstore");
 
-		request.getRequestDispatcher("./Browse.jspx").forward(request, response);
+		request.getRequestDispatcher("./index.html").forward(request, response);
 		try {
 			bookstoreModel model = new bookstoreModel();
 			System.out.println(model.getAddressDAO().retrieve());
