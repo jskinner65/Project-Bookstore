@@ -3,7 +3,7 @@ function validate() {
 	var p;
 	p = document.forms["browseForm"]["searchField"].value;
 	if (p == null || p == "") {
-		alert("Invalid Name!");
+
 		ok = false;
 	}
 	if (!ok)
@@ -26,12 +26,30 @@ function searchBook(url) {
 		var request = new XMLHttpRequest();
 		var data = '';
 		data += "comm=ajax";
-		// data += "&searchField=" + name;
-
+		data += "&searchField=" + name;
 		request.open("GET", (url + "?" + data), true);
 		request.onreadystatechange = function() {
 			handler(request);
 		};
 		request.send();
+		document.getElementById("starting").style.display = "none";
 	}
+	else{
+		loadAllBooks('Start');
+		document.getElementById("starting").style.display = "none";
+
+	}
+}
+
+
+function loadAllBooks(url) {
+
+	var request = new XMLHttpRequest();
+	var data = '';
+	data += "comm=ajax2";
+	request.open("GET", (url + "?" + data), true);
+	request.onreadystatechange = function() {
+		handler(request);
+	};
+	request.send();
 }

@@ -24,12 +24,13 @@
 		<fieldset>
 			<table>
 				<tr>
-					<td><input type='text' name='searchField'></input></td>
+					<td><input type='text' name='searchField' id='searchField'></input></td>
 					<td><input type='submit' name='Search' value='Search'
 						onClick="searchBook('Start'); return false;"></input></td>
 				</tr>
 				<tr>
-					<td><p id='resultDisplay'></p></td>
+				
+					<td colspan="2"><p id='resultDisplay'></p><div id='starting'>${results}</div></td>
 				</tr>
 			</table>
 		</fieldset>

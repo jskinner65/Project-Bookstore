@@ -32,6 +32,14 @@ public class Start extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		bookstoreModel model = null;
+		try {
+			model = new bookstoreModel();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		;
 		// TODO Auto-generated method stub
 		String comm = "n/a";
 		if (request.getParameter("comm") == null) {
@@ -39,22 +47,40 @@ public class Start extends HttpServlet {
 		} else {
 			comm = request.getParameter("comm");
 		}
-		if (comm.equals("ajax")) {
-			response.getWriter().append("AS");
-		} else {
-			response.getWriter().append("Welcome to our Bookstore");
 
-			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
+		if (comm.equals("ajax")) {
+			if (!(model == null)) {
+				try {
+					response.getWriter().append(model.getBookbyName(request.getParameter("searchField")));
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} else if (comm.equals("ajax2")) {
+			if (!(model == null)) {
+				try {
+					response.getWriter().append(model.getAllBooks());
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		} else
+
+		{
+			response.getWriter().append("Welcome to our Bookstore");
 			try {
-				bookstoreModel model = new bookstoreModel();
-				System.out.println(model.getAddressDAO().retrieve());
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				request.setAttribute("results", model.getAllBooks());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
+
 		}
 	}
 

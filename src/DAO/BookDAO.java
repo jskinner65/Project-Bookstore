@@ -26,9 +26,29 @@ public class BookDAO {
 
 	}
 
+	public Map<String, BookBean> retrieveAll() throws SQLException {
+
+		String query = "select * from Book";
+		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+			String name = r.getString("bid");
+			BookBean book = new BookBean(r.getString("bid"), r.getString("title"), r.getInt("price"),
+					r.getString("category"));
+			rv.put(name, book);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+
+	}
+
 	public Map<String, BookBean> retrieve(String namePrefix) throws SQLException {
-		if ((namePrefix != null) || (namePrefix != "")) {
-			namePrefix = " WHERE title='%" + namePrefix + "%'";
+		if ((namePrefix != null) || (namePrefix != "") || namePrefix.equals("null")) {
+			namePrefix = " WHERE title like '%" + namePrefix + "%'";
 		}
 		String query = "select * from Book" + namePrefix;
 		Map<String, BookBean> rv = new HashMap<String, BookBean>();
