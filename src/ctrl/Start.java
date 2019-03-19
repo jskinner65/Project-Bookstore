@@ -33,18 +33,28 @@ public class Start extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Welcome to our Bookstore");
+		String comm = "n/a";
+		if (request.getParameter("comm") == null) {
+			comm = "n/a";
+		} else {
+			comm = request.getParameter("comm");
+		}
+		if (comm.equals("ajax")) {
+			response.getWriter().append("AS");
+		} else {
+			response.getWriter().append("Welcome to our Bookstore");
 
-		request.getRequestDispatcher("./index.html").forward(request, response);
-		try {
-			bookstoreModel model = new bookstoreModel();
-			System.out.println(model.getAddressDAO().retrieve());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
+			try {
+				bookstoreModel model = new bookstoreModel();
+				System.out.println(model.getAddressDAO().retrieve());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
