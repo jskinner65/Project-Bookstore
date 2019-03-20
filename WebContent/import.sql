@@ -1,3 +1,24 @@
+/*
+ * Modifying BOOKS table.
+ */
+
+
+ALTER TABLE Book
+DROP column category;
+
+ALTER TABLE Book
+ADD	category ENUM('EECS1','EECS2','EECS3', 'EECS4'),
+ADD coursecode varchar(10);
+
+CREATE TABLE User (
+uid INT UNSIGNED NOT NULL AUTO_INCREMENT,
+email VARCHAR(30) NOT NULL UNIQUE,
+password VARCHAR(80) NOT NULL,
+privilege ENUM('Admin', 'General') NOT NULL,
+PRIMARY KEY (uid),
+FOREIGN KEY(uid) REFERENCES Address (id) ON DELETE CASCADE
+);
+
 
 /** bid: unique identifier of Book (like ISBN)
 * title: title of Book
