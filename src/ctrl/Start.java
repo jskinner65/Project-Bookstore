@@ -89,7 +89,7 @@ public class Start extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-		} else if (comm.equals("category3")) {
+		} else if (comm.equals("category3")) { // 3rd Year Courses
 			if (!(model == null)) {
 				try {
 					response.getWriter().append(model.getBooks("EECS3"));

@@ -58,7 +58,7 @@ function loadAllBooks(url) {
 
 function loadByCategory1(url) {
 
-	var request = new XMLHttpRequest();
+	var request = new XMLHttpRequest(); 
 	var data = '';
 	data += "comm=category1";
 	request.open("GET", (url + "?" + data), true);
