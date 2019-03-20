@@ -69,6 +69,47 @@ public class Start extends HttpServlet {
 				}
 			}
 
+		} else if (comm.equals("category1")) {
+			if (!(model == null)) {
+				try {
+					response.getWriter().append(model.getBooks("EECS1"));
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} else if (comm.equals("category2")) {
+			if (!(model == null)) {
+				try {
+					response.getWriter().append(model.getBooks("EECS2"));
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} else if (comm.equals("category3")) {
+			if (!(model == null)) {
+				try {
+					response.getWriter().append(model.getBooks("EECS3"));
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} else if (comm.equals("category4")) {
+			if (!(model == null)) {
+				try {
+					response.getWriter().append(model.getBooks("EECS4"));
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
 		} else
 
 		{

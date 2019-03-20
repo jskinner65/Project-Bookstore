@@ -67,7 +67,17 @@
 									onClick="searchBook('Start'); return false;"></input></td>
 							</tr>
 							<tr>
-								<td colspan="2"><div id="allBooks">All Books</div></td>
+								<td colspan="2"><div id="allBooks"
+										onclick="searchBook('Start');return false;">All Books</div>
+									<div id="EECS1" onclick="loadByCategory1('Start');return false">1st
+										Year EECS Books</div>
+									<div id="EECS2" onclick="loadByCategory2('Start');return false">2nd
+										Year EECS Books</div>
+									<div id="EECS3" onclick="loadByCategory3('Start');return false">3rd
+										Year EECS Books</div>
+									<div id="EECS4" onclick="loadByCategory4('Start');return false">4th
+										Year EECS Books</div>
+								</td>
 							</tr>
 							<tr>
 

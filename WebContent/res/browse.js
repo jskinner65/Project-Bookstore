@@ -36,7 +36,7 @@ function searchBook(url) {
 	}
 	else{
 		loadAllBooks('Start');
-		document.getElementById("starting").style.display = "none";
+	//	document.getElementById("starting").style.display = "none";
 
 	}
 }
@@ -52,4 +52,55 @@ function loadAllBooks(url) {
 		handler(request);
 	};
 	request.send();
+	document.getElementById("starting").style.display = "none";
+	document.forms["browseForm"]["searchField"].value = "";
+}
+
+function loadByCategory1(url) {
+
+	var request = new XMLHttpRequest();
+	var data = '';
+	data += "comm=category1";
+	request.open("GET", (url + "?" + data), true);
+	request.onreadystatechange = function() {
+		handler(request);
+	};
+	request.send();
+	document.getElementById("starting").style.display = "none";
+}
+function loadByCategory2(url) {
+
+	var request = new XMLHttpRequest();
+	var data = '';
+	data += "comm=category2";
+	request.open("GET", (url + "?" + data), true);
+	request.onreadystatechange = function() {
+		handler(request);
+	};
+	request.send();
+	document.getElementById("starting").style.display = "none";
+}
+function loadByCategory3(url) {
+
+	var request = new XMLHttpRequest();
+	var data = '';
+	data += "comm=category3";
+	request.open("GET", (url + "?" + data), true);
+	request.onreadystatechange = function() {
+		handler(request);
+	};
+	request.send();
+	document.getElementById("starting").style.display = "none";
+}
+function loadByCategory4(url) {
+
+	var request = new XMLHttpRequest();
+	var data = '';
+	data += "comm=category4";
+	request.open("GET", (url + "?" + data), true);
+	request.onreadystatechange = function() {
+		handler(request);
+	};
+	request.send();
+	document.getElementById("starting").style.display = "none";
 }
