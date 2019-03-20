@@ -23,7 +23,6 @@
 
 </head>
 <body>
-	Browse
 	<form name='browseForm' action="Start" method="POST"
 		onsubmit="return validate();">
 		<table>
@@ -58,24 +57,7 @@
 					</nav>
 				</td>
 				<td align="right">
-					<fieldset>
-						<table>
-							<tr>
-								<td><input type='text' name='searchField' id='searchField'></input></td>
-
-								<td><input type='submit' name='Search' value='Search'
-									onClick="searchBook('Start'); return false;"></input></td>
-							</tr>
-							<tr>
-								<td colspan="2"><div id="allBooks">All Books</div></td>
-							</tr>
-							<tr>
-
-								<td colspan="2"><p id='resultDisplay'></p>
-									<div id='starting'>${results}</div></td>
-							</tr>
-						</table>
-					</fieldset>
+					Enter Page code here
 				</td>
 			</tr>
 		</table>
