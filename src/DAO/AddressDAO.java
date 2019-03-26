@@ -34,8 +34,8 @@ public class AddressDAO {
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String name = r.getInt("id") + "";
-			AddressBean book = new AddressBean(r.getInt("id"), r.getString("street"), r.getString("province"),
-					r.getString("country"), r.getString("zip"), r.getString("phone"));
+			AddressBean book = new AddressBean(r.getInt("id"), r.getString("email"), r.getString("street"),
+					r.getString("province"), r.getString("country"), r.getString("zip"), r.getString("phone"));
 			rv.put(name, book);
 		}
 		r.close();

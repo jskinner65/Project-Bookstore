@@ -3,12 +3,14 @@ package beans;
 public class POitemBean {
 	private int id;
 	private String bid;
+	private int quantity;
 	private int price;
 
-	public POitemBean(int id, String bid, int price) {
+	public POitemBean(int id, String bid, int quantity, int price) {
 		super();
 		this.id = id;
 		this.bid = bid;
+		this.quantity = quantity;
 		this.price = price;
 	}
 
@@ -26,6 +28,14 @@ public class POitemBean {
 
 	public void setBid(String bid) {
 		this.bid = bid;
+	}
+
+	public int getQuantity() {
+		return this.quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public int getPrice() {

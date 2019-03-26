@@ -34,7 +34,8 @@ public class POitemDAO {
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String name = r.getString("id");
-			POitemBean book = new POitemBean(r.getInt("id"), r.getString("bid"), r.getInt("price"));
+			POitemBean book = new POitemBean(r.getInt("id"), r.getString("bid"), r.getInt("quantity"),
+					r.getInt("price"));
 			rv.put(name, book);
 		}
 		r.close();

@@ -2,15 +2,17 @@ package beans;
 
 public class AddressBean {
 	private int id;
+	private String email;
 	private String street;
 	private String province;
 	private String country;
 	private String zip;
 	private String phone;
 
-	public AddressBean(int id, String street, String province, String country, String zip, String phone) {
+	public AddressBean(int id, String email, String street, String province, String country, String zip, String phone) {
 		super();
 		this.id = id;
+		this.email = email;
 		this.street = street;
 		this.province = province;
 		this.country = country;
@@ -24,6 +26,14 @@ public class AddressBean {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getStreet() {

@@ -35,8 +35,9 @@ public class BookDAO {
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String name = r.getString("bid");
-			BookBean book = new BookBean(r.getString("bid"), r.getString("title"), r.getInt("price"),
-					r.getString("category"));
+			BookBean book = new BookBean(r.getString("bid"), r.getString("title"), r.getString("picture"),
+					r.getInt("price"), r.getString("category"), r.getString("courseCode"), r.getString("courseTitle"),
+					r.getString("description"));
 			rv.put(name, book);
 		}
 		r.close();
@@ -57,8 +58,9 @@ public class BookDAO {
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String name = r.getString("bid");
-			BookBean book = new BookBean(r.getString("bid"), r.getString("title"), r.getInt("price"),
-					r.getString("category"));
+			BookBean book = new BookBean(r.getString("bid"), r.getString("title"), r.getString("picture"),
+					r.getInt("price"), r.getString("category"), r.getString("courseCode"), r.getString("courseTitle"),
+					r.getString("description"));
 			rv.put(name, book);
 		}
 		r.close();

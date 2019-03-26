@@ -34,8 +34,8 @@ public class PODAO {
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String name = r.getString("id");
-			POBean book = new POBean(r.getInt("id"), r.getString("lname"), r.getString("fname"), r.getString("status"),
-					r.getInt("address"));
+			POBean book = new POBean(r.getInt("id"), r.getString("email"), r.getString("lname"), r.getString("fname"),
+					r.getString("status"), r.getInt("address"), r.getString("day"));
 			rv.put(name, book);
 		}
 		r.close();
