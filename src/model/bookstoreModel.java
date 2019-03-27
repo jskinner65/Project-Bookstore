@@ -3,6 +3,10 @@ package model;
 import java.sql.SQLException;
 import java.util.Map;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import DAO.AddressDAO;
 import DAO.BookDAO;
 import DAO.PODAO;
@@ -16,14 +20,22 @@ public class bookstoreModel {
 	private PODAO poDAO;
 	private POitemDAO poitemDAO;
 	private VisitEventDAO visitEventDAO;
+	DataSource ds;
 
 	public bookstoreModel() throws ClassNotFoundException {
 		super();
-		this.addressDAO = new AddressDAO();
-		this.bookDAO = new BookDAO();
-		this.poDAO = new PODAO();
-		this.poitemDAO = new POitemDAO();
-		this.visitEventDAO = new VisitEventDAO();
+
+		try {
+			ds = (DataSource) (new InitialContext()).lookup("java:/comp/env/jdbc/EECS");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		this.addressDAO = new AddressDAO(ds);
+		this.bookDAO = new BookDAO(ds);
+		this.poDAO = new PODAO(ds);
+		this.poitemDAO = new POitemDAO(ds);
+		this.visitEventDAO = new VisitEventDAO(ds);
+
 	}
 
 	public AddressDAO getAddressDAO() {

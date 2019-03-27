@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import beans.AddressBean;
@@ -17,12 +15,10 @@ public class AddressDAO {
 
 	DataSource ds;
 
-	public AddressDAO() throws ClassNotFoundException {
-		try {
-			ds = (DataSource) (new InitialContext()).lookup("java:/comp/env/jdbc/EECS");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+	public AddressDAO(DataSource passedDS) throws ClassNotFoundException {
+
+		ds = passedDS;
+
 	}
 
 	public Map<String, AddressBean> retrieve() throws SQLException {
