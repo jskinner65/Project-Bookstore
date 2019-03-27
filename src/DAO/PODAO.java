@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import beans.POBean;
@@ -16,12 +14,9 @@ import beans.POBean;
 public class PODAO {
 	DataSource ds;
 
-	public PODAO() throws ClassNotFoundException {
-		try {
-			ds = (DataSource) (new InitialContext()).lookup("java:/comp/env/jdbc/EECS");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+	public PODAO(DataSource passedDS) throws ClassNotFoundException {
+
+		ds = passedDS;
 
 	}
 
