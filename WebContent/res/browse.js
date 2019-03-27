@@ -22,7 +22,6 @@ function handler(request) {
 
 function searchBook(url) {
 	
-	alert('xxx');
 	if (validate()) {
 		var name = document.forms["browseForm"]["searchField"].value;
 		var request = new XMLHttpRequest();

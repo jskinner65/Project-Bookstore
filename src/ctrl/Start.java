@@ -17,6 +17,7 @@ import model.bookstoreModel;
 @WebServlet("/Start")
 public class Start extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String searchField = "";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -49,9 +50,10 @@ public class Start extends HttpServlet {
 		}
 
 		if (comm.equals("ajax")) {
+			searchField = request.getParameter("searchField");
 			if (!(model == null)) {
 				try {
-					response.getWriter().append(model.getBookbyName(request.getParameter("searchField")));
+					response.getWriter().append(model.getBookbyName(searchField));
 
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -113,13 +115,13 @@ public class Start extends HttpServlet {
 		} else
 
 		{
-			response.getWriter().append("Welcome to our Bookstore");
 			try {
-				request.setAttribute("results", model.getAllBooks());
+				request.setAttribute("results", model.getBookbyName(searchField));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
 			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
 			// response.sendRedirectURL();
 
