@@ -41,7 +41,7 @@ function searchBook(url) {
 	//	document.getElementById("starting").style.display = "none";
 
 	}
-}
+} 
 
 
 function loadAllBooks(url) {

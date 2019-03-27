@@ -123,7 +123,7 @@ public class Start extends HttpServlet {
 			response.sendRedirect("./index.html");
 			//response.sendRedirectURL();
 			
-
+ 
 		}
 	}
 
