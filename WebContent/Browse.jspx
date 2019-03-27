@@ -80,7 +80,7 @@
 								</td>
 							</tr>
 							<tr>
-
+ 
 								<td colspan="2"><p id='resultDisplay'></p>
 									<div id='starting'>${results}</div></td>
 							</tr>
