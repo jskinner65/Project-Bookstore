@@ -47,7 +47,7 @@ function loadAllBooks(url) {
 
 	var request = new XMLHttpRequest();
 	var data = '';
-	data += "comm=ajax2";
+	data += "comm=ajax";
 	request.open("GET", (url + "?" + data), true);
 	request.onreadystatechange = function() {
 		handler(request);
