@@ -53,7 +53,6 @@ public class Start extends HttpServlet {
 				try {
 					response.getWriter().append(model.getBookbyName(request.getParameter("searchField")));
 
-					// response.sendRedirect("./Browse.jspx");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
