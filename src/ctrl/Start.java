@@ -52,7 +52,7 @@ public class Start extends HttpServlet {
 			if (!(model == null)) {
 				try {
 					response.getWriter().append(model.getBookbyName(request.getParameter("searchField")));
-
+					request.getRequestDispatcher("./Browse.jspx").forward(request, response);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -120,7 +120,9 @@ public class Start extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
+			response.sendRedirect("./index.html");
+			//response.sendRedirectURL();
+			
 
 		}
 	}

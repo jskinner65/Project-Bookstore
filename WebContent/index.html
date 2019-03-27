@@ -85,12 +85,12 @@ body {
 			onsubmit="return validate();">
 			<table style="width: 100%">
 				<tr align="right">
-					<td><input type='text' name='browse'
+					<td><input type='text' name='searchField'
 						placeholder='Browse Books'></input><input type='submit'
-						name='Search' value='Search'></input></td>
+						name='Search' value='Search' onClick="searchBook('Start'); return false;"></input></td>
 				</tr>
 				<tr>
-					<td><p name='results'></p></td>
+					<td><p id='resultDisplay'></p></td>
 				</tr>
 			</table>
 		</form>
