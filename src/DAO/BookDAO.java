@@ -65,4 +65,24 @@ public class BookDAO {
 
 	}
 
+	public Map<String, BookBean> retrieveByBID(String bid) throws SQLException {
+
+		String query = "select * from Book WHERE bid='" + bid + "';";
+		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+			String name = r.getString("bid");
+			BookBean book = new BookBean(r.getString("bid"), r.getString("title"), r.getString("picture"),
+					r.getInt("price"), r.getString("category"), r.getString("courseCode"), r.getString("courseTitle"),
+					r.getString("description"));
+			rv.put(name, book);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+	}
+
 }

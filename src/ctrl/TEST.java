@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.TestDAO;
+import model.bookstoreModel;
 
 /**
  * Servlet implementation class TEST
@@ -32,10 +32,10 @@ public class TEST extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try {
-			TestDAO.main(null);
-		} catch (SQLException e) {
+			bookstoreModel model = new bookstoreModel();
+			model.test();
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
