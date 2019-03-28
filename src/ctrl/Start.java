@@ -51,25 +51,23 @@ public class Start extends HttpServlet {
 
 		if (comm.equals("ajax")) {
 			searchField = request.getParameter("searchField");
-			if (!(model == null)) {
+			if (searchField == null) {
 				try {
-					response.getWriter().append(model.getBookbyName(searchField));
-
+					request.setAttribute("results", model.getAllBooks());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				try {
+					request.setAttribute("results", model.getBookbyName(searchField));
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-		} else if (comm.equals("ajax2")) {
-			if (!(model == null)) {
-				try {
-					response.getWriter().append(model.getAllBooks());
-
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
+			// response.sendRedirectURL();
 
 		} else if (comm.equals("category1")) {
 			if (!(model == null)) {
@@ -115,15 +113,24 @@ public class Start extends HttpServlet {
 		} else
 
 		{
-			try {
-				request.setAttribute("results", model.getBookbyName(searchField));
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			searchField = request.getParameter("searchField");
+			if (searchField == null) {
+				try {
+					request.setAttribute("results", model.getAllBooks());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				try {
+					request.setAttribute("results", model.getBookbyName(searchField));
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-
 			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
-			// response.sendRedirectURL();
+			// response.sendRedirect("./Browse.jspx");
 
 		}
 	}
