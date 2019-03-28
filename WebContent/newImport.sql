@@ -136,7 +136,7 @@ PRIMARY KEY (reviewID, uid, bid)
 /*FOREIGN KEY(bid) REFERENCES Book (bid) ON DELETE CASCADE,
 FOREIGN KEY(uid) REFERENCES User (uid) ON DELETE CASCADE*/
 
-);
+); 
 
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (001, 'Test1', 'Admin', 'test1@mailcatch.com', 'test', 'Admin');
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (002, 'Test2', 'Admin', 'test2@mailcatch.com', 'test', 'Admin');
