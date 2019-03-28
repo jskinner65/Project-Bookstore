@@ -30,20 +30,18 @@ INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle)
 */
 CREATE TABLE Address (
 id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-email VARCHAR(30) NOT NULL UNIQUE,
+email VARCHAR(30) NOT NULL,
 street VARCHAR(100) NOT NULL,
 province VARCHAR(20) NOT NULL,
 country VARCHAR(20) NOT NULL,
 zip VARCHAR(20) NOT NULL,
 phone VARCHAR(20),
+addresstype ENUM('Shipping','Billing') NOT NULL,
 PRIMARY KEY(id)
 /*FOREIGN KEY(email) REFERENCES User (email) ON DELETE CASCADE*/
 
 );
 
-INSERT INTO Address (id, email, street, province, country, zip, phone) VALUES (1, 'test1@mailcatch.com','123 Yonge St', 'ON', 'Canada', 'K1E 6T5' ,'647-123-4567');
-INSERT INTO Address (id, email, street, province, country, zip, phone) VALUES (2, 'test2@mailcatch.com','445 Avenue rd', 'ON', 'Canada', 'M1C 6K5' ,'416-123-8569');
-INSERT INTO Address (id, email, street, province, country, zip, phone) VALUES (3, 'test3@mailcatch.com','789 Keele St.', 'ON', 'Canada', 'K3C 9T5' ,'416-123-9568');
 
 /* Purchase Order
 * lname: last name
@@ -67,8 +65,9 @@ FOREIGN KEY (email) REFERENCES User (email) ON DELETE CASCADE */
 );
 
 INSERT INTO PO (id, email, lname, fname, status, address, day) VALUES (1, 'test1@mailcatch.com', 'Test1', 'Admin', 'PROCESSED', '1', 12202015);
-INSERT INTO PO (id, email, lname, fname, status, address, day) VALUES (2, 'test2@mailcatch.com', 'Test2', 'Admin', 'DENIED', '2', 12202015);
-INSERT INTO PO (id, email, lname, fname, status, address, day) VALUES (3, 'test3@mailcatch.com', 'Test3', 'Admin', 'ORDERED', '3', 12202015);
+INSERT INTO PO (id, email, lname, fname, status, address, day) VALUES (2, 'test1@mailcatch.com', 'Test1', 'Admin', 'ORDERED', '1', 12202015);
+INSERT INTO PO (id, email, lname, fname, status, address, day) VALUES (3, 'test2@mailcatch.com', 'Test2', 'Admin', 'DENIED', '3', 12202015);
+
 
 /* Items on order
 * id : purchase order id
@@ -102,15 +101,17 @@ INSERT INTO POItem (id, bid, quantity, price) VALUES (3, 'b003', 3,'100');
 */
 CREATE TABLE VisitEvent (
 day varchar(8) NOT NULL,
+uid INT UNSIGNED NOT NULL,
 bid varchar(20) not null REFERENCES Book.bid,
 eventtype ENUM('VIEW','CART','PURCHASE') NOT NULL,
+quantity INT,
 PRIMARY KEY(day, bid, eventtype)
 /*FOREIGN KEY(bid) REFERENCES Book(bid)*/
 );
 
-INSERT INTO VisitEvent (day, bid, eventtype) VALUES ('12202015', 'b001', 'VIEW');
-INSERT INTO VisitEvent (day, bid, eventtype) VALUES ('12242015', 'b001', 'CART');
-INSERT INTO VisitEvent (day, bid, eventtype) VALUES ('12252015', 'b001', 'PURCHASE');
+INSERT INTO VisitEvent (day, uid, bid, eventtype, quantity) VALUES ('12202015', 001, 'b001', 'VIEW', 1);
+INSERT INTO VisitEvent (day, uid, bid, eventtype, quantity) VALUES ('12242015', 001, 'b001', 'CART', 1);
+INSERT INTO VisitEvent (day, uid, bid, eventtype, quantity) VALUES ('12252015', 001, 'b001', 'PURCHASE', 1);
 
 CREATE TABLE User (
 uid INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -139,7 +140,10 @@ FOREIGN KEY(uid) REFERENCES User (uid) ON DELETE CASCADE*/
 
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (001, 'Test1', 'Admin', 'test1@mailcatch.com', 'test', 'Admin');
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (002, 'Test2', 'Admin', 'test2@mailcatch.com', 'test', 'Admin');
-INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (003, 'Test3', 'Admin', 'test3@mailcatch.com', 'test', 'Admin');
+
+INSERT INTO Address (id, email, street, province, country, zip, phone, addresstype) VALUES (1, 'test1@mailcatch.com','123 Yonge St', 'ON', 'Canada', 'K1E 6T5' ,'647-123-4567', 'Billing');
+INSERT INTO Address (id, email, street, province, country, zip, phone, addresstype) VALUES (2, 'test1@mailcatch.com','445 Avenue rd', 'ON', 'Canada', 'M1C 6K5' ,'416-123-8569', 'Shipping');
+INSERT INTO Address (id, email, street, province, country, zip, phone, addresstype) VALUES (3, 'test2@mailcatch.com','789 Keele St.', 'ON', 'Canada', 'K3C 9T5' ,'416-123-9568', 'Billing');
 
 ALTER TABLE Address
 ADD FOREIGN KEY (email) REFERENCES User (email) ON DELETE CASCADE;
@@ -153,7 +157,8 @@ ADD FOREIGN KEY(id) REFERENCES PO(id) ON DELETE CASCADE,
 ADD FOREIGN KEY(bid) REFERENCES Book(bid) ON DELETE CASCADE;
 
 ALTER TABLE VisitEvent
-ADD FOREIGN KEY(bid) REFERENCES Book(bid);
+ADD FOREIGN KEY(bid) REFERENCES Book(bid),
+ADD FOREIGN KEY(uid) REFERENCES User(uid);
 
 ALTER TABLE User
 ADD FOREIGN KEY(email) REFERENCES Address (email) ON DELETE CASCADE;
