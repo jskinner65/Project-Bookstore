@@ -12,9 +12,11 @@ import DAO.BookDAO;
 import DAO.PODAO;
 import DAO.POitemDAO;
 import DAO.VisitEventDAO;
+import DAO.ReviewDAO;
 import beans.AddressBean;
 import beans.BookBean;
 import beans.POBean;
+import beans.ReviewBean;
 
 public class bookstoreModel {
 	private AddressDAO addressDAO;
@@ -22,6 +24,7 @@ public class bookstoreModel {
 	private PODAO poDAO;
 	private POitemDAO poitemDAO;
 	private VisitEventDAO visitEventDAO;
+	private ReviewDAO reviewDAO;
 	DataSource ds;
 
 // ___________________________________CONSTRUCTOR____________________________________________
@@ -59,6 +62,20 @@ public class bookstoreModel {
 		return result;
 	}
 
+	//Added by Mash for displaying reviews	
+		public String displayReviews(Map<String, ReviewBean> rv) {
+			String result = "";
+			result = "<table>";
+			for (Map.Entry<String, ReviewBean> pair : rv.entrySet()) {
+
+				result = result + "<tr><td>" + pair.getValue().getBid() + "</td><td>" + pair.getValue().getReviewtext()
+						+ "</td></tr>";
+			}
+			result = result + "</table>";
+			return result;
+		}	
+	
+	
 // _________________________ BOOKS___________________________________________________
 	public String getBookbyName(String bookName) throws SQLException {
 		String result = "";
@@ -116,10 +133,11 @@ public class bookstoreModel {
 	}
 
 //_____________________________________GETTING REVIEWS________________________________________
-	public String getReviews(String bid) {
-		String results = "";
-
-		return results;
+	public String getReviews(String bid) throws SQLException {
+		String result = "";
+		Map<String, ReviewBean> rv = reviewDAO.getReviews(bid);
+		result = displayReviews(rv);
+		return result;
 	}
 
 //______________________________________PO_____________________________________________________
