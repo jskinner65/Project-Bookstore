@@ -62,14 +62,22 @@ public class PODAO {
 		}
 	}
 
-	public boolean addPO(POBean newPO) throws SQLException {
+	public int addPO(POBean newPO) throws SQLException {
 
-		String query = "INSERT INTO PO (id, email, lname, fname, status, address, day) VALUES (";
-		query = query + newPO.getId() + ", " + newPO.getEmail() + ", " + newPO.getLname() + ", " + newPO.getFname()
-				+ ", " + newPO.getStatus() + ", " + newPO.getAddress() + ", " + newPO.getDay() + ");";
+		String query = "INSERT INTO PO (email, lname, fname, status, address, day) VALUES ('";
+		query = query + newPO.getEmail() + "', '" + newPO.getLname() + "', '" + newPO.getFname() + "', '"
+				+ newPO.getStatus() + "', " + newPO.getAddress() + ", '" + newPO.getDay() + "');";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
-		return p.execute();
+		p.execute();
+		query = "SELECT MAX(id) as max FROM PO;";
+		p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		int max = 0;
+		while (r.next()) {
+			max = r.getInt("max");
 
+		}
+		return max;
 	}
 }

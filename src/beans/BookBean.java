@@ -4,13 +4,13 @@ public class BookBean {
 	private String bid;
 	private String title;
 	private String picture;
-	private int price;
+	private double price;
 	private String category;
 	private String courseCode;
 	private String courseTitle;
 	private String description;
 
-	public BookBean(String bid, String title, String picture, int price, String category, String courseCode,
+	public BookBean(String bid, String title, String picture, double price, String category, String courseCode,
 			String courseTitle, String description) {
 		super();
 		this.bid = bid;
