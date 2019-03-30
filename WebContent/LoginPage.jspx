@@ -69,8 +69,8 @@
 						<tr align="right">
 							<td><input type='text' style="margin-right: 10px"
 								name='browse' placeholder='Browse Books'></input>
-								<button action='Submit' name='createAccount'
-									label='createAccount' style="margin-top: 30px"
+								<button action='Submit' name='searchBooks'
+									label='searchBooks' style="margin-top: 30px"
 									class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
 									<font color="#701e6e"></font> Search
 								</button></td>

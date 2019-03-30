@@ -53,8 +53,14 @@
 				<b>____ Review</b>
 			</h1>
 		</div></div>
-
-
+		<table>
+			<tr>
+					<td><label for="review">Review : <span
+							id="review" style="color: red" value='${sessionScope.}'> </span></label>
+						</td>
+					
+				</tr>
+</table>
 </body>
 </html>
 </jsp:root>

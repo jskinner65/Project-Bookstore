@@ -105,3 +105,11 @@ function loadByCategory4(url) {
 	request.send();
 	document.getElementById("starting").style.display = "none";
 }
+
+//Created by Sherry for Analytics/Admin page pop-ups
+function analyticsPopUpFunction() {
+	  
+	  var request = new XMLHttpRequest();
+	  //var analyticsPopup = document.getElementById("janReport");
+	  popup.classList.toggle("show");
+	}
