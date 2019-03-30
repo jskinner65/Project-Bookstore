@@ -145,6 +145,13 @@ INSERT INTO Address (id, email, street, province, country, zip, phone, addressty
 INSERT INTO Address (id, email, street, province, country, zip, phone, addresstype) VALUES (2, 'test1@mailcatch.com','445 Avenue rd', 'ON', 'Canada', 'M1C 6K5' ,'416-123-8569', 'Shipping');
 INSERT INTO Address (id, email, street, province, country, zip, phone, addresstype) VALUES (3, 'test2@mailcatch.com','789 Keele St.', 'ON', 'Canada', 'K3C 9T5' ,'416-123-9568', 'Billing');
 
+/* Adding the fake reviews from InfoWars.com */
+INSERT INTO Review (reviewID, rating, bid, uid, reviewtext)
+VALUES (1,5,'b001','001','Ye ye ye');
+
+INSERT INTO Review (reviewID, rating, bid, uid, reviewtext)
+VALUES (2,2,'b002','001','ew ew ew');
+
 ALTER TABLE Address
 ADD FOREIGN KEY (email) REFERENCES User (email) ON DELETE CASCADE;
 
