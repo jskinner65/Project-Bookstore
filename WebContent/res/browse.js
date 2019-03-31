@@ -21,7 +21,7 @@ function handler(request) {
 }
 
 function searchBook(url) {
-	
+
 	if (validate()) {
 		var name = document.forms["browseForm"]["searchField"].value;
 		var request = new XMLHttpRequest();
@@ -34,14 +34,12 @@ function searchBook(url) {
 		};
 		request.send();
 		document.getElementById("starting").style.display = "none";
-	}
-	else{
+	} else {
 		loadAllBooks('Start');
-	//	document.getElementById("starting").style.display = "none";
+		// document.getElementById("starting").style.display = "none";
 
 	}
-} 
-
+}
 
 function loadAllBooks(url) {
 
@@ -59,7 +57,7 @@ function loadAllBooks(url) {
 
 function loadByCategory1(url) {
 
-	var request = new XMLHttpRequest(); 
+	var request = new XMLHttpRequest();
 	var data = '';
 	data += "comm=category1";
 	request.open("GET", (url + "?" + data), true);
@@ -106,10 +104,31 @@ function loadByCategory4(url) {
 	document.getElementById("starting").style.display = "none";
 }
 
-//Created by Sherry for Analytics/Admin page pop-ups
 function analyticsPopUpFunction() {
-	  
-	  var request = new XMLHttpRequest();
-	  //var analyticsPopup = document.getElementById("janReport");
-	  popup.classList.toggle("show");
+
+	// Get the modal
+	var modal = document.getElementById('janReport');
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("janReport");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal
+	btn.onclick = function() {
+		modal.style.display = "block";
 	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}

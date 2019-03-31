@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test</title>
+
+<style>
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 60px;
+	width: 80%;
+	text-align: left;
+	line-height: 90px;
+	display: block;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+</style>
+</head>
+
+<body background="res/Images/Books.jpg">
+	<table>
+		<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
+
+			<!-- Header -->
+			<div class="w3-container" style="margin-top: 80px; color: Red;"
+				id="showcase">
+				<h1 class="w3-jumbo" style="display: inline">
+					<font size="10"><b>Swag EECS Bookstore</b></font>
+				</h1>
+			</div>
+
+			<form name='browseForm' action="Start" method="POST"
+				onsubmit="return validate();">
+				<table style="width: 100%">
+					<!-- 						<tr align="right"> -->
+					<!-- 							<td><input type='text' name='browse' -->
+					<!-- 								placeholder='Browse Books'></input><input type='submit' -->
+					<!-- 								name='Search' value='Search'></input></td> -->
+					<!-- 						</tr> -->
+					<!--  Books sold each month.  We were talking about having a start and end date and the search by zip.  -->
+					<tr align="right">
+						<td><input type='text' style="margin-right: 10px"
+							name='adminBrowse' placeholder='Admin Search'></input>
+							<button action='Submit' name='adminSearch' label='adminSearch'
+								style="margin-top: 30px"
+								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
+								<font color="#701e6e" size="4"></font> Admin Search
+							</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+		<!-- Trigger/Open The Modal -->
+		<div>
+			<button id="janBtn">January Report</button>
+
+			<!-- The Modal -->
+			<div id="jan" class="modal">
+
+				<!-- Modal content -->
+				<div class="modal-content">
+					<span class="close">
+						<table>
+						</table>
+
+					</span>
+				</div>
+
+			</div>
+		</div>
+
+		<script>
+			// Get the modal
+			var modal = document.getElementById('jan');
+
+			// Get the button that opens the modal
+			var btn = document.getElementById("janBtn");
+
+			// Get the span element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks the button, open the modal 
+			btn.onclick = function() {
+				modal.style.display = "block";
+			}
+
+			// When the user clicks on span (x), close the modal
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		</script>
+	</table>
+</body>
+	</html>
+</jsp:root>
