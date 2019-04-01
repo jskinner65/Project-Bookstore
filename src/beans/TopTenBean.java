@@ -1,5 +1,6 @@
 package beans;
 
+//Shows top ten as beans
 public class TopTenBean {
 
 	private String bid;
