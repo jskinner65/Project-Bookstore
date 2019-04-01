@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.naming.InitialContext;
@@ -11,16 +12,21 @@ import DAO.AddressDAO;
 import DAO.BookDAO;
 import DAO.PODAO;
 import DAO.POitemDAO;
+import DAO.ReviewDAO;
 import DAO.VisitEventDAO;
 import beans.AddressBean;
 import beans.BookBean;
 import beans.POBean;
+import beans.ReviewBean;
+import beans.TopTenBean;
+import beans.VisitEventBean;
 
 public class bookstoreModel {
 	private AddressDAO addressDAO;
 	private BookDAO bookDAO;
 	private PODAO poDAO;
 	private POitemDAO poitemDAO;
+	private ReviewDAO reviewDAO;
 	private VisitEventDAO visitEventDAO;
 	DataSource ds;
 
@@ -37,6 +43,7 @@ public class bookstoreModel {
 		this.bookDAO = new BookDAO(ds);
 		this.poDAO = new PODAO(ds);
 		this.poitemDAO = new POitemDAO(ds);
+		this.reviewDAO = new ReviewDAO(ds);
 		this.visitEventDAO = new VisitEventDAO(ds);
 
 	}
@@ -76,7 +83,7 @@ public class bookstoreModel {
 
 	public String getBooks(String category) throws SQLException {
 		String result = "";
-		Map<String, BookBean> rv = bookDAO.retrieve("");
+		Map<String, BookBean> rv = bookDAO.retrieve(category);
 		result = displayBooks(rv);
 		return result;
 	}
@@ -86,6 +93,23 @@ public class bookstoreModel {
 		Map<String, BookBean> rv = bookDAO.retrieveAll();
 		result = displayBooks(rv);
 		return result;
+	}
+
+	public Map<String, BookBean> getByNameMap(String name) throws SQLException {
+		return bookDAO.retrieve(name);
+	}
+
+	public Map<String, BookBean> getByCategoryMap(String category) throws SQLException {
+		return bookDAO.retrieve(category);
+	}
+
+	public Map<String, BookBean> retrieveAllMap() throws SQLException {
+		return bookDAO.retrieveAll();
+	}
+
+	public BookBean getByBIDBean(String bid) throws SQLException {
+		Map<String, BookBean> book = bookDAO.retrieveByBID(bid);
+		return book.get(bid);
 	}
 
 	public boolean addBook(String bid, String title, String picture, double price, String category, String courseCode,
@@ -109,6 +133,15 @@ public class bookstoreModel {
 		return addressDAO;
 	}
 
+	public Map<String, AddressBean> getAddressByEmail(String email) throws SQLException {
+		return addressDAO.retrieve(email);
+	}
+
+	public boolean updateAddress(int id, String email, String street, String province, String country, String zip,
+			String phone) throws SQLException {
+		return addressDAO.updateAddress(id, email, street, province, country, zip, phone);
+	}
+
 	public boolean addAddress(int id, String email, String street, String province, String country, String zip,
 			String phone) throws SQLException {
 		AddressBean ab = new AddressBean(id, email, street, province, country, zip, phone);
@@ -116,16 +149,29 @@ public class bookstoreModel {
 	}
 
 //_____________________________________GETTING REVIEWS________________________________________
-	public String getReviews(String bid) {
-		String results = "";
 
-		return results;
+	public Map<String, ReviewBean> getReviewsByBIDMap(String bid) throws SQLException {
+		return reviewDAO.getReviews(bid);
+	}
+
+	public boolean addReivew(int reviewID, int rating, String bid, int uid, String reviewtext) throws SQLException {
+		ReviewBean bean = new ReviewBean(reviewID, rating, bid, uid, reviewtext);
+		return reviewDAO.addReivew(bean);
 	}
 
 //______________________________________PO_____________________________________________________
 
 	public PODAO getPoDAO() {
 		return poDAO;
+	}
+
+	public POBean getPOByID(int ID) throws SQLException {
+		Map<String, POBean> po = poDAO.retrieveByID(ID);
+		return po.get(ID + "");
+	}
+
+	public Map<String, POBean> getPOByEmail(String email) throws SQLException {
+		return poDAO.retrieveByEmail(email);
 	}
 
 // _____________________________________POITEMS_______________________________________________
@@ -137,6 +183,10 @@ public class bookstoreModel {
 
 	}
 
+	public Map<String, POBean> getPOitemsByPO(int poID) throws SQLException {
+		return poDAO.retrieveByID(poID);
+	}
+
 	public POitemDAO getPoitemDAO() {
 
 		return poitemDAO;
@@ -145,6 +195,26 @@ public class bookstoreModel {
 //______________________________________VISIT EVENTS_________________________________________
 	public VisitEventDAO getVisitEventDAO() {
 		return visitEventDAO;
+	}
+
+	public Map<String, VisitEventBean> getAllVisits() throws SQLException {
+		return visitEventDAO.retrieve();
+	}
+
+	public Map<String, VisitEventBean> getVisitsByUID() throws SQLException {
+		return visitEventDAO.retrieve();
+	}
+//_______________________________________ANALYTICS_______________________________________________
+
+	public Map<String, BookBean> getTopTen() throws SQLException {
+		Map<String, BookBean> books = new HashMap<String, BookBean>();
+		Map<String, TopTenBean> topTen = poitemDAO.retrieveTen();
+		for (Map.Entry<String, TopTenBean> pair : topTen.entrySet()) {
+			books.put(pair.getKey(), this.getByBIDBean(pair.getKey()));
+
+		}
+		return null; // NOT DONE
+						// YET!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	}
 
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 

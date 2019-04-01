@@ -3,13 +3,17 @@ package beans;
 public class VisitEventBean {
 	private String day;
 	private String bid;
+	private int uid;
 	private String eventtype;
+	private int quantity;
 
-	public VisitEventBean(String day, String bid, String eventtype) {
+	public VisitEventBean(String day, String bid, int uid, String eventtype, int quantity) {
 		super();
 		this.day = day;
 		this.bid = bid;
 		this.eventtype = eventtype;
+		this.uid = uid;
+		this.quantity = quantity;
 	}
 
 	public String getDay() {

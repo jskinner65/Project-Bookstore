@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import beans.POitemBean;
+import beans.TopTenBean;
 
 public class POitemDAO {
 	DataSource ds;
@@ -17,6 +18,24 @@ public class POitemDAO {
 	public POitemDAO(DataSource passedDS) throws ClassNotFoundException {
 
 		ds = passedDS;
+
+	}
+
+	public Map<String, TopTenBean> retrieveTen() throws SQLException {
+		String query = "select bid, count(bid) as cBid from POitem group by BID order by cBid desc limit 10;";
+		Map<String, TopTenBean> rv = new HashMap<String, TopTenBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+			String name = r.getString("bid");
+			TopTenBean bean = new TopTenBean(r.getString("bid"), r.getInt("quantity"));
+			rv.put(name, bean);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
 
 	}
 

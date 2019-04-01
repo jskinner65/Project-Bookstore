@@ -20,6 +20,15 @@ public class ReviewDAO {
 
 	}
 
+	public boolean addReivew(ReviewBean review) throws SQLException {
+		String query = "insert into review (reviewID, rating, bid, uid, reviewtext) VALUES('" + review.getReviewID()
+				+ "', '" + review.getRating() + "', '" + review.getBid() + "', '" + review.getUid() + "', '"
+				+ review.getReviewtext() + "');";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		return p.execute();
+	}
+
 	public Map<String, ReviewBean> getReviews(String bid) throws SQLException {
 
 		String query = "select * from Reviews where bid=" + bid;
