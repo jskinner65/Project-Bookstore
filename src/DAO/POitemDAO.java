@@ -22,15 +22,17 @@ public class POitemDAO {
 	}
 
 	public Map<String, TopTenBean> retrieveTen() throws SQLException {
-		String query = "select bid, count(bid) as cBid from POitem group by BID order by cBid desc limit 10;";
+		String query = "select bid, sum(quantity) as cBid from POitem group by BID order by cBid desc limit 10;";
 		Map<String, TopTenBean> rv = new HashMap<String, TopTenBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
+		int i = 1;
 		while (r.next()) {
-			String name = r.getString("bid");
-			TopTenBean bean = new TopTenBean(r.getString("bid"), r.getInt("quantity"));
+			String name = i + "";
+			TopTenBean bean = new TopTenBean(i, r.getString("bid"), r.getInt("cBid"));
 			rv.put(name, bean);
+			i++;
 		}
 		r.close();
 		p.close();

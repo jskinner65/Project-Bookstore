@@ -207,14 +207,18 @@ public class bookstoreModel {
 //_______________________________________ANALYTICS_______________________________________________
 
 	public Map<String, BookBean> getTopTen() throws SQLException {
+		Map<String, BookBean> allBooks = bookDAO.retrieveAll();
 		Map<String, BookBean> books = new HashMap<String, BookBean>();
 		Map<String, TopTenBean> topTen = poitemDAO.retrieveTen();
-		for (Map.Entry<String, TopTenBean> pair : topTen.entrySet()) {
-			books.put(pair.getKey(), this.getByBIDBean(pair.getKey()));
-
+		System.out.println("TOP TEN SIZE     " + topTen.size());
+		for (int i = 1; i <= topTen.size(); i++) {
+			books.put(i + "", allBooks.get(topTen.get(i + "").getBid()));
+			System.out.println("TTS  " + topTen.size());
+			System.out.println("I    " + i);
 		}
-		return null; // NOT DONE
-						// YET!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		System.out.println("Books SIZE     " + books.size());
+
+		return books;
 	}
 
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
@@ -236,6 +240,13 @@ public class bookstoreModel {
 
 		System.out.println(
 				"PO ADDED.  PO# is: " + this.addPO("test1@mailcatch.com", "Test1", "Admin", "DENIED", 2, "20191002"));
+		Map<String, BookBean> TopTen = this.getTopTen();
+		System.out.println(TopTen.size());
+		for (int i = 1; i <= TopTen.size(); i++) {
+			BookBean book = TopTen.get(i + "");
+			System.out.println(book.getTitle());
+
+		}
 	}
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 
