@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -221,6 +222,21 @@ public class bookstoreModel {
 		return books;
 	}
 
+	public Map<String, BookBean> getByDates(Date d1, Date d2) throws SQLException {
+		Map<String, BookBean> allBooks = bookDAO.retrieveAll();
+		Map<String, BookBean> books = new HashMap<String, BookBean>();
+		Map<String, TopTenBean> topTen = poDAO.retrieveBetweenDates(d1, d2);
+		System.out.println("TOP TEN SIZEDate     " + topTen.size());
+		for (int i = 1; i <= topTen.size(); i++) {
+			books.put(i + "", allBooks.get(topTen.get(i + "").getBid()));
+			System.out.println("TTS  " + topTen.size());
+			System.out.println("I    " + i);
+		}
+		System.out.println("Books SIZEDate     " + books.size());
+
+		return books;
+	}
+
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 	public void test() throws SQLException {
 		System.out.println(this.getAllBooks());
@@ -244,6 +260,16 @@ public class bookstoreModel {
 		System.out.println(TopTen.size());
 		for (int i = 1; i <= TopTen.size(); i++) {
 			BookBean book = TopTen.get(i + "");
+			System.out.println(book.getTitle());
+
+		}
+		Date d1 = new Date();
+		Date d2 = new Date();
+		d2.setTime(0);
+		Map<String, BookBean> TopTen2 = this.getByDates(d1, d2);
+		System.out.println(TopTen2.size());
+		for (int i = 1; i <= TopTen2.size(); i++) {
+			BookBean book = TopTen2.get(i + "");
 			System.out.println(book.getTitle());
 
 		}
