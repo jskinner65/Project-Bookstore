@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +35,29 @@ public class PODAO {
 			POBean book = new POBean(r.getInt("id"), r.getString("email"), r.getString("lname"), r.getString("fname"),
 					r.getString("status"), r.getInt("address"), r.getString("day"));
 			rv.put(name, book);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+
+	}
+
+	public Map<String, POBean> retrieveBetweenDates(Date d1, Date d2) throws SQLException, ParseException {
+
+		String query = "select * from PO";
+		Map<String, POBean> rv = new HashMap<String, POBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+			Date dayValue = new SimpleDateFormat("yyyymmdd").parse(r.getString("day"));
+			if (d1.compareTo(dayValue) >= 0 && d2.compareTo(dayValue) < 0) {
+				String name = r.getString("id");
+				POBean book = new POBean(r.getInt("id"), r.getString("email"), r.getString("lname"),
+						r.getString("fname"), r.getString("status"), r.getInt("address"), r.getString("day"));
+				rv.put(name, book);
+			}
 		}
 		r.close();
 		p.close();
