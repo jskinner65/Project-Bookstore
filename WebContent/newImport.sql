@@ -14,8 +14,9 @@ category ENUM('EECS1','EECS2','EECS3', 'EECS4') NOT NULL,
 coursecode varchar(10),
 coursetitle varchar(50),
 description varchar(150),
-PRIMARY KEY(bid)
-);
+PRIMARY KEY(bid),
+FULLTEXT(title, description)
+) ENGINE = myisam ;
 
 INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b001', 'How to use a keyboard', 0, 200, 'EECS1', '1001', 'Introduction to Computing');
 INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b002', 'Computer Organization and Design', 0, 400, 'EECS2', '2021', 'Computer Organization');
@@ -86,7 +87,7 @@ INDEX (bid),
 /*FOREIGN KEY(bid) REFERENCES Book(bid) ON DELETE CASCADE,*/
 check (id > 0),
 check (quantity > 0)
-);
+) ENGINE = myisam ;
 
 
 INSERT INTO POItem (id, bid, quantity, price) VALUES (1, 'b001', 5,'20');
@@ -107,7 +108,7 @@ eventtype ENUM('VIEW','CART','PURCHASE') NOT NULL,
 quantity INT,
 PRIMARY KEY(day, bid, eventtype)
 /*FOREIGN KEY(bid) REFERENCES Book(bid)*/
-);
+) ENGINE = myisam ;
 
 INSERT INTO VisitEvent (day, uid, bid, eventtype, quantity) VALUES ('12202015', 001, 'b001', 'VIEW', 1);
 INSERT INTO VisitEvent (day, uid, bid, eventtype, quantity) VALUES ('12242015', 001, 'b001', 'CART', 1);
@@ -136,7 +137,7 @@ PRIMARY KEY (reviewID, uid, bid)
 /*FOREIGN KEY(bid) REFERENCES Book (bid) ON DELETE CASCADE,
 FOREIGN KEY(uid) REFERENCES User (uid) ON DELETE CASCADE*/
 
-);
+) ENGINE = myisam ;
 
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (001, 'Test1', 'Admin', 'test1@mailcatch.com', 'test', 'Admin');
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (002, 'Test2', 'Admin', 'test2@mailcatch.com', 'test', 'Admin');
@@ -166,3 +167,4 @@ ADD FOREIGN KEY(email) REFERENCES Address (email) ON DELETE CASCADE;
 ALTER TABLE Review
 ADD FOREIGN KEY(bid) REFERENCES Book (bid) ON DELETE CASCADE,
 ADD FOREIGN KEY(uid) REFERENCES User (uid) ON DELETE CASCADE;
+alter table  visitevent add column price double precision (5,2);
