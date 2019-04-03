@@ -89,5 +89,5 @@ public class VisitEventDAO {
 
 	public boolean addToCart(String day, String bid, int uid, int quantity, double price) {
 		return true;
-	} //
+	} // not done
 }
