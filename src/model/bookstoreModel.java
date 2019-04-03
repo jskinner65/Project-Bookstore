@@ -10,12 +10,14 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import DAO.AddressDAO;
+import DAO.AnalyticsDAO;
 import DAO.BookDAO;
 import DAO.PODAO;
 import DAO.POitemDAO;
 import DAO.ReviewDAO;
 import DAO.VisitEventDAO;
 import beans.AddressBean;
+import beans.AnalyticsBean;
 import beans.BookBean;
 import beans.POBean;
 import beans.POitemBean;
@@ -30,6 +32,7 @@ public class bookstoreModel {
 	private POitemDAO poitemDAO;
 	private ReviewDAO reviewDAO;
 	private VisitEventDAO visitEventDAO;
+	private AnalyticsDAO analyticsDAO;
 	DataSource ds;
 
 // ___________________________________CONSTRUCTOR____________________________________________
@@ -274,6 +277,12 @@ public class bookstoreModel {
 		}
 
 		return books;
+	}
+
+	public Map<String, AnalyticsBean> getAnalytics() throws SQLException {
+		Map<String, AnalyticsBean> bean = analyticsDAO.retrieve();
+
+		return bean;
 	}
 
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
