@@ -1,6 +1,5 @@
 package beans;
 
-//hey
 public class VisitEventBean {
 	private String day;
 	private String bid;
@@ -9,13 +8,14 @@ public class VisitEventBean {
 	private int quantity;
 	private double price;
 
-	public VisitEventBean(String day, String bid, int uid, String eventtype, int quantity) {
+	public VisitEventBean(String day, String bid, int uid, String eventtype, int quantity, double price) {
 		super();
 		this.day = day;
 		this.bid = bid;
 		this.eventtype = eventtype;
 		this.setUid(uid);
 		this.setQuantity(quantity);
+		this.setPrice(price);
 	}
 
 	public String getDay() {

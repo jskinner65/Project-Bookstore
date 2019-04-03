@@ -216,7 +216,7 @@ public class bookstoreModel {
 		return poitemDAO.retrieveByPO(poID);
 	}
 
-//______________________________________VISIT EVENTS_________________________________________
+//_________________________________________VISIT EVENTS_________________________________________
 	public VisitEventDAO getVisitEventDAO() {
 		return visitEventDAO;
 	}
@@ -225,8 +225,32 @@ public class bookstoreModel {
 		return visitEventDAO.retrieve();
 	}
 
-	public Map<String, VisitEventBean> getVisitsByUID() throws SQLException {
-		return visitEventDAO.retrieve();
+	public Map<String, VisitEventBean> getVisitsByUID(int uid) throws SQLException {
+		return visitEventDAO.retrieveByUID(uid);
+	}
+
+	public Map<String, VisitEventBean> getVisitsCartByUID(int uid) throws SQLException {
+		return visitEventDAO.retrieveCartByUID(uid);
+	}
+
+	public boolean changeToPurchased(int uid) throws SQLException {
+		Map<String, VisitEventBean> cart = this.getVisitsCartByUID(uid);
+		return visitEventDAO.changeToPurchased(cart);
+	}
+
+	public boolean updateQuantity(String day, String bid, int uid, int quantity) throws SQLException {
+		return visitEventDAO.updateCart(day, bid, uid, quantity);
+	}
+
+	public boolean removeFromCart(String day, String bid, int uid) throws SQLException {
+
+		return visitEventDAO.removeFromCart(day, bid, uid);
+	}
+
+	public boolean addToCart(String day, String bid, int uid, String eventtype, int quantity, double price)
+			throws SQLException {
+		VisitEventBean bean = new VisitEventBean(day, bid, uid, eventtype, quantity, price);
+		return visitEventDAO.addToCart(bean);
 	}
 //_______________________________________ANALYTICS_______________________________________________
 

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.sql.DataSource;
 
@@ -30,7 +31,7 @@ public class VisitEventDAO {
 		while (r.next()) {
 			String name = r.getString("id");
 			VisitEventBean book = new VisitEventBean(r.getString("day"), r.getString("bid"), r.getInt("uid"),
-					r.getString("eventtype"), r.getInt("quantity"));
+					r.getString("eventtype"), r.getInt("quantity"), r.getDouble("price"));
 			rv.put(name, book);
 		}
 		r.close();
@@ -50,7 +51,7 @@ public class VisitEventDAO {
 			while (r.next()) {
 				String name = r.getString("id");
 				VisitEventBean book = new VisitEventBean(r.getString("day"), r.getString("bid"), r.getInt("uid"),
-						r.getString("eventtype"), r.getInt("quantity"));
+						r.getString("eventtype"), r.getInt("quantity"), r.getDouble("price"));
 				rv.put(name, book);
 			}
 			r.close();
@@ -71,10 +72,10 @@ public class VisitEventDAO {
 			PreparedStatement p = con.prepareStatement(query);
 			ResultSet r = p.executeQuery();
 			while (r.next()) {
-				String name = r.getString("id");
+				String name = r.getString("day") + r.getString("bid") + r.getInt("uid");
 
 				VisitEventBean book = new VisitEventBean(r.getString("day"), r.getString("bid"), r.getInt("uid"),
-						r.getString("eventtype"), r.getInt("quantity"));
+						r.getString("eventtype"), r.getInt("quantity"), r.getDouble("price"));
 				rv.put(name, book);
 			}
 			r.close();
@@ -87,7 +88,43 @@ public class VisitEventDAO {
 
 	}
 
-	public boolean addToCart(String day, String bid, int uid, int quantity, double price) {
-		return true;
-	} // not done
+	public boolean removeFromCart(String day, String bid, int uid) throws SQLException {
+		String query = "";
+		query = "DELETE FROM visitevent where day='" + day + "' and bid='" + bid + "' and uid=" + uid + "; ";
+
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		return p.execute();
+	}
+
+	public boolean changeToPurchased(Map<String, VisitEventBean> events) throws SQLException {
+		String query = "";
+		for (Entry<String, VisitEventBean> visit : events.entrySet()) {
+			query = query + "update visitevent set eventtype='PURCHASE' where day='" + visit.getValue().getDay()
+					+ "' and bid='" + visit.getValue().getBid() + "' and uid=" + visit.getValue().getUid() + "; ";
+		}
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		return p.execute();
+
+	}
+
+	public boolean updateCart(String day, String bid, int uid, int newQuantity) throws SQLException {
+
+		String query = "update visitevent set quantity=" + newQuantity + " where day='" + day + "' and bid='" + bid
+				+ "' and uid=" + uid + ";";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		return p.execute();
+	}
+
+	public boolean addToCart(VisitEventBean visit) throws SQLException {
+
+		String query = "insert into visitevent (day, bid, uid, eventtype, quantity, price) VALUES('" + visit.getDay()
+				+ "', '" + visit.getBid() + "', '" + visit.getUid() + "', '" + visit.getEventtype() + "', '"
+				+ visit.getQuantity() + "', '" + visit.getPrice() + "');";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		return p.execute();
+	}
 }
