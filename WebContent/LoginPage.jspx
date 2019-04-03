@@ -113,8 +113,7 @@
 					<td><br>
 					<button action='Submit' name='forgotPassword'
 							label='forgotPassword' style="margin-right: 250px"
-							class="w3-medium w3-text-black">Forgot your password?</button>
-						</br></td>
+							class="w3-medium w3-text-black">Forgot your password?</button> </br></td>
 				</tr>
 
 			</div>
@@ -128,16 +127,6 @@
 					<td><label for="create">Create a new $wag Account </label></td>
 				</tr>
 			</div>
-
-
-
-
-
-
-
-
-
-
 		</table>
 	</form>
 
