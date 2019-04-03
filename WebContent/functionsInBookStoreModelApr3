@@ -1,0 +1,60 @@
+___________________________________CONSTRUCTOR____________________________________________
+
+public bookstoreModel() throws ClassNotFoundException
+
+___________________________DISPLAYING THE BOOKS ________________________________________
+
+public String displayBooks(Map<String, BookBean> rv) 
+
+_________________________ BOOKS___________________________________________________
+
+public String getBookbyName(String bookName) throws SQLException
+public String getBookByBID(String bid) throws SQLException
+public String getBooks(String category) throws SQLException
+public String getAllBooks() throws SQLException
+public Map<String, BookBean> getByNameMap(String name) throws SQLException 
+public Map<String, BookBean> getByCategoryMap(String category) throws SQLException
+public Map<String, BookBean> retrieveAllMap() throws SQLException
+public BookBean getByBIDBean(String bid) throws SQLException
+public boolean addBook(String bid, String title, String picture, double price, String category, String courseCode, String courseTitle, String description) throws SQLException 
+public boolean updateBook(String bid, String title, String picture, double price, String category, String courseCode, String courseTitle, String description) throws SQLException 
+public boolean removeBook(String bid) throws SQLException
+
+____________________________ADDRESS____________________________________________________
+
+public AddressDAO getAddressDAO()
+public Map<String, AddressBean> getAddressByEmail(String email) throws SQLException
+public boolean updateAddress(int id, String email, String street, String province, String country, String zip, String phone) throws SQLException 
+public boolean addAddress(int id, String email, String street, String province, String country, String zip, String phone) throws SQLException
+
+_____________________________________GETTING REVIEWS________________________________________
+
+public Map<String, ReviewBean> getReviewsByBIDMap(String bid) throws SQLException
+public boolean addReview(int reviewID, int rating, String bid, int uid, String reviewtext) throws SQLException
+public boolean removeReview(int reviewID) throws SQLException
+
+______________________________________PO_____________________________________________________
+
+public PODAO getPoDAO() 
+public POBean getPOByID(int ID) throws SQLException
+public Map<String, POBean> getPOByEmail(String email) throws SQLException
+public int createPO(String email, String lname, String fname, String status, int address, String day) throws SQLException 
+public Map<String, POBean> getPOitemsByPO(int poID) throws SQLException
+
+_____________________________________POITEMS_______________________________________________
+
+public POitemDAO getPoitemDAO()
+public boolean AddPOItem(int id, String bid, int quantity, double price) throws SQLException
+public Map<String, POitemBean> retreiveAllPOItems() throws SQLException
+public Map<String, POitemBean> retreivePOItems(int poID) throws SQLException
+
+______________________________________VISIT EVENTS_________________________________________
+
+public VisitEventDAO getVisitEventDAO() 
+public Map<String, VisitEventBean> getAllVisits() throws SQLException 
+public Map<String, VisitEventBean> getVisitsByUID() throws SQLException
+
+_______________________________________ANALYTICS_______________________________________________
+
+public Map<String, BookBean> getTopTen() throws SQLException
+public Map<String, BookBean> getByDates(Date d1, Date d2) throws SQLException
