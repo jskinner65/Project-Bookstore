@@ -1,5 +1,6 @@
 package beans;
 
+//hey
 public class VisitEventBean {
 	private String day;
 	private String bid;
