@@ -233,6 +233,7 @@ public class bookstoreModel {
 		return visitEventDAO.retrieveCartByUID(uid);
 	}
 
+//test
 	public boolean changeToPurchased(int uid) throws SQLException {
 		Map<String, VisitEventBean> cart = this.getVisitsCartByUID(uid);
 		return visitEventDAO.changeToPurchased(cart);
@@ -252,7 +253,7 @@ public class bookstoreModel {
 		VisitEventBean bean = new VisitEventBean(day, bid, uid, eventtype, quantity, price);
 		return visitEventDAO.addToCart(bean);
 	}
-//_______________________________________ANALYTICS_______________________________________________
+//_______________________________________ANALYTICS__________________________________________________
 
 	public Map<String, BookBean> getTopTen() throws SQLException {
 		Map<String, BookBean> allBooks = bookDAO.retrieveAll();
