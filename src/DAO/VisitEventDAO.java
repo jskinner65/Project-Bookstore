@@ -62,4 +62,32 @@ public class VisitEventDAO {
 		}
 
 	}
+
+	public Map<String, VisitEventBean> retrieveCartByUID(int uid) throws SQLException {
+		if (uid > 0) {
+			String query = "select * from VisitEvent WHERE eventtype='cart' and uid=" + uid + " order by day;";
+			Map<String, VisitEventBean> rv = new HashMap<String, VisitEventBean>();
+			Connection con = this.ds.getConnection();
+			PreparedStatement p = con.prepareStatement(query);
+			ResultSet r = p.executeQuery();
+			while (r.next()) {
+				String name = r.getString("id");
+
+				VisitEventBean book = new VisitEventBean(r.getString("day"), r.getString("bid"), r.getInt("uid"),
+						r.getString("eventtype"), r.getInt("quantity"));
+				rv.put(name, book);
+			}
+			r.close();
+			p.close();
+			con.close();
+			return rv;
+		} else {
+			return null;
+		}
+
+	}
+
+	public boolean addToCart(String day, String bid, int uid, int quantity, double price) {
+		return true;
+	}
 }

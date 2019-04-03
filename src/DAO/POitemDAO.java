@@ -21,6 +21,14 @@ public class POitemDAO {
 
 	}
 
+	public boolean addPOItem(POitemBean poItem) throws SQLException {
+		String query = "insert into poitem (id, bid, quantity, price) VALUES('" + poItem.getId() + "', '"
+				+ poItem.getBid() + "', '" + poItem.getQuantity() + "', '" + poItem.getPrice() + "');";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		return p.execute();
+	}
+
 	public Map<String, TopTenBean> retrieveTen() throws SQLException {
 		String query = "select bid, sum(quantity) as cBid from POitem group by BID order by cBid desc limit 10;";
 		Map<String, TopTenBean> rv = new HashMap<String, TopTenBean>();
@@ -61,4 +69,23 @@ public class POitemDAO {
 
 	}
 
+	public Map<String, POitemBean> retrieveByPO(int PO) throws SQLException {
+
+		String query = "select * from POitem where id=" + PO + ";";
+		Map<String, POitemBean> rv = new HashMap<String, POitemBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+			String name = r.getString("id");
+			POitemBean book = new POitemBean(r.getInt("id"), r.getString("bid"), r.getInt("quantity"),
+					r.getInt("price"));
+			rv.put(name, book);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+
+	}
 }

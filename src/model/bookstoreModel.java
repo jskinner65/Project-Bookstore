@@ -18,6 +18,7 @@ import DAO.VisitEventDAO;
 import beans.AddressBean;
 import beans.BookBean;
 import beans.POBean;
+import beans.POitemBean;
 import beans.ReviewBean;
 import beans.TopTenBean;
 import beans.VisitEventBean;
@@ -129,6 +130,10 @@ public class bookstoreModel {
 		return bookDAO.updateBook(book);
 	}
 
+	public boolean removeBook(String bid) throws SQLException {
+		return bookDAO.dropBook(bid);
+	}
+
 // ____________________________ADDRESS____________________________________________________
 	public AddressDAO getAddressDAO() {
 		return addressDAO;
@@ -155,9 +160,13 @@ public class bookstoreModel {
 		return reviewDAO.getReviews(bid);
 	}
 
-	public boolean addReivew(int reviewID, int rating, String bid, int uid, String reviewtext) throws SQLException {
+	public boolean addReview(int reviewID, int rating, String bid, int uid, String reviewtext) throws SQLException {
 		ReviewBean bean = new ReviewBean(reviewID, rating, bid, uid, reviewtext);
 		return reviewDAO.addReivew(bean);
+	}
+
+	public boolean removeReview(int reviewID) throws SQLException {
+		return reviewDAO.remove(reviewID);
 	}
 
 //______________________________________PO_____________________________________________________
@@ -175,22 +184,36 @@ public class bookstoreModel {
 		return poDAO.retrieveByEmail(email);
 	}
 
-// _____________________________________POITEMS_______________________________________________
-	public int addPO(String email, String lname, String fname, String status, int address, String day)
+	public int createPO(String email, String lname, String fname, String status, int address, String day)
 			throws SQLException {
-		int id = 0;
-		POBean po = new POBean(id, email, lname, fname, status, address, day);
-		return poDAO.addPO(po);
-
+		POBean newPO = new POBean(1, email, lname, fname, status, address, day);
+		int newPOID = poDAO.addPO(newPO);
+		newPO.setId(newPOID);
+		return newPOID;
 	}
 
 	public Map<String, POBean> getPOitemsByPO(int poID) throws SQLException {
 		return poDAO.retrieveByID(poID);
 	}
 
+// _____________________________________POITEMS_______________________________________________
+
 	public POitemDAO getPoitemDAO() {
 
 		return poitemDAO;
+	}
+
+	public boolean AddPOItem(int id, String bid, int quantity, double price) throws SQLException {
+		POitemBean bean = new POitemBean(id, bid, quantity, price);
+		return poitemDAO.addPOItem(bean);
+	}
+
+	public Map<String, POitemBean> retreiveAllPOItems() throws SQLException {
+		return poitemDAO.retrieve();
+	}
+
+	public Map<String, POitemBean> retreivePOItems(int poID) throws SQLException {
+		return poitemDAO.retrieveByPO(poID);
 	}
 
 //______________________________________VISIT EVENTS_________________________________________
@@ -211,14 +234,9 @@ public class bookstoreModel {
 		Map<String, BookBean> allBooks = bookDAO.retrieveAll();
 		Map<String, BookBean> books = new HashMap<String, BookBean>();
 		Map<String, TopTenBean> topTen = poitemDAO.retrieveTen();
-		System.out.println("TOP TEN SIZE     " + topTen.size());
 		for (int i = 1; i <= topTen.size(); i++) {
 			books.put(i + "", allBooks.get(topTen.get(i + "").getBid()));
-			System.out.println("TTS  " + topTen.size());
-			System.out.println("I    " + i);
 		}
-		System.out.println("Books SIZE     " + books.size());
-
 		return books;
 	}
 
@@ -226,13 +244,9 @@ public class bookstoreModel {
 		Map<String, BookBean> allBooks = bookDAO.retrieveAll();
 		Map<String, BookBean> books = new HashMap<String, BookBean>();
 		Map<String, TopTenBean> topTen = poDAO.retrieveBetweenDates(d1, d2);
-		System.out.println("TOP TEN SIZEDate     " + topTen.size());
 		for (int i = 1; i <= topTen.size(); i++) {
 			books.put(i + "", allBooks.get(topTen.get(i + "").getBid()));
-			System.out.println("TTS  " + topTen.size());
-			System.out.println("I    " + i);
 		}
-		System.out.println("Books SIZEDate     " + books.size());
 
 		return books;
 	}
@@ -240,7 +254,8 @@ public class bookstoreModel {
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 	public void test() throws SQLException {
 		System.out.println(this.getAllBooks());
-		System.out.println(this.getBookbyName("How to use a Mou"));
+		System.out.println(this.getBookbyName("Keyboard"));
+		System.out.println(this.getBookbyName("Mouse"));
 		System.out.println(this.getBookByBID("b001"));
 		System.out.println(this.addBook("b105", "Adventures of an IT Leader", "./res/it.jpg", 215.95, "EECS1", "431",
 				"IT Leadership", "good book"));
@@ -253,9 +268,9 @@ public class bookstoreModel {
 		System.out.println(this.updateBook("b105", "Adventures of an IT Leader", "./res/it.jpg", 215.95, "EECS1", "431",
 				"IT Leadership", "good book"));
 		System.out.println(this.getBookByBID("b105"));
-
-		System.out.println(
-				"PO ADDED.  PO# is: " + this.addPO("test1@mailcatch.com", "Test1", "Admin", "DENIED", 2, "20191002"));
+		System.out.println("DROP BOOK=" + this.removeBook("b105"));
+		System.out.println("PO ADDED.  PO# is: "
+				+ this.createPO("test1@mailcatch.com", "Test1", "Admin", "DENIED", 2, "20191002"));
 		Map<String, BookBean> TopTen = this.getTopTen();
 		System.out.println(TopTen.size());
 		for (int i = 1; i <= TopTen.size(); i++) {

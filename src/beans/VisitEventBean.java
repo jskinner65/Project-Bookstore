@@ -6,14 +6,15 @@ public class VisitEventBean {
 	private int uid;
 	private String eventtype;
 	private int quantity;
+	private double price;
 
 	public VisitEventBean(String day, String bid, int uid, String eventtype, int quantity) {
 		super();
 		this.day = day;
 		this.bid = bid;
 		this.eventtype = eventtype;
-		this.uid = uid;
-		this.quantity = quantity;
+		this.setUid(uid);
+		this.setQuantity(quantity);
 	}
 
 	public String getDay() {
@@ -38,6 +39,30 @@ public class VisitEventBean {
 
 	public void setEventtype(String eventtype) {
 		this.eventtype = eventtype;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 }

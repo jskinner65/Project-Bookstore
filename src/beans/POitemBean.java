@@ -4,9 +4,9 @@ public class POitemBean {
 	private int id;
 	private String bid;
 	private int quantity;
-	private int price;
+	private double price;
 
-	public POitemBean(int id, String bid, int quantity, int price) {
+	public POitemBean(int id, String bid, int quantity, double price) {
 		super();
 		this.id = id;
 		this.bid = bid;
@@ -38,7 +38,7 @@ public class POitemBean {
 		this.quantity = quantity;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 

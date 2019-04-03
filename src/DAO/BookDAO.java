@@ -60,7 +60,7 @@ public class BookDAO {
 			return null;
 		} else {
 			if ((namePrefix != null) || (namePrefix != "") || namePrefix.equals("null")) {
-				namePrefix = " WHERE title like '%" + namePrefix + "%'";
+				namePrefix = " WHERE title like '%" + namePrefix + "%' or description like '%" + namePrefix + "%' ;";
 			}
 			String query = "select * from Book" + namePrefix;
 			return this.retrieveFromQuery(query);
@@ -92,4 +92,16 @@ public class BookDAO {
 		return true;
 	}
 
+	public boolean dropBook(String bid) throws SQLException {
+		String query = "delete from  book where bid='" + bid + "';";
+		try {
+			Connection con = this.ds.getConnection();
+			PreparedStatement p = con.prepareStatement(query);
+			p.execute();
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+		return true;
+	}
 }

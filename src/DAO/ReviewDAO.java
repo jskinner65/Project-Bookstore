@@ -20,6 +20,13 @@ public class ReviewDAO {
 
 	}
 
+	public boolean remove(int reviewID) throws SQLException {
+		String query = "REMOVE FROM review where reviewID=" + reviewID + ";";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		return p.execute();
+	}
+
 	public boolean addReivew(ReviewBean review) throws SQLException {
 		String query = "insert into review (reviewID, rating, bid, uid, reviewtext) VALUES('" + review.getReviewID()
 				+ "', '" + review.getRating() + "', '" + review.getBid() + "', '" + review.getUid() + "', '"
