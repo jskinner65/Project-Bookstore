@@ -16,7 +16,7 @@ coursetitle varchar(50),
 description varchar(150),
 PRIMARY KEY(bid),
 FULLTEXT(title, description)
-) ENGINE = myisam ;
+) ENGINE = InnoDB ;
 
 INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b001', 'How to use a keyboard', 0, 200, 'EECS1', '1001', 'Introduction to Computing');
 INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b002', 'Computer Organization and Design', 0, 400, 'EECS2', '2021', 'Computer Organization');
@@ -87,7 +87,7 @@ INDEX (bid),
 /*FOREIGN KEY(bid) REFERENCES Book(bid) ON DELETE CASCADE,*/
 check (id > 0),
 check (quantity > 0)
-) ENGINE = myisam ;
+) ENGINE = InnoDB ;
 
 
 INSERT INTO POItem (id, bid, quantity, price) VALUES (1, 'b001', 5,'20');
@@ -106,9 +106,9 @@ uid INT UNSIGNED NOT NULL,
 bid varchar(20) not null REFERENCES Book.bid,
 eventtype ENUM('VIEW','CART','PURCHASE') NOT NULL,
 quantity INT,
-PRIMARY KEY(day, bid, eventtype)
+PRIMARY KEY(day, uid, bid)
 /*FOREIGN KEY(bid) REFERENCES Book(bid)*/
-) ENGINE = myisam ;
+) ENGINE = InnoDB ;
 
 INSERT INTO VisitEvent (day, uid, bid, eventtype, quantity) VALUES ('12202015', 001, 'b001', 'VIEW', 1);
 INSERT INTO VisitEvent (day, uid, bid, eventtype, quantity) VALUES ('12242015', 001, 'b001', 'CART', 1);
@@ -137,7 +137,7 @@ PRIMARY KEY (reviewID, uid, bid)
 /*FOREIGN KEY(bid) REFERENCES Book (bid) ON DELETE CASCADE,
 FOREIGN KEY(uid) REFERENCES User (uid) ON DELETE CASCADE*/
 
-) ENGINE = myisam ;
+) ENGINE = InnoDB ;
 
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (001, 'Test1', 'Admin', 'test1@mailcatch.com', 'test', 'Admin');
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (002, 'Test2', 'Admin', 'test2@mailcatch.com', 'test', 'Admin');
