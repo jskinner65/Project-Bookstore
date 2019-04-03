@@ -7,7 +7,7 @@ public class TopTenBean {
 	private int count;
 
 	public TopTenBean(int place, String bid, int count) {
-		this.place = place;
+		this.setPlace(place);
 		this.bid = bid;
 		this.count = count;
 	}
@@ -26,5 +26,13 @@ public class TopTenBean {
 
 	public void setCount(int count) {
 		this.count = count;
+	}
+
+	public int getPlace() {
+		return place;
+	}
+
+	public void setPlace(int place) {
+		this.place = place;
 	}
 }
