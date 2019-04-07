@@ -18,6 +18,7 @@ import model.bookstoreModel;
 public class Start extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String searchField = "";
+	private int sCartSize = 3;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -133,6 +134,9 @@ public class Start extends HttpServlet {
 			// response.sendRedirect("./Browse.jspx");
 
 		}
+		String s = Integer.toString(sCartSize);
+		System.out.println(sCartSize);
+		request.setAttribute("sSize", s);
 	}
 
 	/**

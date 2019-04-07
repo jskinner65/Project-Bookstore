@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="StyleSheet" href="res/test.html" type="text/css"
+	title="cse4413" media="screen, print" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Poppins" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<title>Shopping Cart Page</title>
+
+
+</head>
+<body background="">
+	<form action='Start' method="GET">
+		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
+			<br /> <a href="javascript:void(0)" onclick="w3_close()"
+				class="w3-button w3-hide-large w3-display-topleft"
+				style="width: 100%; font-size: 22px">Close Menu</a>
+			<div class="w3-container">
+				<h3 class="w3-padding-64"></h3>
+			</div>
+			<div class="w3-bar-block">
+				<a href="#" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Home</a> <a
+					href="LINK CATEGORY HERE" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
+					href="LINK CART HERE" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Cart</a> <a
+					href="#designers" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Our Team</a> <a
+					href="LINK ACCOUNT PAGE HERE" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Account Management</a>
+				<a href="#membership" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Membership</a> <a
+					href="#contact" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Contact</a>
+			</div>
+		</nav>
+		<table>
+
+			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
+
+				<!-- Header -->
+				<div class="w3-container" style="margin-top: 80px; color: Red;"
+					id="showcase">
+					<h1 class="w3-jumbo" style="display: inline">
+						<b>Swag EECS Bookstore</b>
+					</h1>
+				</div>
+
+				<form name='browseForm' action="Start" method="POST"
+					onsubmit="return validate();">
+					<table style="width: 100%">
+						<!-- 						<tr align="right"> -->
+						<!-- 							<td><input type='text' name='browse' -->
+						<!-- 								placeholder='Browse Books'></input><input type='submit' -->
+						<!-- 								name='Search' value='Search'></input></td> -->
+						<!-- 						</tr> -->
+						<tr align="right">
+							<td><input type='text' style="margin-right: 10px"
+								name='browse' placeholder='Browse Books'></input>
+								<button action='Submit' name='createAccount'
+									label='createAccount' style="margin-top: 30px"
+									class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
+									<font color="#701e6e"></font> Search
+								</button></td>
+						</tr>
+
+						<tr>
+							<td><p name='results'></p></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+
+			<div class="w3-light-grey" style="margin-left: 340px; margin-right: 100px">
+				<div class="w3-container" style="color: #FF0000; margin-top: 80px;"
+					id="showcase">
+					<h1 class="w3-xxxlarge w3-text-blue"
+						style="display: inline; margin-right: 100px">
+						<font color="#313551"><b>Shopping Cart (${sSize})</b></font>
+					</h1>
+
+				</div>
+			</div>
+
+			<div class="w3-main" style="margin-left: 300px; margin-right: 100px">
+				<div class="w3-container" style="margin-top: 0px; color: Red;"
+					id="showcase">
+					<h1 class="w3-container">
+						<font size="6" color="#750a30"><b>You don't have anything in your Shopping Cart</b></font>
+					</h1>
+
+					<tr>
+						<td><label for="loginName" style="margin-right: 100px"
+							class="w3-medium w3-text-red"><br>
+							<font size="4" color="#e8e0d9"><b>Email address: </b></font></br></label> <input
+							name="loginName" id="loginName" type="text" value=""
+							placeholder="Enter your email ID"> </input></td>
+					</tr>
+
+					<tr>
+						<td><br>
+						<label for="password" style="margin-right: 130px"
+							class="w3-medium w3-text-red"><br>
+							<font size="4" color="#e8e0d9"><b>Password : </b></font></br></label> <input
+							name="password" id="password" type="text" value=""
+							placeholder="Enter your password"></input></br></td>
+					</tr>
+
+
+					<tr>
+						<td><br>
+						<button action='Submit' name='signIn' label='signIn'
+								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
+								<font color="#701e6e"></font>Sign In
+							</button> </br></td>
+					</tr>
+
+					<tr>
+						<td><br>
+						<button action='Submit' name='forgotPassword'
+								label='forgotPassword' style="margin-top: 10px"
+								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
+								<font color="#701e6e"> Forgot your password?</font>
+							</button> </br></td>
+					</tr>
+				</div>
+			</div>
+
+			<div class="w3-main" style="margin-left: 340px; margin-right: 100px">
+				<div class="w3-container" style="margin-top: 80px; color: Red;"
+					id="showcase">
+					<h1 class="w3-xxxlarge w3-text-blue"
+						style="display: inline; margin-right: 10px; color: Red">
+						<font size="10" color="#313551"><b>SIGN UP</b></font>
+
+					</h1>
+				</div>
+			</div>
+			<div class="w3-main" style="margin-left: 300px; margin-right: 100px">
+
+				<div class="w3-container" style="margin-top: 0px; color: Red;"
+					id="showcase">
+					<h1 class="w3-container">
+						<font size="6" color="#750a30"><b>Not a member yet?
+								Sign up now!</b></font>
+					</h1>
+					<!-- Get the first name, last name, email address, address, phone -->
+					<tr>
+						<td><label for="loginFirstName"
+							style="display: inline; margin-right: 5000px"
+							class="w3-medium w3-text-red"><font size="4"
+								color="#e8e0d9"><b>Your first name </b></font></label> <input
+							name="loginFirstName" id="loginFirstName" type="text" value=""
+							placeholder="Eg: Jane"> </input></td>
+					</tr>
+
+					<tr>
+						<td><label for="loginLastName" style="margin-right: 5000px"
+							class="w3-medium w3-text-red"><font size="4"
+								color="#e8e0d9"><br>
+								<b>Your last name</b></br></font></label> <input name="loginLastName"
+							id="loginLastName" type="text" value="" placeholder="Eg: Doe">
+						</input></td>
+					</tr>
+
+					<tr>
+						<td><label for="userPassword" style="margin-right: 5000px"
+							class="w3-medium w3-text-red"><font size="4"
+								color="#e8e0d9"><b>Password</b></font></label> <input
+							name="userPassword" id="userPassword" type="text" value="">
+						</input></td>
+					</tr>
+
+					<tr>
+						<td><br>
+						<button action='Submit' name='createAccount' label='createAccount'
+								style="margin-top: 30px"
+								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
+								<font color="#701e6e"></font> Create your account
+							</button> </br></td>
+					</tr>
+
+				</div>
+			</div>
+		</table>
+	</form>
+
+	<footer>
+		<table>
+			<div class="w3-container"
+				style="margin-top: 100px; margin-right: 1000px; color: red;"
+				id="showcase">
+				<h1 class="w3-small" style="display: inline">
+					<p>
+						Swag Webiste <a
+							href="
+  						http://localhost:8080/(Project-Bookstore)/ShoppingCart.jspx"></a>
+					</p>
+				</h1>
+			</div>
+
+		</table>
+	</footer>
+
+</body>
+
+	</html>
+</jsp:root>

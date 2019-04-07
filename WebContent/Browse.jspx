@@ -51,8 +51,8 @@
 					</nav>
 				</td>
 				<td align="right"> 
-					<fieldset>
-						<table>
+					
+						<table class="w3-light-grey">
 							<tr>
 								<td><input type='text' name='searchField' id='searchField'></input></td>
 
@@ -78,7 +78,7 @@
 									<div id='starting'>${results}</div></td>
 							</tr>
 						</table>
-					</fieldset>
+					
 				</td>
 			</tr>
 		</table>
