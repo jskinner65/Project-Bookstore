@@ -18,12 +18,12 @@ PRIMARY KEY(bid),
 FULLTEXT(title, description)
 ) ENGINE = InnoDB ;
 
-INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b001', 'How to use a keyboard', 0, 200, 'EECS1', '1001', 'Introduction to Computing');
-INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b002', 'Computer Organization and Design', 0, 400, 'EECS2', '2021', 'Computer Organization');
-INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b003', 'Introduction to Algorithms', 0, 25, 'EECS3', '3101', 'Design and Algorithms');
-INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b004', 'Understanding Machine Learning', 0, 220, 'EECS4', '4404', 'Introduction to Machine Learning');
-INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b005', 'Pattern Recognition and Machine Learning', 0, 221, 'EECS4', '4404', 'Introduction to Machine Learning');
-INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle) VALUES ('b006', 'How to use a Mouse', 0, 100, 'EECS1', '1012', 'Netcentric Intro to Computing');
+INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle, description) VALUES ('b001', 'How to use a keyboard', 0, 200, 'EECS1', '1001', 'Introduction to Computing', 'This book teaches you how to use keyboards for beginners.');
+INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle, description) VALUES ('b002', 'Computer Organization and Design', 0, 400, 'EECS2', '2021', 'Computer Organization', 'Fundamentals for EECS 2001 on computer basics.');
+INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle, description) VALUES ('b003', 'Introduction to Algorithms', 0, 25, 'EECS3', '3101', 'Design and Algorithms', 'Basics of computer algorithms.');
+INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle, description) VALUES ('b004', 'Understanding Machine Learning', 0, 220, 'EECS4', '4404', 'Introduction to Machine Learning', 'Introduction to artifical intelligence.');
+INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle, description) VALUES ('b005', 'Pattern Recognition and Machine Learning', 0, 221, 'EECS4', '4404', 'Introduction to Machine Learning', 'Expert guide on pattern recognition.');
+INSERT INTO Book (bid, title, picture, price, category, coursecode, coursetitle, description) VALUES ('b006', 'How to use a Mouse', 0, 100, 'EECS1', '1012', 'Netcentric Intro to Computing', 'Yet another guide on how to use a fundamental mouse');
 
 /* Address
 * id: address id
@@ -138,6 +138,7 @@ PRIMARY KEY (reviewID, uid, bid)
 FOREIGN KEY(uid) REFERENCES User (uid) ON DELETE CASCADE*/
 
 ) ENGINE = InnoDB ;
+
 
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (001, 'Test1', 'Admin', 'test1@mailcatch.com', 'test', 'Admin');
 INSERT INTO User (uid, fname, lname, email, password, privilege) VALUES (002, 'Test2', 'Admin', 'test2@mailcatch.com', 'test', 'Admin');
