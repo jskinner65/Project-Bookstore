@@ -165,7 +165,7 @@ public class bookstoreModel {
 
 	public boolean addReview(int reviewID, int rating, String bid, int uid, String reviewtext) throws SQLException {
 		ReviewBean bean = new ReviewBean(reviewID, rating, bid, uid, reviewtext);
-		return reviewDAO.addReivew(bean);
+		return reviewDAO.addReview(bean);
 	}
 
 	public boolean removeReview(int reviewID) throws SQLException {

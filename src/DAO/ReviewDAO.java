@@ -27,7 +27,7 @@ public class ReviewDAO {
 		return p.execute();
 	}
 
-	public boolean addReivew(ReviewBean review) throws SQLException {
+	public boolean addReview(ReviewBean review) throws SQLException {
 		String query = "insert into review (reviewID, rating, bid, uid, reviewtext) VALUES('" + review.getReviewID()
 				+ "', '" + review.getRating() + "', '" + review.getBid() + "', '" + review.getUid() + "', '"
 				+ review.getReviewtext() + "');";

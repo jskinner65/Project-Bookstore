@@ -8,10 +8,16 @@
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Review Page</title>
+<title>Insert title here</title>
 </head>
-<body>
 
+<body>
+<table>
+<tr>
+<td>The top ten books sold are:
+<td>$${topTenListener}</td> 
+</tr>
+</table>
 </body>
 </html>
 </jsp:root>

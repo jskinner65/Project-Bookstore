@@ -66,8 +66,7 @@ public class POitemDAO {
 		p.close();
 		con.close();
 		return rv;
-
-	}
+		}
 
 	public Map<String, POitemBean> retrieveByPO(int PO) throws SQLException {
 
