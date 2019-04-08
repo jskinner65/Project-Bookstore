@@ -67,6 +67,18 @@ public class BookDAO {
 		}
 	}
 
+	public Map<String, BookBean> retrieveCategory(String namePrefix) throws SQLException {
+		if (namePrefix.trim().contains(" ")) {
+			return null;
+		} else {
+			if ((namePrefix != null) || (namePrefix != "") || namePrefix.equals("null")) {
+				namePrefix = " WHERE category='" + namePrefix + "';";
+			}
+			String query = "select * from Book" + namePrefix;
+			return this.retrieveFromQuery(query);
+		}
+	}
+
 	public Map<String, BookBean> retrieveByBID(String bid) throws SQLException {
 		if (bid.trim().contains(" ")) {
 			return null;

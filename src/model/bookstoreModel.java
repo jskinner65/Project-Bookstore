@@ -110,7 +110,7 @@ public class bookstoreModel {
 	}
 
 	public Map<String, BookBean> getByCategoryMap(String category) throws SQLException {
-		return bookDAO.retrieve(category);
+		return bookDAO.retrieveCategory(category);
 	}
 
 	public Map<String, BookBean> retrieveAllMap() throws SQLException {

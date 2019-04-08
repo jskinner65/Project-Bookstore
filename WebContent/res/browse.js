@@ -56,13 +56,13 @@ function loadAllBooks(url) {
 	document.forms["browseForm"]["searchField"].value = "";
 }
 
-function loadByCategory(url, category) {
+function loadByCategory(searchcategory) {
 
 	var request = new XMLHttpRequest(); 
 	var data = '';
-	data += "comm='category'";
-	data += "cat=" + category;
-	request.open("GET", (url + "?" + data), true);
+	data += "currPage=categories";
+	data += "&category=" + searchcategory;
+	request.open("GET", ("Start?" + data), true);
 	request.onreadystatechange = function() {
 		handler(request);
 	};

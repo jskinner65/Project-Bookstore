@@ -76,7 +76,7 @@ public class Start extends HttpServlet {
 					request.setAttribute("results", (bModel.getAllBooks()));
 
 				} else {
-					request.setAttribute("results", bModel.getByCategoryMap(category));
+					request.setAttribute("results", bModel.displayBooks(bModel.getByCategoryMap(category)));
 				}
 
 			} catch (SQLException e) {
