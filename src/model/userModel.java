@@ -11,6 +11,9 @@ public class userModel {
 	String salt;
 
 	public userModel() throws ClassNotFoundException {
+
+		uid = 1;// MUST CHANGE
+				// LATER____________________________________________________________________________***
 		model = new bookstoreModel();
 		salt = PasswordUtils.getSalt(50);
 	}
@@ -26,6 +29,10 @@ public class userModel {
 		String encPassword = PasswordUtils.generateSecurePassword(password, salt);
 		return model.addUser(fname, lname, email, encPassword, privilege);
 
+	}
+
+	public String getCart() throws SQLException {
+		return model.displayCart(this.uid);
 	}
 
 //to return the bookstore model

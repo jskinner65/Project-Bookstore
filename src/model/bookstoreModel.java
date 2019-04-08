@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -260,6 +261,30 @@ public class bookstoreModel {
 		VisitEventBean bean = new VisitEventBean(day, bid, uid, eventtype, quantity, price);
 		return visitEventDAO.addToCart(bean);
 	}
+
+	public String displayCart(int uid) throws SQLException {
+		Map<String, VisitEventBean> cart = this.getVisitsCartByUID(uid);
+		String result = "<table>";
+		int i = 0;
+		System.out.println("CART SIZE:  " + cart.size());
+		NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
+		for (Map.Entry<String, VisitEventBean> pair : cart.entrySet()) {
+			String bid = pair.getValue().getBid();
+			BookBean bean = this.getByBIDBean(bid);
+			String title = bean.getTitle();
+			String image = bean.getPicture();
+			String description = bean.getDescription();
+			String price = formatter.format(pair.getValue().getPrice());
+			String quantity = pair.getValue().getQuantity() + "";
+			result = result + "<tr><td colspan = \"2\">" + title + "</td></tr>";
+			result = result + "<tr><td><img src=\"" + image + "\"></td><td><p>" + description + "</td></tr>";
+			result = result + "<tr><td>Price: " + price + "</td><td>Quantity:  " + quantity + "</td></tr>";
+		}
+		result = result + "</table>";
+		return result;
+	}
+
 //_______________________________________ANALYTICS__________________________________________________
 
 	public Map<String, BookBean> getTopTen() throws SQLException {
@@ -339,15 +364,17 @@ public class bookstoreModel {
 //			System.out.println(book.getTitle());
 //
 //		}
+//
+//		String myPassword = "testing123";
+//		String salt = PasswordUtils.getSalt(50);
+//		String encPassword = PasswordUtils.generateSecurePassword(myPassword, salt);
+//		System.out.println("MyPWORD: " + myPassword);
+//		System.out.println("EncrPWD: " + encPassword);
+//		System.out.println("Checking password '123': " + PasswordUtils.verifyUserPassword("123", encPassword, salt));
+//		System.out.println(
+//				"Checking password 'testing123': " + PasswordUtils.verifyUserPassword("testing123", encPassword, salt));
+		System.out.println(this.displayCart(1));
 
-		String myPassword = "testing123";
-		String salt = PasswordUtils.getSalt(50);
-		String encPassword = PasswordUtils.generateSecurePassword(myPassword, salt);
-		System.out.println("MyPWORD: " + myPassword);
-		System.out.println("EncrPWD: " + encPassword);
-		System.out.println("Checking password '123': " + PasswordUtils.verifyUserPassword("123", encPassword, salt));
-		System.out.println(
-				"Checking password 'testing123': " + PasswordUtils.verifyUserPassword("testing123", encPassword, salt));
 	}
 
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
