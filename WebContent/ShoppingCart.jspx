@@ -17,7 +17,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 <title>Shopping Cart Page</title>
 
- 
+
 </head>
 <body background="">
 	<form action='Start' method="GET">
@@ -127,14 +127,17 @@
 									size="4" color="#750a30"><b>$0</b></font></td>
 							</tr>
 
-
-
+							<tr>
+								<td style="border: 1px solid #ddd; padding: 8px;" colspan="2"><font
+									size="4" color="#750a30"><button type="submit"
+							class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">
+							<b>Proceed to Checkout</b>
+						</button></font></td>
+							</tr>
 						</table>
-					<td align="right"><button type="submit"
-							class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" style="margin-left: 836px; margin-right: 300px; width: 30%"><b>Proceed
-							to Checkout</b></button></td>
+				
 					</td>
-					
+
 
 
 					<!-- Contact -->
