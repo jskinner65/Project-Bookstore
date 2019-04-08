@@ -6,6 +6,8 @@ public class userModel {
 	int uid;
 	String usertype;
 	bookstoreModel model;
+	String fname;
+	String email;
 
 	public userModel() throws ClassNotFoundException {
 		model = new bookstoreModel();
