@@ -14,7 +14,7 @@ import model.bookstoreModel;
 /**
  * Servlet implementation class Start
  */
-@WebServlet({ "/Backup", "/" })
+@WebServlet({ "/Backup" })
 public class Backup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String searchField = "";
