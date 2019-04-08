@@ -169,3 +169,12 @@ ALTER TABLE Review
 ADD FOREIGN KEY(bid) REFERENCES Book (bid) ON DELETE CASCADE,
 ADD FOREIGN KEY(uid) REFERENCES User (uid) ON DELETE CASCADE;
 alter table  visitevent add column price double precision (5,2);
+
+
+insert into visitevent (day, uid, bid, eventtype, quantity, price) values 
+('20190408', 1, 'b004', 'cart', 2, '2.95'),
+('20190408', 2, 'b002', 'cart', 2, '2.95'),
+('20190408', 1, 'b005', 'cart', 2, '2.95'),
+('20190408', 2, 'b003', 'cart', 2, '2.95'),
+('20190408', 2, 'b005', 'cart', 2, '2.95'),
+('20190408', 1, 'b006', 'cart', 2, '2.95');
