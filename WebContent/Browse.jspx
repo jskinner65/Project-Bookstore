@@ -60,10 +60,10 @@ body {
 			<tr>
 				<td width="300px">
 		<div class="topnav" style="margin-left: 340px; margin-right: 100px">
-				<a onclick="return loadByCategory('EECS1')">EECS - First Year</a> 
-				<a onclick="return loadByCategory('EECS2')">EECS - Second Year</a> 
-				<a onclick="return loadByCategory('EECS3')">EECS - Third Year</a> 
-				<a onclick="return loadByCategory('EECS4')">EECS - Fourth Year</a>
+				<a onclick="return loadByCategory('EECS1');">EECS - First Year</a> 
+				<a onclick="return loadByCategory('EECS2');">EECS - Second Year</a> 
+				<a onclick="return loadByCategory('EECS3');">EECS - Third Year</a> 
+				<a onclick="return loadByCategory('EECS4');">EECS - Fourth Year</a>
 			   </div>
 			   
 					<nav

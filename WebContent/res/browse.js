@@ -15,7 +15,7 @@ function validate() {
 function handler(request) {
 	if ((request.readyState == 4) && (request.status == 200)) {
 
-		target = document.getElementById("resultDisplay");
+		target = document.getElementById("results");
 		target.innerHTML = request.responseText;
 	}
 }
@@ -53,21 +53,16 @@ function loadAllBooks(url) {
 	};
 	request.send();
 	document.getElementById("starting").style.display = "none";
-	document.forms["browseForm"]["searchField"].value = "";
 }
 
 function loadByCategory(searchcategory) {
-
 	var request = new XMLHttpRequest(); 
-	var data = '';
-	data += "currPage=categories";
-	data += "&category=" + searchcategory;
-	request.open("GET", ("Start?" + data), true);
+
+	request.open("GET", ("Start?currPage=categories&category=" + searchcategory), true);
 	request.onreadystatechange = function() {
 		handler(request);
 	};
 	request.send();
-	document.getElementById("starting").style.display = "none";
 }
 
 function loadPayment(url) {
