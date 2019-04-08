@@ -15,7 +15,7 @@ public class userModel {
 
 	public userModel() throws ClassNotFoundException {
 
-		uid = 1;// MUST CHANGE
+		uid = 2;// MUST CHANGE
 				// LATER____________________________________________________________________________***
 		model = new bookstoreModel();
 		salt = PasswordUtils.getSalt(50);

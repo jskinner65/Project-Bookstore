@@ -304,7 +304,7 @@ public class bookstoreModel {
 				String quantity = pair.getValue().getQuantity() + "";
 				result = result + "<tr><td colspan = \"3\">" + title + "</td></tr>";
 				result = result + "<tr><td><img src=\"" + image + "\"></td><td>Price: " + price + "</td><td>Quantity:  "
-						+ quantity + "</td></tr>";
+						+ quantity + " </td></tr>";
 			}
 			result = result + "</table>";
 		}
@@ -359,15 +359,15 @@ public class bookstoreModel {
 //		System.out.println(this.getBookbyName("Keyboard"));
 //		System.out.println(this.getBookbyName("Mouse"));
 //		System.out.println(this.getBookByBID("b001"));
-//		System.out.println(this.addBook("b105", "Adventures of an IT Leader", "./res/it.jpg", 215.95, "EECS1", "431",
+//		System.out.println(this.addBook("b105", "Adventures of an IT Leader", "./res/images/it.jpg", 215.95, "EECS1", "431",
 //				"IT Leadership", "good book"));
 //
 //		System.out.println(this.getBookByBID("b105"));
-//		System.out.println(this.updateBook("b105", "Adventures of an IT Freak", "./res/it.jpg", 215.95, "EECS1", "431",
+//		System.out.println(this.updateBook("b105", "Adventures of an IT Freak", "./res/images/it.jpg", 215.95, "EECS1", "431",
 //				"IT Leadership", "good book"));
 //
 //		System.out.println(this.getBookByBID("b105"));
-//		System.out.println(this.updateBook("b105", "Adventures of an IT Leader", "./res/it.jpg", 215.95, "EECS1", "431",
+//		System.out.println(this.updateBook("b105", "Adventures of an IT Leader", "./res/images/it.jpg", 215.95, "EECS1", "431",
 //				"IT Leadership", "good book"));
 //		System.out.println(this.getBookByBID("b105"));
 //		System.out.println("DROP BOOK=" + this.removeBook("b105"));
