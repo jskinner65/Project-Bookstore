@@ -61,6 +61,7 @@
 							class="w3-medium w3-text-red"><br>
 							<font size="4" color="#e8e0d9"><b>Display Books: </b></font></br></label></td>
 				<td align="right"> $${results} </td>
+				<td> </td>
 			</tr>
 		</table>
 	</form>
