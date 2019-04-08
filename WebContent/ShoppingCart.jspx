@@ -104,22 +104,37 @@
 							<font color="#701e6e"></font>Go Back to HomePage
 						</button>
 
-						<table class="w3-light-grey" align="right" style="margin-left: 900px; margin-right: -30px; border-collapse: collapse; width: 30%">
-								<tr>
-									<th style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font size="4" color="#750a30">Subtotal:</font></th>
-									<th style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font size="4" color="#750a30">$100</font></th>
-								</tr>
-								<tr>
-									<td style="border: 1px solid #ddd; padding: 8px;"><font size="4" color="#750a30"> + HST:</font></td>
-									<td style="border: 1px solid #ddd; padding: 8px;"><font size="4" color="#750a30">$0</font></td>
-								</tr>
-								<tr>
-									<td style="border: 1px solid #ddd; padding: 8px;"><font size="4" color="#750a30"><b>Total:</b></font></td>
-									<td style="border: 1px solid #ddd; padding: 8px;"><font size="4" color="#750a30"><b>$0</b></font></td>
-								</tr>
-							
+						<table class="w3-light-grey" align="right"
+							style="margin-left: 900px; margin-right: -30px; border-collapse: collapse; width: 30%">
+							<tr>
+								<th
+									style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font
+									size="4" color="#750a30">Subtotal:</font></th>
+								<th
+									style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font
+									size="4" color="#750a30">$100</font></th>
+							</tr>
+							<tr>
+								<td style="border: 1px solid #ddd; padding: 8px;"><font
+									size="4" color="#750a30"> + HST:</font></td>
+								<td style="border: 1px solid #ddd; padding: 8px;"><font
+									size="4" color="#750a30">$0</font></td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid #ddd; padding: 8px;"><font
+									size="4" color="#750a30"><b>Total:</b></font></td>
+								<td style="border: 1px solid #ddd; padding: 8px;"><font
+									size="4" color="#750a30"><b>$0</b></font></td>
+							</tr>
+
+
+
 						</table>
+					<td align="right"><button type="submit"
+							class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" style="margin-left: 836px; margin-right: 300px; width: 30%"><b>Proceed
+							to Checkout</b></button></td>
 					</td>
+					
 
 
 					<!-- Contact -->
