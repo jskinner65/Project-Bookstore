@@ -66,8 +66,16 @@ public class Start extends HttpServlet {
 
 			request.getRequestDispatcher("./index.html").forward(request, response);
 		} else if (currPage.equals("categories")) {
+			
 
 		} else if (currPage.equals("cart")) {
+			try {
+				request.setAttribute("displaycart", uModel.getCart());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("./ShoppingCart.jspx").forward(request, response);
 
 		} else if (currPage.equals("team")) {
 
