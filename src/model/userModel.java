@@ -1,6 +1,9 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.Map;
+
+import beans.VisitEventBean;
 
 public class userModel {
 	int uid;
@@ -38,5 +41,19 @@ public class userModel {
 //to return the bookstore model
 	public bookstoreModel getbookStoreModel() {
 		return model;
+	}
+
+	public int getCartSize() throws SQLException {
+		Map<String, VisitEventBean> allbeans = model.getVisitsCartByUID(this.uid);
+		return allbeans.size();
+	}
+
+	public double getSubtotal() throws SQLException {
+		Map<String, VisitEventBean> allbeans = model.getVisitsCartByUID(this.uid);
+		double subtotal = 0;
+		for (Map.Entry<String, VisitEventBean> pair : allbeans.entrySet()) {
+			subtotal += pair.getValue().getPrice() * pair.getValue().getQuantity();
+		}
+		return subtotal;
 	}
 }

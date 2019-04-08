@@ -266,7 +266,6 @@ public class bookstoreModel {
 		Map<String, VisitEventBean> cart = this.getVisitsCartByUID(uid);
 		String result = "<table>";
 		int i = 0;
-		System.out.println("CART SIZE:  " + cart.size());
 		NumberFormat formatter = NumberFormat.getCurrencyInstance();
 		if (cart.size() == 0) {
 			result = "<b> YOUR CART IS EMPTY </b>";
