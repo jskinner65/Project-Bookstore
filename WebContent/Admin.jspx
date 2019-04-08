@@ -26,31 +26,24 @@
 </head>
 <body background="res/Images/Books.jpg">
 	<form action='' method="GET">
-						<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
-							style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
-							<br /> <a href="javascript:void(0)" onclick="w3_close()"
-								class="w3-button w3-hide-large w3-display-topleft"
-								style="width: 100%; font-size: 22px">Close Menu</a>
-							<div class="w3-container">
-								<h3 class="w3-padding-64"></h3>
-							</div>
-							<div class="w3-bar-block">
-								<a href="#" onclick="w3_close()"
-									class="w3-bar-item w3-button w3-hover-white">Home</a> <a
-									href="LINK CATEGORY HERE" onclick="w3_close()"
-									class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
-									href="LINK CART HERE" onclick="w3_close()"
-									class="w3-bar-item w3-button w3-hover-white">Cart</a> <a
-									href="#designers" onclick="w3_close()"
-									class="w3-bar-item w3-button w3-hover-white">Our Team</a> <a
-									href="LINK ACCOUNT PAGE HERE" onclick="w3_close()"
-									class="w3-bar-item w3-button w3-hover-white">Account Management</a>
-								<a href="#membership" onclick="w3_close()"
-									class="w3-bar-item w3-button w3-hover-white">Membership</a> <a
-									href="#contact" onclick="w3_close()"
-									class="w3-bar-item w3-button w3-hover-white">Contact</a>
-							</div>
-						</nav>
+		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
+			<br /> <a href="javascript:void(0)" onclick="w3_close()"
+				class="w3-button w3-hide-large w3-display-topleft"
+				style="width: 100%; font-size: 22px">Close Menu</a>
+			<div class="w3-container">
+				<h3 class="w3-padding-64"></h3>
+			</div>
+					<div class="w3-bar-block">
+							<a href="Start?cuurPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+							<a href="Start?cuurPage=categories" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Categories</a> 
+							<a href="Start?cuurPage=cart" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Cart</a> 
+							<a href="Start?cuurPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a> 
+							<a href="Start?cuurPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Account Management</a> 
+							<a href="Start?cuurPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a> 
+							<a href="Start?cuurPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+						</div>
+		</nav>
 		<table>
 
 			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
@@ -82,249 +75,239 @@
 					</table>
 				</form>
 			</div>
-			</table>
-
-
-			<!--  	Trigger/Open The Modal -->
-			<!-- 	This is for the Modal that is divided based on each month -->
-			<table>
-				<tr>
-					<td>
-						<div>
-							<button id="janBtn">January</button>
-							<!--The Modal  -->
-							<div id="jan" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<div>
-							<button id="febBtn">February</button>
-							<!--The Modal  -->
-							<div id="feb" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="marBtn">March</button>
-							<!--The Modal  -->
-							<div id="mar" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="aprBtn">April</button>
-							<!--The Modal  -->
-							<div id="apr" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="mayBtn">May</button>
-							<!--The Modal  -->
-							<div id="may" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="junBtn">June</button>
-							<!--The Modal  -->
-							<div id="jun" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="julBtn">July</button>
-							<!--The Modal  -->
-							<div id="jul" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="augBtn">August</button>
-							<!--The Modal  -->
-							<div id="aug" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="sepBtn">September</button>
-							<!--The Modal  -->
-							<div id="sep" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="octBtn">October</button>
-							<!--The Modal  -->
-							<div id="oct" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="novBtn">November</button>
-							<!--The Modal  -->
-							<div id="nov" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div>
-							<button id="decBtn">December</button>
-							<!--The Modal  -->
-							<div id="dec" class="modal">
-								<div class="modal-content">
-									<span class="close">
-									</span>
-								</div>
-							</div>
-							</div>
-					</td>
-				</tr>
-		
 		</table>
-	
-		
-			<script>
-				// Get the modal
-				var modal = document.getElementById('jan' || 'feb' || 'mar' || 'apr' || 'may'
-						|| 'jun' || 'jul' || 'aug' || 'sep' || 'oct' || 'nov' || 'dec');
 
-				// Get the button that opens the modal
-				var btn = document.getElementById('janBtn' || 'febBtn' || 'marBtn' || 'aprBtn' || 'mayBtn' ||
-						'junBtn' || 'julBtn' || 'augBtn' || 'sepBtn' || 'octBtn' || 'novBtn' || 'decBtn');
 
-				// Get the span element that closes the modal
-				var span = document.getElementsByClassName("close")[0];
+		<!--  	Trigger/Open The Modal -->
+		<!-- 	This is for the Modal that is divided based on each month -->
+		<table>
+			<tr>
+				<td>
+					<div>
+						<button id="janBtn">January</button>
+						<!--The Modal  -->
+						<div id="jan" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
 
-				// When the user clicks the button, open the modal 
-				btn.onclick = function() {
-					modal.style.display = "block";
-				}
+			<tr>
+				<td>
+					<div>
+						<button id="febBtn">February</button>
+						<!--The Modal  -->
+						<div id="feb" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
 
-				// When the user clicks on span (x), close the modal
-				span.onclick = function() {
+			<tr>
+				<td>
+					<div>
+						<button id="marBtn">March</button>
+						<!--The Modal  -->
+						<div id="mar" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div>
+						<button id="aprBtn">April</button>
+						<!--The Modal  -->
+						<div id="apr" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div>
+						<button id="mayBtn">May</button>
+						<!--The Modal  -->
+						<div id="may" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div>
+						<button id="junBtn">June</button>
+						<!--The Modal  -->
+						<div id="jun" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div>
+						<button id="julBtn">July</button>
+						<!--The Modal  -->
+						<div id="jul" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div>
+						<button id="augBtn">August</button>
+						<!--The Modal  -->
+						<div id="aug" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div>
+						<button id="sepBtn">September</button>
+						<!--The Modal  -->
+						<div id="sep" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div>
+						<button id="octBtn">October</button>
+						<!--The Modal  -->
+						<div id="oct" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div>
+						<button id="novBtn">November</button>
+						<!--The Modal  -->
+						<div id="nov" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div>
+						<button id="decBtn">December</button>
+						<!--The Modal  -->
+						<div id="dec" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+		</table>
+
+
+		<script>
+			// Get the modal
+			var modal = document.getElementById('jan' || 'feb' || 'mar'
+					|| 'apr' || 'may' || 'jun' || 'jul' || 'aug' || 'sep'
+					|| 'oct' || 'nov' || 'dec');
+
+			// Get the button that opens the modal
+			var btn = document.getElementById('janBtn' || 'febBtn' || 'marBtn'
+					|| 'aprBtn' || 'mayBtn' || 'junBtn' || 'julBtn' || 'augBtn'
+					|| 'sepBtn' || 'octBtn' || 'novBtn' || 'decBtn');
+
+			// Get the span element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks the button, open the modal 
+			btn.onclick = function() {
+				modal.style.display = "block";
+			}
+
+			// When the user clicks on span (x), close the modal
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
 					modal.style.display = "none";
 				}
+			}
+		</script>
 
-				// When the user clicks anywhere outside of the modal, close it
-				window.onclick = function(event) {
-					if (event.target == modal) {
-						modal.style.display = "none";
-					}
-				}
-			</script>
-		
-	</table>
-</form>
+		</table>
+	</form>
 </body>
 
 
 
 
-			<footer>
-				<table>
-					<div class="w3-container"
-						style="margin-top: 100px; margin-right: 1000px; color: red;"
-						id="showcase">
-						<h1 class="w3-small" style="display: inline">
-							<p>
-								Swag Webiste <a
-									href="
+<footer>
+	<table>
+		<div class="w3-container"
+			style="margin-top: 100px; margin-right: 1000px; color: red;"
+			id="showcase">
+			<h1 class="w3-small" style="display: inline">
+				<p>
+					Swag Webiste <a
+						href="
   						http://localhost:8080/(Project-Bookstore)/LoginPage.jspx"></a>
-							</p>
-						</h1>
-					</div>
+				</p>
+			</h1>
+		</div>
 
-				</table>
-			</footer>
-		
-	
+	</table>
+</footer>
+
+
 	</html>
 </jsp:root>

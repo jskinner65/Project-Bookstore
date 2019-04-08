@@ -31,22 +31,15 @@
 			<div class="w3-container">
 				<h3 class="w3-padding-64"></h3>
 			</div>
-			<div class="w3-bar-block">
-				<a href="#" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Home</a> <a
-					href="LINK CATEGORY HERE" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
-					href="LINK CART HERE" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Cart</a> <a
-					href="#designers" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Our Team</a> <a
-					href="LINK ACCOUNT PAGE HERE" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Account Management</a>
-				<a href="#membership" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Membership</a> <a
-					href="#contact" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Contact</a>
-			</div>
+					<div class="w3-bar-block">
+							<a href="Start?cuurPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+							<a href="Start?cuurPage=categories" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Categories</a> 
+							<a href="Start?cuurPage=cart" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Cart</a> 
+							<a href="Start?cuurPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a> 
+							<a href="Start?cuurPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Account Management</a> 
+							<a href="Start?cuurPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a> 
+							<a href="Start?cuurPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+						</div>
 		</nav>
 		<table>
 
