@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bookstoreModel;
+import model.*;
+import DAO.*;
 
 /**
  * Servlet implementation class Start
@@ -18,7 +19,10 @@ import model.bookstoreModel;
 public class Start extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String searchField = "";
-	private int sCartSize = 3;
+	private int sCartSize = 0;
+	private bookstoreModel bModel;
+	private userModel uModel;
+	private String currPage;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -28,115 +32,50 @@ public class Start extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void init() throws ServletException {
+		// ServletContext context = getServletContext();
+
+		try {
+			uModel = new userModel();
+			bModel = uModel.getbookStoreModel();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		getServletContext().setAttribute("bookModel", bModel);
+		getServletContext().setAttribute("userModel", uModel);
+
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		bookstoreModel model = null;
-		try {
-			model = new bookstoreModel();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		;
 		// TODO Auto-generated method stub
-		String comm = "n/a";
-		if (request.getParameter("comm") == null) {
-			comm = "n/a";
+
+//		String uri = request.getRequestURI();
+		String uri = request.getRequestURI();
+//		System.out.println("URI string is: " + uri);
+		currPage = request.getParameter("currPage");
+		if (currPage == null) {
+			currPage = "home";
+		}
+		if (currPage.equals("home")) {
+
+			request.getRequestDispatcher("./index.html").forward(request, response);
+		} else if (currPage.equals("categories")) {
+
+		} else if (currPage.equals("cart")) {
+
+		} else if (currPage.equals("team")) {
+
+		} else if (currPage.equals("login")) {
+
 		} else {
-			comm = request.getParameter("comm");
+			request.getRequestDispatcher("./index.html").forward(request, response);
 		}
-
-		if (comm.equals("ajax")) {
-			searchField = request.getParameter("searchField");
-			if (searchField == null) {
-				try {
-					request.setAttribute("results", model.getAllBooks());
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else {
-				try {
-					request.setAttribute("results", model.getBookbyName(searchField));
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
-			// response.sendRedirectURL();
-
-		} else if (comm.equals("category1")) {
-			if (!(model == null)) {
-				try {
-					response.getWriter().append(model.getBooks("EECS1"));
-
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} else if (comm.equals("category2")) {
-			if (!(model == null)) {
-				try {
-					response.getWriter().append(model.getBooks("EECS2"));
-
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} else if (comm.equals("category3")) { // 3rd Year Courses
-			if (!(model == null)) {
-				try {
-					response.getWriter().append(model.getBooks("EECS3"));
-
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} else if (comm.equals("category4")) {
-			if (!(model == null)) {
-				try {
-					response.getWriter().append(model.getBooks("EECS4"));
-
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-
-		} else
-
-		{
-			searchField = request.getParameter("searchField");
-			if (searchField == null) {
-				try {
-					request.setAttribute("results", model.getAllBooks());
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else {
-				try {
-					request.setAttribute("results", model.getBookbyName(searchField));
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
-			// response.sendRedirect("./Browse.jspx");
-
-		}
-		String s = Integer.toString(sCartSize);
-		System.out.println(sCartSize);
-		request.setAttribute("sSize", s);
 	}
 
 	/**
