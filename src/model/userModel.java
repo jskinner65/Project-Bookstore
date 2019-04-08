@@ -21,4 +21,8 @@ public class userModel {
 		return false;
 	}
 
+//to return the bookstore model
+	public bookstoreModel getbookStoreModel() {
+		return model;
+	}
 }
