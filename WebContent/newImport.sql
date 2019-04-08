@@ -162,14 +162,16 @@ ALTER TABLE VisitEvent
 ADD FOREIGN KEY(bid) REFERENCES Book(bid),
 ADD FOREIGN KEY(uid) REFERENCES User(uid);
 
-ALTER TABLE User
-ADD FOREIGN KEY(email) REFERENCES Address (email) ON DELETE CASCADE;
-
 ALTER TABLE Review
 ADD FOREIGN KEY(bid) REFERENCES Book (bid) ON DELETE CASCADE,
 ADD FOREIGN KEY(uid) REFERENCES User (uid) ON DELETE CASCADE;
 alter table  visitevent add column price double precision (5,2);
 
+/* 
+ * ALTER TABLE User
+ * ADD FOREIGN KEY(email) REFERENCES Address (email) ON DELETE CASCADE;
+ * 
+ * */
 
 insert into visitevent (day, uid, bid, eventtype, quantity, price) values 
 ('20190408', 1, 'b004', 'cart', 2, '2.95'),
@@ -178,3 +180,47 @@ insert into visitevent (day, uid, bid, eventtype, quantity, price) values
 ('20190408', 2, 'b003', 'cart', 2, '2.95'),
 ('20190408', 2, 'b005', 'cart', 2, '2.95'),
 ('20190408', 1, 'b006', 'cart', 2, '2.95');
+
+/*
+Changes for adding pictures and reviews - April 8th
+*/
+
+UPDATE Book
+SET picture = './res/Images/keyboard.jpg'
+WHERE bid = 'b001';
+
+UPDATE Book
+SET picture = './res/Images/2001.jpg'
+WHERE bid = 'b002';
+
+UPDATE Book
+SET picture = './res/Images/algorithm.gif'
+WHERE bid = 'b003';
+
+UPDATE Book
+SET picture = './res/Images/AI.jpg'
+WHERE bid = 'b004';
+
+UPDATE Book
+SET picture = './res/Images/AI2.jpg'
+WHERE bid = 'b005';
+
+UPDATE Book
+SET picture = './res/Images/mouse.jpg'
+WHERE bid = 'b006';
+
+INSERT INTO Review (reviewID, rating, bid, uid, reviewtext)
+VALUES (1, 5, 'b001', '001', '10/10, great book would read again.');
+
+INSERT INTO Review (reviewID, rating, bid, uid, reviewtext)
+VALUES (2, 2, 'b001', '002', 'Did not get Chapter 5 properly.');
+
+INSERT INTO Review (reviewID, rating, bid, uid, reviewtext)
+VALUES (3, 4, 'b003', '001', 'Decent book.');
+
+INSERT INTO Review (reviewID, rating, bid, uid, reviewtext)
+VALUES (4, 5, 'b002', '002', 'Amazing, greatly written.');
+
+/* - - - - - - - - - - - */
+
+
