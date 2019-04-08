@@ -86,8 +86,23 @@ public class Start extends HttpServlet {
 			}
 			request.getRequestDispatcher("./ShoppingCart.jspx").forward(request, response);
 
-		} else if (currPage.equals("team")) {
+		} else if (currPage.equals("payment")) {
+			try {
 
+				request.setAttribute("sSize", uModel.getCartSize());
+				double subtotal = uModel.getSubtotal();
+				request.setAttribute("subtotal", formatter.format(subtotal));
+				request.setAttribute("tax", formatter.format(subtotal * tax));
+				request.setAttribute("total", formatter.format(subtotal * (1 + tax)));
+				request.setAttribute("displaysimple", uModel.getCartSimple());
+				System.out.println(uModel.getCartSimple());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("./Payment.jspx").forward(request, response);
+
+		} else if (currPage.equals("team")) {
 		} else if (currPage.equals("login")) {
 
 		} else {

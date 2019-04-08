@@ -90,8 +90,7 @@
 					id="showcase">
 
 					<h1 class="w3-container">
-						<font size="5" color="#750a30"><b>You don't have
-								anything in your Shopping Cart</b></font>
+						<font size="5" color="#750a30">${displaysimple}</font>
 					</h1>
 					<td>
 						<button action='Submit' name='home' label='home'
@@ -104,7 +103,7 @@
 							<tr>
 								<th
 									style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font
-									size="6" color="#750a30">Payment Details: Total = $113</font></th>
+									size="6" color="#750a30">Payment Details: Total = ${total }</font></th>
 							</tr>
 							<tr>
 								<td style="border: 1px solid #ddd; padding: 8px;"><font

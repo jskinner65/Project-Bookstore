@@ -34,6 +34,10 @@ public class userModel {
 
 	}
 
+	public String getCartSimple() throws SQLException {
+		return model.displayCartSimple(uid);
+	}
+
 	public String getCart() throws SQLException {
 		return model.displayCart(this.uid);
 	}

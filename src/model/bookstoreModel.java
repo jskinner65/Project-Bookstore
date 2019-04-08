@@ -287,6 +287,30 @@ public class bookstoreModel {
 		return result;
 	}
 
+	public String displayCartSimple(int uid) throws SQLException {
+		Map<String, VisitEventBean> cart = this.getVisitsCartByUID(uid);
+		String result = "<table>";
+		int i = 0;
+		NumberFormat formatter = NumberFormat.getCurrencyInstance();
+		if (cart.size() == 0) {
+			result = "<b> YOUR CART IS EMPTY </b>";
+		} else {
+			for (Map.Entry<String, VisitEventBean> pair : cart.entrySet()) {
+				String bid = pair.getValue().getBid();
+				BookBean bean = this.getByBIDBean(bid);
+				String title = bean.getTitle();
+				String image = bean.getPicture();
+				String price = formatter.format(pair.getValue().getPrice());
+				String quantity = pair.getValue().getQuantity() + "";
+				result = result + "<tr><td colspan = \"3\">" + title + "</td></tr>";
+				result = result + "<tr><td><img src=\"" + image + "\"></td><td>Price: " + price + "</td><td>Quantity:  "
+						+ quantity + "</td></tr>";
+			}
+			result = result + "</table>";
+		}
+		System.out.println(result);
+		return result;
+	}
 //_______________________________________ANALYTICS__________________________________________________
 
 	public Map<String, BookBean> getTopTen() throws SQLException {

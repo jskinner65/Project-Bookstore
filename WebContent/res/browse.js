@@ -69,3 +69,16 @@ function loadByCategory(url, category) {
 	request.send();
 	document.getElementById("starting").style.display = "none";
 }
+
+function loadPayment(url) {
+
+	var request = new XMLHttpRequest(); 
+	var data = '';
+	alert("hey");
+	data += "currPage='payment'";
+	request.open("POST", (url + "?" + data), true);
+	request.onreadystatechange = function() {
+		handler(request);
+	};
+	request.send();
+}

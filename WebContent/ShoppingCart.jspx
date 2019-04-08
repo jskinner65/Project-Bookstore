@@ -15,6 +15,9 @@
 	href="https://fonts.googleapis.com/css?family=Poppins" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<script type="text/javascript" src="./res/browse.js">
+	;
+</script>
 <title>Shopping Cart Page</title>
 
 
@@ -121,10 +124,10 @@
 
 							<tr>
 								<td style="border: 1px solid #ddd; padding: 8px;" colspan="2"><font
-									size="4" color="#750a30"><button type="submit"
+									size="4" color="#750a30"><a href="Start?currPage=payment"><button type="submit"
 							class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">
 							<b>Proceed to Checkout</b>
-						</button></font></td>
+						</button></a></font></td>
 							</tr>
 						</table>
 				
