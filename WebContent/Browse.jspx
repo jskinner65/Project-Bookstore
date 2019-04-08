@@ -56,16 +56,17 @@ body {
 	<form name='browseForm' action="Start" method="POST"
 		onsubmit="return validate();">
 		<table>
-		
+
 			<tr>
 				<td width="300px">
-		<div class="topnav" style="margin-left: 340px; margin-right: 100px">
-				<a onclick="return loadByCategory('EECS1');">EECS - First Year</a> 
-				<a onclick="return loadByCategory('EECS2');">EECS - Second Year</a> 
-				<a onclick="return loadByCategory('EECS3');">EECS - Third Year</a> 
-				<a onclick="return loadByCategory('EECS4');">EECS - Fourth Year</a>
-			   </div>
-			   
+					<div class="topnav" style="margin-left: 340px; margin-right: 100px">
+						<a href="Start?currPage=categories&amp;category=EECS1">EECS -
+							First Year</a> <a href="Start?currPage=categories&amp;category=EECS2">EECS
+							- Second Year</a> <a href="Start?currPage=categories&amp;category=EECS3">EECS
+							- Third Year</a> <a href="Start?currPage=categories&amp;category=EECS4">EECS
+							- Fourth Year</a>
+					</div>
+
 					<nav
 						class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
 						style="z-index: 3; width: 300px; font-weight: bold;"
@@ -94,11 +95,11 @@ body {
 						</div>
 					</nav>
 				</td>
-				<td> <label for="bookID" style="margin-right: 100px"
-							class="w3-medium w3-text-red"><br>
-							<font size="4" color="#e8e0d9"><b>Display Books: </b></font></br></label></td>
-				<td align="right"> ${results} </td>
-				<td> </td>
+				<td><label for="bookID" style="margin-right: 100px"
+					class="w3-medium w3-text-red"><br>
+					<font size="4" color="#e8e0d9"><b>Display Books: </b></font></br></label></td>
+				<td align="right">${results}</td>
+				<td></td>
 			</tr>
 		</table>
 	</form>

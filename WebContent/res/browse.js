@@ -58,7 +58,7 @@ function loadAllBooks(url) {
 function loadByCategory(searchcategory) {
 	var request = new XMLHttpRequest(); 
 
-	request.open("GET", ("Start?currPage=categories&category=" + searchcategory), true);
+	request.open("GET", ("Start?currPage=categories&amp;category=" + searchcategory), true);
 	request.onreadystatechange = function() {
 		handler(request);
 	};
