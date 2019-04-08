@@ -95,8 +95,7 @@
 					id="showcase">
 
 					<h1 class="w3-container">
-						<font size="5" color="#750a30"><b>You don't have
-								anything in your Shopping Cart</b></font>
+						<font size="5" color="#750a30">${displaycart}</font>
 					</h1>
 					<td>
 						<button action='Submit' name='home' label='home'

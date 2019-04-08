@@ -268,20 +268,23 @@ public class bookstoreModel {
 		int i = 0;
 		System.out.println("CART SIZE:  " + cart.size());
 		NumberFormat formatter = NumberFormat.getCurrencyInstance();
-
-		for (Map.Entry<String, VisitEventBean> pair : cart.entrySet()) {
-			String bid = pair.getValue().getBid();
-			BookBean bean = this.getByBIDBean(bid);
-			String title = bean.getTitle();
-			String image = bean.getPicture();
-			String description = bean.getDescription();
-			String price = formatter.format(pair.getValue().getPrice());
-			String quantity = pair.getValue().getQuantity() + "";
-			result = result + "<tr><td colspan = \"2\">" + title + "</td></tr>";
-			result = result + "<tr><td><img src=\"" + image + "\"></td><td><p>" + description + "</td></tr>";
-			result = result + "<tr><td>Price: " + price + "</td><td>Quantity:  " + quantity + "</td></tr>";
+		if (cart.size() == 0) {
+			result = "<b> YOUR CART IS EMPTY </b>";
+		} else {
+			for (Map.Entry<String, VisitEventBean> pair : cart.entrySet()) {
+				String bid = pair.getValue().getBid();
+				BookBean bean = this.getByBIDBean(bid);
+				String title = bean.getTitle();
+				String image = bean.getPicture();
+				String description = bean.getDescription();
+				String price = formatter.format(pair.getValue().getPrice());
+				String quantity = pair.getValue().getQuantity() + "";
+				result = result + "<tr><td colspan = \"2\">" + title + "</td></tr>";
+				result = result + "<tr><td><img src=\"" + image + "\"></td><td><p>" + description + "</td></tr>";
+				result = result + "<tr><td>Price: " + price + "</td><td>Quantity:  " + quantity + "</td></tr>";
+			}
+			result = result + "</table>";
 		}
-		result = result + "</table>";
 		return result;
 	}
 
