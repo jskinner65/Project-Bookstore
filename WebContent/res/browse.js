@@ -42,7 +42,6 @@ function searchBook(url) {
 	}
 } 
 
-
 function loadAllBooks(url) {
 
 	var request = new XMLHttpRequest();
@@ -57,47 +56,11 @@ function loadAllBooks(url) {
 	document.forms["browseForm"]["searchField"].value = "";
 }
 
-function loadByCategory1(url) {
+function loadByCategory(url, category) {
 
 	var request = new XMLHttpRequest(); 
 	var data = '';
-	data += "comm=category1";
-	request.open("GET", (url + "?" + data), true);
-	request.onreadystatechange = function() {
-		handler(request);
-	};
-	request.send();
-	document.getElementById("starting").style.display = "none";
-}
-function loadByCategory2(url) {
-
-	var request = new XMLHttpRequest();
-	var data = '';
-	data += "comm=category2";
-	request.open("GET", (url + "?" + data), true);
-	request.onreadystatechange = function() {
-		handler(request);
-	};
-	request.send();
-	document.getElementById("starting").style.display = "none";
-}
-function loadByCategory3(url) {
-
-	var request = new XMLHttpRequest();
-	var data = '';
-	data += "comm=category3";
-	request.open("GET", (url + "?" + data), true);
-	request.onreadystatechange = function() {
-		handler(request);
-	};
-	request.send();
-	document.getElementById("starting").style.display = "none";
-}
-function loadByCategory4(url) {
-
-	var request = new XMLHttpRequest();
-	var data = '';
-	data += "comm=category4";
+	data += "comm="+category;
 	request.open("GET", (url + "?" + data), true);
 	request.onreadystatechange = function() {
 		handler(request);
