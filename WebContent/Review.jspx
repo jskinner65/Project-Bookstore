@@ -20,41 +20,108 @@
 
 </head>
 <body background="res/Images/Books.jpg">
-<c:if test="${notEmpty ne null}">
-	<h3>
-		Reviews
-	</h3>
-	<div>
-		<table id="reviews">
-		<tr>
-		    <th>User Name</th>
-		    <th>Rating (/5)</th>
-		    <th>Review</th>
-		    <th>Date reviewed</th>
-  		</tr>
-		<c:forEach items="${reviews}" var="review">
-		
-			<tr>
-				<td>${review.username}</td>
-				<td>${review.rating}</td>
-				<td>${review.reviewText}</td>
-				<td>${review.reviewDate}</td>	
-			</tr>
-		</c:forEach>
-		</table>
-	</div>
-	</c:if>
+	<!-- 	<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" -->
+	<!-- 		style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar"> -->
+	<!-- 		<br /> <a href="javascript:void(0)" onclick="w3_close()" -->
+	<!-- 			class="w3-button w3-hide-large w3-display-topleft" -->
+	<!-- 			style="width: 100%; font-size: 22px">Close Menu</a> -->
+	<!-- 		<div class="w3-container"> -->
+	<!-- 			<h3 class="w3-padding-64"></h3> -->
+	<!-- 		</div> -->
+	<!-- 		<div class="w3-bar-block"> -->
+	<!-- 			<a href="#" onclick="w3_close()" -->
+	<!-- 				class="w3-bar-item w3-button w3-hover-white">Home</a> <a -->
+	<!-- 				href="LINK CATEGORY HERE" onclick="w3_close()" -->
+	<!-- 				class="w3-bar-item w3-button w3-hover-white">Categories</a> <a -->
+	<!-- 				href="LINK CART HERE" onclick="w3_close()" -->
+	<!-- 				class="w3-bar-item w3-button w3-hover-white">Cart</a> <a -->
+	<!-- 				href="#designers" onclick="w3_close()" -->
+	<!-- 				class="w3-bar-item w3-button w3-hover-white">Our Team</a> <a -->
+	<!-- 				href="LINK ACCOUNT PAGE HERE" onclick="w3_close()" -->
+	<!-- 				class="w3-bar-item w3-button w3-hover-white">Account Management</a> -->
+	<!-- 			<a href="#membership" onclick="w3_close()" -->
+	<!-- 				class="w3-bar-item w3-button w3-hover-white">Membership</a> <a -->
+	<!-- 				href="#contact" onclick="w3_close()" -->
+	<!-- 				class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
+	<!-- 		</div> -->
+	<!-- 	</nav> -->
+	<table>
+		<div class="w3-main" style="margin-right: 500px; margin-right: 100px">
+			<div class="w3-container" style="margin-top: 80px; color: Red;"
+				id="showcase">
+				<h1 class="w3-xxxlarge w3-text-blue"
+					style="display: inline; margin-right: 500px; color: Red">
+					<font size="10" color="#313551"><b>Reviews</b></font>
+				</h1>
+				<tr>
+					<td><br>
+					<label for="bookID" style="margin-right: 200px"
+						class="w3-medium w3-text-red"><br>
+						<font size="4" color="#e8e0d9"><b>Book ID : </b> </font></br></label> </br></td>
+					<td>$${bid}</td>
+				</tr>
+
+				<tr>
+					<td><br>
+					<label for="bookname" style="margin-right: 130px"
+						class="w3-medium w3-text-red"><br>
+						<font size="4" color="#e8e0d9"><b>Book Name : </b> </font></br></label> </br></td>
+					<td>$${bookname}</td>
+				</tr>
+
+				<tr>
+					<td><br>
+					<label for="uid" style="margin-right: 200px"
+						class="w3-medium w3-text-red"><br>
+						<font size="4" color="#e8e0d9"><b>User ID : </b> </font></br></label> </br></td>
+					<td>$${uid}</td>
+				</tr>
+				<tr>
+					<td><label for="loginName" style="margin-right: 100px"
+						class="w3-medium w3-text-red"><br>
+						<font size="4" color="#e8e0d9"><b>Review: </b></font></br></label></td>
+					<td>$${review}</td>
+				</tr>
+				<tr>
+					<td><label for="rating" style="margin-right: 100px"
+						class="w3-medium w3-text-red"><br>
+						<font size="4" color="#e8e0d9"><b>Rate this book: </b></font></br></label></td>
+					<td>
+					<input type="radio" id="rate1" name="rate1" value="rate1">
+					<label for="rate1">1</label>
+					</input>
+					</td>
+					
+					<td>
+					<input type="radio" id="rate2" name="rate2" value="rate2">
+					<label for="rate2">2</label>
+					</input>
+					</td>
+					
+					<td>
+					<input type="radio" id="rate3" name="rate3" value="rate3">
+					<label for="rate3">3</label>
+					</input>
+					</td>
+					
+					<td>
+					<input type="radio" id="rate4" name="rate4" value="rate4">
+					<label for="rate4">4</label>
+					</input>
+					</td>
+					</tr>
+					<tr>
+					<td>
+				<div>
+      <button type="submit">Submit</button>
+    </div>
+    </td>
+				</tr>
+			</div>
+		</div>
+	</table>
 	
-	<c:if test="${notEmpty eq null}">
-	<h3>
-		Reviews
-		
-	</h3>
-	<h5>
-		This book has no reviews yet. Be the first one to review this book by purchasing it from the store.
-	</h5>
-	</c:if>
-</jsp:root>
-	</body>
+	
+</body>
 	</html>
 </jsp:root>

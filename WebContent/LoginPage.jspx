@@ -61,11 +61,7 @@
 				<form name='browseForm' action="Start" method="POST"
 					onsubmit="return validate();">
 					<table style="width: 100%">
-						<!-- 						<tr align="right"> -->
-						<!-- 							<td><input type='text' name='browse' -->
-						<!-- 								placeholder='Browse Books'></input><input type='submit' -->
-						<!-- 								name='Search' value='Search'></input></td> -->
-						<!-- 						</tr> -->
+						
 						<tr align="right">
 							<td><input type='text' style="margin-right: 10px"
 								name='browse' placeholder='Browse Books'></input>

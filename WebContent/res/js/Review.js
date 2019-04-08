@@ -3,21 +3,15 @@
 function buttonIsPressed() {
 	var ok = false;
 	
-	
-	if(document.getElementById('comment').value==="Enter some text here"){
-		document.getElementById('comment').value="";
-		//alert(document.getElementById('comment').value)
-	}
-	
-	if (document.getElementById('5-star').checked) {
+	if (document.getElementById('rate5').checked) {
 		ok = true;
-	} else if (document.getElementById('4-star').checked) {
+	} else if (document.getElementById('rate4').checked) {
 		ok = true;
-	} else if (document.getElementById('3-star').checked) {
+	} else if (document.getElementById('rate3').checked) {
 		ok = true;
-	} else if (document.getElementById('2-star').checked) {
+	} else if (document.getElementById('rate2').checked) {
 		ok = true;
-	} else if (document.getElementById('1-star').checked) {
+	} else if (document.getElementById('rate1').checked) {
 		ok = true;
 	}
 

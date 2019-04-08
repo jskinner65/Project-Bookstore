@@ -27,7 +27,7 @@ import DAO.ReviewDAO;
 public class BookReviews extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        DAO.BookDAO bookDao;
-       ReviewDAO br;
+       ReviewDAO reviewDao;
        Map<String, BookBean> book;
        ReviewBean bookReview;
        Date now;
@@ -43,7 +43,7 @@ public class BookReviews extends HttpServlet {
     public void init() {
 		
 		try {
-			br = new ReviewDAO(ds);
+			reviewDao = new ReviewDAO(ds);
 			bookDao =new BookDAO(ds);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -60,11 +60,11 @@ public class BookReviews extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username=request.getSession().getAttribute("username").toString();
-		String bid = request.getSession().getAttribute("bookID").toString();
+		String uid=request.getSession().getAttribute("uid").toString();
+		String bid = request.getSession().getAttribute("bid").toString();
 		String bookID = null;
-		//boolean rate=false;
-		String rawComment=request.getParameter("comment");
+		String reviewComment=request.getParameter("reviewtext");
+		Map<String, ReviewBean> reviews;
 		String bookname="";
 		float rating=-1;
 		
@@ -78,30 +78,20 @@ public class BookReviews extends HttpServlet {
 		} catch(Exception e) {
 			rating=-1;
 		}
-		System.out.println(bookID);
 		try {
-			book=bookDao.retrieveByBID(bookID);
+			book=bookDao.retrieveByBID(bid);
+			reviews = reviewDao.getReviews(bid);
+			
 			bookname=((BookBean) book).getTitle();
+			request.getSession().setAttribute("review", reviews);
+			request.getSession().setAttribute("bid", bid);
+			request.getSession().setAttribute("uid", uid);
+			request.getSession().setAttribute("bookname", bookname);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		java.sql.Date date= new java.sql.Date(System.currentTimeMillis());
-
-		if (rating != -1) {
-			BookReviews br = new BookReviews();
-//			try {
-//				br.addReview(bookReview);
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			response.getWriter().append("");
-			String redirection=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+"/Book?bid="+bid;
-			response.sendRedirect(redirection);
-		}
-		
+		java.sql.Date date= new java.sql.Date(System.currentTimeMillis()); 
 	}
 
 	/**
