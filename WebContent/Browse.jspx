@@ -57,39 +57,10 @@
 						</div>
 					</nav>
 				</td>
-				<td align="right">
-
-					<table class="w3-light-grey">
-						<tr>
-							<td><input type='text' name='searchField' id='searchField'></input></td>
-
-							<td><input type='submit' name='Search' value='Search'
-								onClick="searchBook('Start'); return false;"></input></td>
-						</tr>
-						<tr>
-							<td colspan="2"><div id="allBooks"
-									onclick="searchBook('Start');return false;">All Books</div>
-								<div id="EECS1"
-									onclick="loadByCategory('Start', 'category1');return false">1st
-									Year EECS Books</div>
-								<div id="EECS2"
-									onclick="loadByCategory('Start', 'category2');return false">2nd
-									Year EECS Books</div>
-								<div id="EECS3"
-									onclick="loadByCategory('Start', 'category3');return false">3rd
-									Year EECS Books</div>
-								<div id="EECS4"
-									onclick="loadByCategory('Start', 'category4');return false">4th
-									Year EECS Books</div></td>
-						</tr>
-						<tr>
-
-							<td colspan="2"><p id='resultDisplay'></p>
-								<div id='starting'>${results}</div></td>
-						</tr>
-					</table>
-
-				</td>
+				<td> <label for="bookID" style="margin-right: 100px"
+							class="w3-medium w3-text-red"><br>
+							<font size="4" color="#e8e0d9"><b>Display Books: </b></font></br></label></td>
+				<td align="right" $${displaybooks}></td>
 			</tr>
 		</table>
 	</form>
