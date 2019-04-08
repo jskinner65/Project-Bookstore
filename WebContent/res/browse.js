@@ -60,7 +60,8 @@ function loadByCategory(url, category) {
 
 	var request = new XMLHttpRequest(); 
 	var data = '';
-	data += "comm="+category;
+	data += "comm='category'";
+	data += "cat=" + category;
 	request.open("GET", (url + "?" + data), true);
 	request.onreadystatechange = function() {
 		handler(request);
