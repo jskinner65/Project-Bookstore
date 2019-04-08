@@ -103,20 +103,20 @@
 									style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font
 									size="4" color="#750a30">Subtotal:</font></th>
 								<th
-									style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font
+									style="border: 1px solid #ddd; padding: 8px; text-align: right;"><font
 									size="4" color="#750a30">${subtotal }</font></th>
 							</tr>
 							<tr>
 								<td style="border: 1px solid #ddd; padding: 8px;"><font
 									size="4" color="#750a30"> + HST:</font></td>
-								<td style="border: 1px solid #ddd; padding: 8px;"><font
-									size="4" color="#750a30">${subtotal * 0.13 }</font></td>
+								<td style="border: 1px solid #ddd; padding: 8px; text-align: right;"><font
+									size="4" color="#750a30">${tax }</font></td>
 							</tr>
 							<tr>
 								<td style="border: 1px solid #ddd; padding: 8px;"><font
 									size="4" color="#750a30"><b>Total:</b></font></td>
-								<td style="border: 1px solid #ddd; padding: 8px;"><font
-									size="4" color="#750a30"><b>${subtotal * 1.13 }</b></font></td>
+								<td style="border: 1px solid #ddd; padding: 8px; text-align: right;"><font
+									size="4" color="#750a30"><b>${total}</b></font></td>
 							</tr>
 
 							<tr>

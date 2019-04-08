@@ -2,6 +2,7 @@ package ctrl;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.*;
-import DAO.*;
+import model.bookstoreModel;
+import model.userModel;
 
 /**
  * Servlet implementation class Start
@@ -23,6 +24,8 @@ public class Start extends HttpServlet {
 	private bookstoreModel bModel;
 	private userModel uModel;
 	private String currPage;
+	NumberFormat formatter;
+	private static final double tax = 0.13;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -34,6 +37,7 @@ public class Start extends HttpServlet {
 
 	public void init() throws ServletException {
 		// ServletContext context = getServletContext();
+		formatter = NumberFormat.getCurrencyInstance();
 
 		try {
 			uModel = new userModel();
@@ -66,10 +70,15 @@ public class Start extends HttpServlet {
 
 			request.getRequestDispatcher("./index.html").forward(request, response);
 		} else if (currPage.equals("categories")) {
-			
 
 		} else if (currPage.equals("cart")) {
 			try {
+
+				request.setAttribute("sSize", uModel.getCartSize());
+				double subtotal = uModel.getSubtotal();
+				request.setAttribute("subtotal", formatter.format(subtotal));
+				request.setAttribute("tax", formatter.format(subtotal * tax));
+				request.setAttribute("total", formatter.format(subtotal * (1 + tax)));
 				request.setAttribute("displaycart", uModel.getCart());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
