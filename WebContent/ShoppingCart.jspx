@@ -96,7 +96,7 @@
 					<td>
 						<button action='Submit' name='home' label='home'
 							class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
-							<font color="#701e6e"></font>Go Back to HomePage
+							<font color="#701e6e"></font><b>Continue Shopping</b>
 						</button>
 
 						<table class="w3-light-grey" align="right"
