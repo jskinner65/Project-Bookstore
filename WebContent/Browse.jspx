@@ -60,6 +60,7 @@ body {
 			<tr>
 				<td width="300px">
 					<div class="topnav" style="margin-left: 340px; margin-right: 100px">
+						<a href="Start?currPage=categories">All Books</a>
 						<a href="Start?currPage=categories&amp;category=EECS1">EECS -
 							First Year</a> <a href="Start?currPage=categories&amp;category=EECS2">EECS
 							- Second Year</a> <a href="Start?currPage=categories&amp;category=EECS3">EECS
