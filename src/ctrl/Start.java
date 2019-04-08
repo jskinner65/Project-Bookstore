@@ -70,6 +70,36 @@ public class Start extends HttpServlet {
 
 			request.getRequestDispatcher("./index.html").forward(request, response);
 		} else if (currPage.equals("categories")) {
+			try {
+				String category = request.getParameter("category");
+				if (category == null) {
+					request.setAttribute("results", (bModel.getAllBooks()));
+
+				} else {
+					request.setAttribute("results", bModel.getByCategoryMap(category));
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
+
+		} else if (currPage.equals("search")) {
+			try {
+				String search = request.getParameter("searches");
+				if (search == null) {
+					request.setAttribute("results", (bModel.getAllBooks()));
+
+				} else {
+					request.setAttribute("results", bModel.displayBooks(bModel.getByNameMap(search)));
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
 
 		} else if (currPage.equals("cart")) {
 			try {
