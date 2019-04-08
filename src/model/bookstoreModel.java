@@ -15,6 +15,7 @@ import DAO.BookDAO;
 import DAO.PODAO;
 import DAO.POitemDAO;
 import DAO.ReviewDAO;
+import DAO.UserDAO;
 import DAO.VisitEventDAO;
 import beans.AddressBean;
 import beans.AnalyticsBean;
@@ -23,6 +24,7 @@ import beans.POBean;
 import beans.POitemBean;
 import beans.ReviewBean;
 import beans.TopTenBean;
+import beans.UserBean;
 import beans.VisitEventBean;
 
 public class bookstoreModel {
@@ -33,6 +35,7 @@ public class bookstoreModel {
 	private ReviewDAO reviewDAO;
 	private VisitEventDAO visitEventDAO;
 	private AnalyticsDAO analyticsDAO;
+	private UserDAO userDAO;
 	DataSource ds;
 
 // ___________________________________CONSTRUCTOR____________________________________________
@@ -50,6 +53,7 @@ public class bookstoreModel {
 		this.poitemDAO = new POitemDAO(ds);
 		this.reviewDAO = new ReviewDAO(ds);
 		this.visitEventDAO = new VisitEventDAO(ds);
+		this.userDAO = new UserDAO(ds);
 
 	}
 
@@ -285,44 +289,67 @@ public class bookstoreModel {
 		return bean;
 	}
 
+	// ____________________________________USER__________________________________
+
+	public String checkPassword(String email) throws SQLException {
+		return userDAO.getPassword(email);
+	}
+
+	public boolean addUser(String fname, String lname, String email, String password, String privilege)
+			throws SQLException {
+
+		UserBean user = new UserBean(0, fname, lname, email, password, privilege);
+		return userDAO.addUser(user);
+	}
+
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 	public void test() throws SQLException {
-		System.out.println(this.getAllBooks());
-		System.out.println(this.getBookbyName("Keyboard"));
-		System.out.println(this.getBookbyName("Mouse"));
-		System.out.println(this.getBookByBID("b001"));
-		System.out.println(this.addBook("b105", "Adventures of an IT Leader", "./res/it.jpg", 215.95, "EECS1", "431",
-				"IT Leadership", "good book"));
+//		System.out.println(this.getAllBooks());
+//		System.out.println(this.getBookbyName("Keyboard"));
+//		System.out.println(this.getBookbyName("Mouse"));
+//		System.out.println(this.getBookByBID("b001"));
+//		System.out.println(this.addBook("b105", "Adventures of an IT Leader", "./res/it.jpg", 215.95, "EECS1", "431",
+//				"IT Leadership", "good book"));
+//
+//		System.out.println(this.getBookByBID("b105"));
+//		System.out.println(this.updateBook("b105", "Adventures of an IT Freak", "./res/it.jpg", 215.95, "EECS1", "431",
+//				"IT Leadership", "good book"));
+//
+//		System.out.println(this.getBookByBID("b105"));
+//		System.out.println(this.updateBook("b105", "Adventures of an IT Leader", "./res/it.jpg", 215.95, "EECS1", "431",
+//				"IT Leadership", "good book"));
+//		System.out.println(this.getBookByBID("b105"));
+//		System.out.println("DROP BOOK=" + this.removeBook("b105"));
+//		System.out.println("PO ADDED.  PO# is: "
+//				+ this.createPO("test1@mailcatch.com", "Test1", "Admin", "DENIED", 2, "20191002"));
+//		Map<String, BookBean> TopTen = this.getTopTen();
+//		System.out.println(TopTen.size());
+//		for (int i = 1; i <= TopTen.size(); i++) {
+//			BookBean book = TopTen.get(i + "");
+//			System.out.println(book.getTitle());
+//
+//		}
+//		Date d1 = new Date();
+//		Date d2 = new Date();
+//		d2.setTime(0);
+//		Map<String, BookBean> TopTen2 = this.getByDates(d1, d2);
+//		System.out.println(TopTen2.size());
+//		for (int i = 1; i <= TopTen2.size(); i++) {
+//			BookBean book = TopTen2.get(i + "");
+//			System.out.println(book.getTitle());
+//
+//		}
 
-		System.out.println(this.getBookByBID("b105"));
-		System.out.println(this.updateBook("b105", "Adventures of an IT Freak", "./res/it.jpg", 215.95, "EECS1", "431",
-				"IT Leadership", "good book"));
-
-		System.out.println(this.getBookByBID("b105"));
-		System.out.println(this.updateBook("b105", "Adventures of an IT Leader", "./res/it.jpg", 215.95, "EECS1", "431",
-				"IT Leadership", "good book"));
-		System.out.println(this.getBookByBID("b105"));
-		System.out.println("DROP BOOK=" + this.removeBook("b105"));
-		System.out.println("PO ADDED.  PO# is: "
-				+ this.createPO("test1@mailcatch.com", "Test1", "Admin", "DENIED", 2, "20191002"));
-		Map<String, BookBean> TopTen = this.getTopTen();
-		System.out.println(TopTen.size());
-		for (int i = 1; i <= TopTen.size(); i++) {
-			BookBean book = TopTen.get(i + "");
-			System.out.println(book.getTitle());
-
-		}
-		Date d1 = new Date();
-		Date d2 = new Date();
-		d2.setTime(0);
-		Map<String, BookBean> TopTen2 = this.getByDates(d1, d2);
-		System.out.println(TopTen2.size());
-		for (int i = 1; i <= TopTen2.size(); i++) {
-			BookBean book = TopTen2.get(i + "");
-			System.out.println(book.getTitle());
-
-		}
+		String myPassword = "testing123";
+		String salt = PasswordUtils.getSalt(50);
+		String encPassword = PasswordUtils.generateSecurePassword(myPassword, salt);
+		System.out.println("MyPWORD: " + myPassword);
+		System.out.println("EncrPWD: " + encPassword);
+		System.out.println("Checking password '123': " + PasswordUtils.verifyUserPassword("123", encPassword, salt));
+		System.out.println(
+				"Checking password 'testing123': " + PasswordUtils.verifyUserPassword("testing123", encPassword, salt));
 	}
+
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 
 }
