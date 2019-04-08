@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="StyleSheet" href="res/test.html" type="text/css"
+	title="cse4413" media="screen, print" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Poppins" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<title>Payment Page</title>
+
+
+</head>
+<body background="">
+	<form action='Start' method="GET">
+		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
+			<br /> <a href="javascript:void(0)" onclick="w3_close()"
+				class="w3-button w3-hide-large w3-display-topleft"
+				style="width: 100%; font-size: 22px">Close Menu</a>
+			<div class="w3-container">
+				<h3 class="w3-padding-64"></h3>
+			</div>
+			<div class="w3-bar-block">
+				<a href="#" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Home</a> <a
+					href="LINK CATEGORY HERE" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
+					href="LINK CART HERE" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Cart</a> <a
+					href="#designers" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Our Team</a> <a
+					href="LINK ACCOUNT PAGE HERE" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Account Management</a>
+				<a href="#membership" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Membership</a> <a
+					href="#contact" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Contact</a>
+			</div>
+		</nav>
+		<table>
+
+			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
+
+				<!-- Header -->
+				<div class="w3-container" style="margin-top: 80px; color: Red;"
+					id="showcase">
+					<h1 class="w3-jumbo" style="display: inline">
+						<b>Swag EECS Bookstore</b>
+					</h1>
+				</div>
+
+				<form name='browseForm' action="Start" method="POST"
+					onsubmit="return validate();">
+					<table style="width: 100%">
+
+						<tr align="right">
+							<td><input type='text' style="margin-right: 10px"
+								name='browse' placeholder='Browse Books'></input>
+								<button action='Submit' name='createAccount'
+									label='createAccount' style="margin-top: 30px"
+									class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
+									<font color="#701e6e"></font> Search
+								</button></td>
+						</tr>
+
+						<tr>
+							<td><p name='results'></p></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+
+			<div class="w3-light-grey"
+				style="margin-left: 320px; margin-right: 90px">
+				<div class="w3-container" style="color: #FF0000;" id="showcase">
+					<h1 class="w3-xxxlarge w3-text-blue"
+						style="display: inline; margin-right: 100px">
+						<font color="#313551"><b>Books to Buy (${sSize})</b></font>
+					</h1>
+
+				</div>
+			</div>
+
+			<div class="w3-main" style="margin-left: 300px; margin-right: 100px">
+				<div class="w3-container" style="margin-top: 0px; color: Red;"
+					id="showcase">
+
+					<h1 class="w3-container">
+						<font size="5" color="#750a30"><b>You don't have
+								anything in your Shopping Cart</b></font>
+					</h1>
+					<td>
+						<button action='Submit' name='home' label='home'
+							class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
+							<font color="#701e6e"></font>Go Back to HomePage
+						</button>
+
+						<table class="w3-light-grey" align="right"
+							style="margin-left: 900px; margin-right: -30px; border-collapse: collapse; width: 30%">
+							<tr>
+								<th
+									style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font
+									size="6" color="#750a30">Payment Details: Total = $113</font></th>
+							</tr>
+							<tr>
+								<td style="border: 1px solid #ddd; padding: 8px;"><font
+									size="4" color="#750a30">Enter Payment Information:</font> <i
+									class="fa fa-cc-visa" style="font-size: 48px; color: red"></i>
+
+									<i class="fa fa-cc-mastercard"
+									style="font-size: 48px; color: red"></i><i
+									class="fa fa-cc-paypal" style="font-size: 48px; color: red"></i>
+									<i class="fa fa-cc-amex" style="font-size: 48px; color: red"></i>
+								</td>
+							</tr>
+							<tr>
+								<td class="w3-section"><font color="#750a30"> <input
+										class="w3-input w3-border" type="text" name="ccard"
+										placeholder="Credit Card Number"></input></font></td>
+
+							</tr>
+							<tr>
+								<td class="w3-section"><font color="#750a30"> <input
+										class="w3-input w3-border" type="text" name="cname"
+										placeholder="Name on Credit Card"></input></font></td>
+
+							</tr>
+
+							<tr>
+								<td class="w3-section"><font color="#750a30"> <input
+										class="w3-input w3-border" type="text" name="cvc"
+										placeholder="CVC"></input></font></td>
+
+							</tr>
+							
+							<tr>
+							    <td class="w3-section" id="expiration-date" style="border: 1px solid #ddd; padding: 8px;"><font size="4" color="#750a30">
+                <label><b>Expiration Date:</b></label></font><br/>
+                <select style="border: 1px solid #ddd; padding: 8px; width: 50%">
+                    <option value="01">January</option>
+                    <option value="02">February </option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <select style="border: 1px solid #ddd; padding: 8px; width: 50%">
+                    <option value="16"> 2016</option>
+                    <option value="17"> 2017</option>
+                    <option value="18"> 2018</option>
+                    <option value="19"> 2019</option>
+                    <option value="20"> 2020</option>
+                    <option value="21"> 2021</option>
+                    <option value="22"> 2022</option>
+                </select>
+            </td>
+							
+			</tr>
+							
+
+
+
+						</table>
+					<td align="right"><button type="submit"
+							class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom"
+							style="margin-left: 836px; margin-right: 300px; width: 30%">
+							<b>Pay Now</b>
+						</button></td>
+					</td>
+
+
+
+
+					<!-- Contact -->
+					<div class="w3-container" id="contact" style="margin-top: 75px">
+						<h1 class="w3-xxxlarge w3-text-red">
+							<font color="#313551"><b>Can't find your book?</b></font>
+						</h1>
+						<hr style="width: 50px; border: 5px solid red" class="w3-round"></hr>
+						<p>
+							<font color="#750a30"><b>Please let us know to order
+									more! Our team is available 24/7 for your York University
+									needs.</b></font>
+						</p>
+						<form action="/action_page.php" target="_blank">
+							<div class="w3-section">
+								<font color="#750a30"> <label>Name</label> <input
+									class="w3-input w3-border" type="text" name="Name"></input></font>
+							</div>
+							<div class="w3-section">
+								<font color="#750a30"> <label>Email</label> <input
+									class="w3-input w3-border" type="text" name="Email"></input></font>
+							</div>
+							<div class="w3-section">
+								<font color="#750a30"> <label>Message</label> <input
+									class="w3-input w3-border" type="text" name="Message"></input></font>
+							</div>
+							<button type="submit"
+								class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send
+								Message</button>
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</table>
+	</form>
+
+	<footer>
+		<table>
+			<div class="w3-container"
+				style="margin-top: 100px; margin-right: 1000px; color: red;"
+				id="showcase">
+				<h1 class="w3-small" style="display: inline">
+					<p>
+						Swag Webiste <a
+							href="
+  						http://localhost:8080/(Project-Bookstore)/ShoppingCart.jspx"></a>
+					</p>
+				</h1>
+			</div>
+
+		</table>
+	</footer>
+
+</body>
+
+	</html>
+</jsp:root>
