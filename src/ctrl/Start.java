@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.AddressBean;
 import beans.POBean;
 import beans.UserBean;
 import model.bookstoreModel;
@@ -162,13 +163,32 @@ public class Start extends HttpServlet {
 				request.setAttribute("receiptNumber", uid);
 				request.setAttribute("name", user.getFname() + " " + user.getLname());
 				request.setAttribute("receiptDate", poID.getDay());
+				double subtotal = 0;
 				try {
-					request.setAttribute("address", bModel.getAddressByUID(uid));
+					subtotal = uModel.getSubtotal();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				request.setAttribute("subtotal", formatter.format(subtotal));
+				request.setAttribute("tax", formatter.format(subtotal * tax));
+				request.setAttribute("total", formatter.format(subtotal * (1 + tax)));
+				try {
+					AddressBean addr = bModel.getShippingID(uid);
+					request.setAttribute("address", addr.getStreet() + ", " + addr.getProvince() + "<br />"
+							+ addr.getZip() + "<br />" + addr.getCountry() + ", " + addr.getPhone());
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					request.setAttribute("address", "Shipping Address not on file.  Please update your profile");
 
 				}
+				try {
+					request.setAttribute("booksBought", uModel.getCartSimple());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// change from cart to purchase
 				request.getRequestDispatcher("./Receipt.jspx").forward(request, response);
 
 			}

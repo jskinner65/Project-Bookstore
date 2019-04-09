@@ -31,7 +31,8 @@ public class AddressDAO {
 		while (r.next()) {
 			String name = r.getInt("id") + "";
 			AddressBean book = new AddressBean(r.getInt("id"), r.getInt("uid"), r.getString("street"),
-					r.getString("province"), r.getString("country"), r.getString("zip"), r.getString("phone"));
+					r.getString("province"), r.getString("country"), r.getString("zip"), r.getString("phone"),
+					r.getString("addressType"));
 			rv.put(name, book);
 		}
 		r.close();
@@ -45,32 +46,16 @@ public class AddressDAO {
 		if (address == null) {
 			return false;
 		} else {
-			String query = "INSERT INTO address (id, uid, street, province, country, zip, phone) Values (";
+			String query = "INSERT INTO address (id, uid, street, province, country, zip, phone, addressType) Values (";
 			query = query + address.getId() + ", " + address.getUid() + ", " + address.getStreet() + ", "
 					+ address.getProvince() + ", " + address.getCountry() + ", " + address.getZip() + ", "
-					+ address.getPhone() + ");";
+					+ address.getPhone() + ", " + address.getAddressType() + ");";
 			Connection con = this.ds.getConnection();
 
 			PreparedStatement p = con.prepareStatement(query);
 			return p.execute();
 
 		}
-	}
-
-	public int getShippingAddress(int uid) throws SQLException {
-
-		String query = "select * from Address WHERE uid='" + uid + "' AND addresstype='Shipping';";
-		Connection con = this.ds.getConnection();
-		PreparedStatement p = con.prepareStatement(query);
-		ResultSet r = p.executeQuery();
-		int id = 0;
-		while (r.next()) {
-			id = r.getInt("id");
-		}
-		r.close();
-		p.close();
-		con.close();
-		return id;
 	}
 
 	public Map<String, AddressBean> retrieve(int uid) throws SQLException {
@@ -83,7 +68,8 @@ public class AddressDAO {
 		while (r.next()) {
 			String name = r.getInt("id") + "";
 			AddressBean book = new AddressBean(r.getInt("id"), r.getInt("uid"), r.getString("street"),
-					r.getString("province"), r.getString("country"), r.getString("zip"), r.getString("phone"));
+					r.getString("province"), r.getString("country"), r.getString("zip"), r.getString("phone"),
+					r.getString("addressType"));
 			rv.put(name, book);
 		}
 		r.close();

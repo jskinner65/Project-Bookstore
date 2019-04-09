@@ -8,8 +8,10 @@ public class AddressBean {
 	private String country;
 	private String zip;
 	private String phone;
+	private String addressType;
 
-	public AddressBean(int id, int uid, String street, String province, String country, String zip, String phone) {
+	public AddressBean(int id, int uid, String street, String province, String country, String zip, String phone,
+			String addressType) {
 		super();
 		this.id = id;
 		this.setUid(uid);
@@ -18,6 +20,7 @@ public class AddressBean {
 		this.country = country;
 		this.zip = zip;
 		this.phone = phone;
+		this.setAddressType(addressType);
 	}
 
 	public int getId() {
@@ -82,4 +85,13 @@ public class AddressBean {
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
+
+	public String getAddressType() {
+		return addressType;
+	}
+
+	public void setAddressType(String addressType) {
+		this.addressType = addressType;
+	}
+
 }

@@ -157,9 +157,9 @@ public class bookstoreModel {
 		return addressDAO.updateAddress(id, uid, street, province, country, zip, phone);
 	}
 
-	public boolean addAddress(int id, int uid, String street, String province, String country, String zip, String phone)
-			throws SQLException {
-		AddressBean ab = new AddressBean(id, uid, street, province, country, zip, phone);
+	public boolean addAddress(int id, int uid, String street, String province, String country, String zip, String phone,
+			String addressType) throws SQLException {
+		AddressBean ab = new AddressBean(id, uid, street, province, country, zip, phone, addressType);
 		return addressDAO.addAddress(ab);
 	}
 
@@ -280,7 +280,8 @@ public class bookstoreModel {
 				String price = formatter.format(pair.getValue().getPrice());
 				String quantity = pair.getValue().getQuantity() + "";
 				result = result + "<tr><td colspan = \"2\">" + title + "</td></tr>";
-				result = result + "<tr><td><img src=\"" + image + "\"></td><td><p>" + description + "</td></tr>";
+				result = result + "<tr><td><img height=\"100\" width=\"100\" src=\"" + image + "\"></td><td><p>"
+						+ description + "</td></tr>";
 				result = result + "<tr><td>Price: " + price + "</td><td>Quantity:  " + quantity + "</td></tr>";
 			}
 			result = result + "</table>";
@@ -304,8 +305,8 @@ public class bookstoreModel {
 				String price = formatter.format(pair.getValue().getPrice());
 				String quantity = pair.getValue().getQuantity() + "";
 				result = result + "<tr><td colspan = \"3\">" + title + "</td></tr>";
-				result = result + "<tr><td><img src=\"" + image + "\"></td><td>Price: " + price + "</td><td>Quantity:  "
-						+ quantity + " </td></tr>";
+				result = result + "<tr><td><img height=\"100\" width=\"100\" src=\"" + image + "\"></td><td>Price: "
+						+ price + "</td><td>Quantity:  " + quantity + " </td></tr>";
 			}
 			result = result + "</table>";
 		}
@@ -408,8 +409,18 @@ public class bookstoreModel {
 		return userDAO.getUserBean(UID);
 	}
 
-	public int getShippingID(int uid) throws SQLException {
-		return addressDAO.getShippingAddress(uid);
+	public AddressBean getShippingID(int uid) throws SQLException {
+		Map<String, AddressBean> addresses = addressDAO.retrieve(uid);
+		AddressBean bean = null;
+		if (addresses.size() > 0) {
+			for (Map.Entry<String, AddressBean> pair : addresses.entrySet()) {
+				bean = pair.getValue();
+				if (bean.getAddressType().equals("Shipping")) {
+					break;
+				}
+			}
+		}
+		return bean;
 	}
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import beans.AddressBean;
 import beans.POBean;
 import beans.UserBean;
 import beans.VisitEventBean;
@@ -72,15 +73,17 @@ public class userModel {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String dateString = format.format(new Date());
 		POBean poID = null;
-		int address = 0;
+		AddressBean address = null;
 		try {
 			user = model.getUser(this.uid);
 			try {
 				address = model.getShippingID(this.uid);
+				poID = model.createPO(user.getUid(), user.getLname(), user.getFname(), "ORDERED", address.getId(),
+						dateString);
+
 			} catch (SQLException e) {
-				address = 1;
+				e.printStackTrace();
 			}
-			poID = model.createPO(user.getUid(), user.getLname(), user.getFname(), "ORDERED", address, dateString);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

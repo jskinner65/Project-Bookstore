@@ -38,24 +38,60 @@
 						<div class="w3-container">
 							<h3 class="w3-padding-64"></h3>
 						</div>
-					<div class="w3-bar-block">
-							<a href="Start?currPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
-							<a href="Start?currPage=categories" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Categories</a> 
-							<a href="Start?currPage=cart" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Cart</a> 
-							<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a> 
-							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Account Management</a> 
-							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a> 
-							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
-					</div>
+						<div class="w3-bar-block">
+							<a href="Start?currPage=home" onclick="w3_close()"
+								class="w3-bar-item w3-button w3-hover-white">Home</a> <a
+								href="Start?currPage=categories" onclick="w3_close()"
+								class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
+								href="Start?currPage=cart" onclick="w3_close()"
+								class="w3-bar-item w3-button w3-hover-white">Cart</a> <a
+								href="Start?currPage=team" onclick="w3_close()"
+								class="w3-bar-item w3-button w3-hover-white">Our Team</a> <a
+								href="Start?currPage=login" onclick="w3_close()"
+								class="w3-bar-item w3-button w3-hover-white">Account
+								Management</a> <a href="Start?currPage=login" onclick="w3_close()"
+								class="w3-bar-item w3-button w3-hover-white">Membership</a> <a
+								href="Start?currPage=login" onclick="w3_close()"
+								class="w3-bar-item w3-button w3-hover-white">Contact</a>
+						</div>
 					</nav>
 				</td>
-				<td align="right">
-					<table><tr><td>Receipt #</td><td>${receiptNumber }</td></tr>
-					<tr><td>Date:</td><td>${receiptDate }</td></tr>
-					<tr><td>Name:</td><td>${name }</td></tr>
-					<tr><td>Address:</td><td> ${address }</td></tr>
+				<td align="left">
+				<h1>$wag Bookstore Receipt</h1>
+					<table>
+						<tr>
+							<td>Receipt #</td>
+							<td>${receiptNumber }</td>
+						</tr>
+						<tr>
+							<td>Date:</td>
+							<td>${receiptDate }</td>
+						</tr>
+						<tr>
+							<td>Name:</td>
+							<td>${name }</td>
+						</tr>
+						<tr>
+							<td valign="top">Address:</td>
+							<td>${address }</td>
+						</tr>
+					</table> <br />${booksBought} <br />
+					<table>
 					
-					
+						<tr>
+							<td>Subtotal:</td>
+							<td>${subtotal }</td>
+						</tr>
+						<tr>
+							
+							<td>Tax:</td>
+							<td>${tax }</td>
+						</tr>
+						<tr>
+							
+							<td>Total:</td>
+							<td>${total }</td>
+						</tr>
 					</table>
 				</td>
 			</tr>
