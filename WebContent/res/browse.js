@@ -21,17 +21,17 @@ function handler(request) {
 }
 
 function searchBook(url) {
-	
 	if (validate()) {
 		var name = document.forms["browseForm"]["searchField"].value;
 		var request = new XMLHttpRequest();
 		var data = '';
-		data += "comm=ajax";
-		data += "&searchField=" + name;
-		request.open("GET", (url + "?" + data), true);
+		data += "currPage=search";
+		data += "&amp;searchField=" + name;
+		request.open("POST", (url + "?" + data), true);
 		request.onreadystatechange = function() {
 			handler(request);
 		};
+
 		request.send();
 		document.getElementById("starting").style.display = "none";
 	}

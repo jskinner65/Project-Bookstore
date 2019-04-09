@@ -78,10 +78,9 @@ public class Start extends HttpServlet {
 				String category = request.getParameter("category");
 				String bid = request.getParameter("addToCart");
 				if (bid == null) {
-					request.setAttribute("addedToCart", " ");
 
 				} else {
-					request.setAttribute("addedToCart", "Cart (" + uModel.getCartSize() + ")");
+
 					uModel.addToCart(bid);
 				}
 				if (category == null) {
@@ -95,11 +94,21 @@ public class Start extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
+			try {
+				request.setAttribute("addedToCart",
+						"<a href=\"Start?currPage=cart\">Cart (" + uModel.getCartSize() + ")</a>");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				request.setAttribute("addedToCart", "<a href=\"Start?currPage=cart\">Cart (0)</a>");
+			}
 			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
 
 		} else if (currPage.equals("search")) {
 			try {
-				String search = request.getParameter("searches");
+				String search = request.getParameter("searchField");
+
+				request.setAttribute("addedToCart", "Cart (" + uModel.getCartSize() + ")");
 				if (search == null) {
 					request.setAttribute("results", (bModel.getAllBooks()));
 

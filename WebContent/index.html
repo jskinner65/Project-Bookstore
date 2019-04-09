@@ -74,13 +74,12 @@ body {
 				<b>Swag EECS Bookstore</b>
 			</h1>
 		</div>
-		<form name='browseForm' action="Start" method="POST"
-			onsubmit="return validate();">
+		<form name='browseForm' action="Start?currPage=search" method="POST"
+			onsubmit="Start?currPage=search">
 			<table style="width: 100%">
 				<tr align="right">
-					<td><input type='text' name='searchField'
-						placeholder='Browse Books'></input><input type='submit'
-						name='Search' value='Search' onClick="searchBook('Start'); return false;"></input></td> 
+					<td><input type='text' name='searchField' id="searchField"
+						placeholder='Browse Books'></input><input type="submit" name="Search" value="Search"></input></td> 
 				</tr>
 				<tr>
 					<td><p id='resultDisplay'></p></td>
