@@ -152,14 +152,14 @@ public class bookstoreModel {
 		return addressDAO.retrieve(email);
 	}
 
-	public boolean updateAddress(int id, String email, String street, String province, String country, String zip,
+	public boolean updateAddress(int id, int uid, String street, String province, String country, String zip,
 			String phone) throws SQLException {
-		return addressDAO.updateAddress(id, email, street, province, country, zip, phone);
+		return addressDAO.updateAddress(id, uid, street, province, country, zip, phone);
 	}
 
-	public boolean addAddress(int id, String email, String street, String province, String country, String zip,
-			String phone) throws SQLException {
-		AddressBean ab = new AddressBean(id, email, street, province, country, zip, phone);
+	public boolean addAddress(int id, int uid, String street, String province, String country, String zip, String phone)
+			throws SQLException {
+		AddressBean ab = new AddressBean(id, uid, street, province, country, zip, phone);
 		return addressDAO.addAddress(ab);
 	}
 
@@ -193,12 +193,12 @@ public class bookstoreModel {
 		return poDAO.retrieveByEmail(email);
 	}
 
-	public int createPO(String email, String lname, String fname, String status, int address, String day)
+	public POBean createPO(String email, String lname, String fname, String status, int address, String day)
 			throws SQLException {
 		POBean newPO = new POBean(1, email, lname, fname, status, address, day);
 		int newPOID = poDAO.addPO(newPO);
 		newPO.setId(newPOID);
-		return newPOID;
+		return newPO;
 	}
 
 	public Map<String, POBean> getPOitemsByPO(int poID) throws SQLException {
@@ -404,6 +404,13 @@ public class bookstoreModel {
 
 	}
 
+	public UserBean getUser(int UID) throws SQLException {
+		return userDAO.getUserBean(UID);
+	}
+
+	public int getShippingID(String email) throws SQLException {
+		return addressDAO.getShippingAddress(email);
+	}
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 
 }

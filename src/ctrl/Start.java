@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.POBean;
 import model.bookstoreModel;
 import model.userModel;
 
@@ -135,10 +136,9 @@ public class Start extends HttpServlet {
 
 		} else if (currPage.equals("receipt")) {
 			cardTries++;
-			if (cardTries == 3) {
+			if (cardTries == 3) { // Denies third try on credit card
 				cardTries = 0;
 				try {
-
 					request.setAttribute("validity",
 							uModel.getCartSize() + " <h1>Card Not Valid! Please try again.</h1>");
 					request.getRequestDispatcher("./Payment.jspx").forward(request, response);
@@ -147,11 +147,14 @@ public class Start extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else {
-				request.setAttribute("validity", " ");
+			} else { // Allows credit card to go through
 
+				POBean poID = uModel.createPO();
+
+				request.setAttribute("validity", " ");
+				request.setAttribute("receiptNumber", poID.getId());
 				request.setAttribute("name", uModel.getFname() + " " + uModel.getLname());
-				request.setAttribute("receiptDate", "TODAY"); // NEED TO CHANGE
+				request.setAttribute("receiptDate", poID.getDay());
 				request.getRequestDispatcher("./Receipt.jspx").forward(request, response);
 
 			}

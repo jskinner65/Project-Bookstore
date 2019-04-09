@@ -30,7 +30,7 @@ public class AddressDAO {
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String name = r.getInt("id") + "";
-			AddressBean book = new AddressBean(r.getInt("id"), r.getString("email"), r.getString("street"),
+			AddressBean book = new AddressBean(r.getInt("id"), r.getInt("uid"), r.getString("street"),
 					r.getString("province"), r.getString("country"), r.getString("zip"), r.getString("phone"));
 			rv.put(name, book);
 		}
@@ -45,8 +45,8 @@ public class AddressDAO {
 		if (address == null) {
 			return false;
 		} else {
-			String query = "INSERT INTO address (id, email, street, province, country, zip, phone) Values (";
-			query = query + address.getId() + ", " + address.getEmail() + ", " + address.getStreet() + ", "
+			String query = "INSERT INTO address (id, uid, street, province, country, zip, phone) Values (";
+			query = query + address.getId() + ", " + address.getUid() + ", " + address.getStreet() + ", "
 					+ address.getProvince() + ", " + address.getCountry() + ", " + address.getZip() + ", "
 					+ address.getPhone() + ");";
 			Connection con = this.ds.getConnection();
@@ -55,6 +55,22 @@ public class AddressDAO {
 			return p.execute();
 
 		}
+	}
+
+	public int getShippingAddress(String email) throws SQLException {
+
+		String query = "select * from Address WHERE email='" + email + "' AND addresstype='Shipping';";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		int id = 0;
+		while (r.next()) {
+			id = r.getInt("id");
+		}
+		r.close();
+		p.close();
+		con.close();
+		return id;
 	}
 
 	public Map<String, AddressBean> retrieve(String email) throws SQLException {
@@ -66,7 +82,7 @@ public class AddressDAO {
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String name = r.getInt("id") + "";
-			AddressBean book = new AddressBean(r.getInt("id"), r.getString("email"), r.getString("street"),
+			AddressBean book = new AddressBean(r.getInt("id"), r.getInt("uid"), r.getString("street"),
 					r.getString("province"), r.getString("country"), r.getString("zip"), r.getString("phone"));
 			rv.put(name, book);
 		}
@@ -77,7 +93,7 @@ public class AddressDAO {
 
 	}
 
-	public boolean updateAddress(int id, String email, String street, String province, String country, String zip,
+	public boolean updateAddress(int id, int uid, String street, String province, String country, String zip,
 			String phone) throws SQLException {
 
 		try {

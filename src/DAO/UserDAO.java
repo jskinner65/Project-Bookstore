@@ -19,7 +19,7 @@ public class UserDAO {
 	}
 
 	public boolean addUser(UserBean newUser) throws SQLException {
-		String query = "INSERT INTO users (uid, fname, lname, email, password, privilege) VALUES (";
+		String query = "INSERT INTO user (uid, fname, lname, email, password, privilege) VALUES (";
 		query = query + newUser.getUid() + ", " + newUser.getFname() + ", " + newUser.getLname() + ", "
 				+ newUser.getEmail() + ", " + newUser.getPassword() + ", " + newUser.getPrivilege() + "); ";
 		Connection con = this.ds.getConnection();
@@ -29,7 +29,7 @@ public class UserDAO {
 	}
 
 	public String getPassword(String email) throws SQLException {
-		String query = "SELECT password FROM users WHERE email=" + email + ";";
+		String query = "SELECT password FROM user WHERE email=" + email + ";";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
@@ -45,9 +45,27 @@ public class UserDAO {
 
 	}
 
+	public UserBean getUserBean(int UID) throws SQLException {
+		UserBean user = null;
+		String query = "SELECT * FROM user WHERE uid=" + UID + ";";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+
+			user = new UserBean(r.getInt("uid"), r.getString("fname"), r.getString("lname"), r.getString("email"),
+					r.getString("password"), r.getString("privilege"));
+
+		}
+		r.close();
+		p.close();
+		con.close();
+		return user;
+	}
+
 	public Map<String, UserBean> getUserByZip(String zip) throws SQLException {
 		Map<String, UserBean> rv = new HashMap<String, UserBean>();
-		String query = "SELECT * FROM users, address WHERE users.email=address.email AND address.zip=" + zip + ";";
+		String query = "SELECT * FROM user, address WHERE users.email=address.email AND address.zip=" + zip + ";";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();

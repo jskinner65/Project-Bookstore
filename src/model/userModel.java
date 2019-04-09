@@ -1,8 +1,12 @@
 package model;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
+import beans.POBean;
+import beans.UserBean;
 import beans.VisitEventBean;
 
 public class userModel {
@@ -60,6 +64,25 @@ public class userModel {
 			subtotal += pair.getValue().getPrice() * pair.getValue().getQuantity();
 		}
 		return subtotal;
+	}
+
+	public POBean createPO() {
+		UserBean user = null;
+
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String dateString = format.format(new Date());
+		POBean poID = null;
+		try {
+			user = model.getUser(this.uid);
+			poID = model.createPO(user.getEmail(), user.getLname(), user.getFname(), "ORDERED",
+					model.getShippingID(user.getEmail()), dateString);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		return poID;
 	}
 
 	public int getUid() {
