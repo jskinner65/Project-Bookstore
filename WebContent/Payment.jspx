@@ -86,7 +86,7 @@
 				<div class="w3-container" style="color: #FF0000;" id="showcase">
 					<h1 class="w3-xxxlarge w3-text-blue"
 						style="display: inline; margin-right: 100px">
-						<font color="#313551"><b>Books to Buy (${sSize})</b></font>
+						<font color="#313551"><b>Books to Buy (${sSize}) ${validity }</b></font>
 					</h1>
 
 				</div>
@@ -176,10 +176,10 @@
 							</tr>
 							<tr>
 								<td style="border: 1px solid #ddd; padding: 8px;" colspan="2"><font
-									size="4" color="#750a30"><button type="submit"
+									size="4" color="#750a30"><a href="Start?currPage=receipt"><button type="submit"
 											class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">
 											<b>Pay Now</b>
-										</button></font></td>
+										</button></a></font></td>
 							</tr>
 
 

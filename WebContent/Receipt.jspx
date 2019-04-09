@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="StyleSheet" href="res/test.html" type="text/css"
+	title="cse4413" media="screen, print" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Poppins" />
+
+<title>Welcome to Mom and Pop's Bookstore</title>
+<script type="text/javascript" src="./res/browse.js">
+	;
+</script>
+
+</head>
+<body>
+	<form name='browseForm' action="Start" method="POST"
+		onsubmit="return validate();">
+		<table>
+			<tr>
+				<td width="300px">
+					<nav
+						class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+						style="z-index: 3; width: 300px; font-weight: bold;"
+						id="mySidebar">
+						<br /> <a href="javascript:void(0)" onclick="w3_close()"
+							class="w3-button w3-hide-large w3-display-topleft"
+							style="width: 100%; font-size: 22px">Close Menu</a>
+						<div class="w3-container">
+							<h3 class="w3-padding-64"></h3>
+						</div>
+					<div class="w3-bar-block">
+							<a href="Start?currPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+							<a href="Start?currPage=categories" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Categories</a> 
+							<a href="Start?currPage=cart" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Cart</a> 
+							<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a> 
+							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Account Management</a> 
+							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a> 
+							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+					</div>
+					</nav>
+				</td>
+				<td align="right">
+					<table><tr><td>Receipt #</td><td>${receiptNumber }</td></tr>
+					<tr><td>Date:</td><td>${receiptDate }</td></tr>
+					<tr><td>Name:</td><td>${name }</td></tr>
+					<tr><td>Address:</td><td> ${address }</td></tr>
+					
+					
+					</table>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+	</html>
+</jsp:root>

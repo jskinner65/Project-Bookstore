@@ -26,6 +26,7 @@ public class Start extends HttpServlet {
 	private String currPage;
 	NumberFormat formatter;
 	private static final double tax = 0.13;
+	private int cardTries = 0;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -132,7 +133,28 @@ public class Start extends HttpServlet {
 			}
 			request.getRequestDispatcher("./Payment.jspx").forward(request, response);
 
-		} else if (currPage.equals("team")) {
+		} else if (currPage.equals("receipt")) {
+			cardTries++;
+			if (cardTries == 3) {
+				cardTries = 0;
+				try {
+
+					request.setAttribute("validity",
+							uModel.getCartSize() + " <h1>Card Not Valid! Please try again.</h1>");
+					request.getRequestDispatcher("./Payment.jspx").forward(request, response);
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				request.setAttribute("validity", " ");
+
+				request.setAttribute("name", uModel.getFname() + " " + uModel.getLname());
+				request.setAttribute("receiptDate", "TODAY"); // NEED TO CHANGE
+				request.getRequestDispatcher("./Receipt.jspx").forward(request, response);
+
+			}
 		} else if (currPage.equals("login")) {
 
 		} else {

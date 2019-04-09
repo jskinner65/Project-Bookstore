@@ -10,6 +10,7 @@ public class userModel {
 	String usertype;
 	bookstoreModel model;
 	String fname;
+	String lname;
 	String email;
 	String salt;
 
@@ -59,5 +60,45 @@ public class userModel {
 			subtotal += pair.getValue().getPrice() * pair.getValue().getQuantity();
 		}
 		return subtotal;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+	public String getUsertype() {
+		return usertype;
+	}
+
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

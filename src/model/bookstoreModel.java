@@ -67,9 +67,10 @@ public class bookstoreModel {
 		} else {
 			for (Map.Entry<String, BookBean> pair : rv.entrySet()) {
 
-				result = result + "<tr><td>" + pair.getValue().getBid() + "</td><td><img src='"
-						+ pair.getValue().getPicture() + "' /></td><td>" + pair.getValue().getTitle() + "</td><td>"
-						+ pair.getValue().getPrice() + "</td></tr>";
+				result = result + "<tr><td>" + pair.getValue().getBid()
+						+ "</td><td><img width=\"100\" height=\"100\" src='" + pair.getValue().getPicture()
+						+ "' /></td><td>" + pair.getValue().getTitle() + "</td><td>" + pair.getValue().getPrice()
+						+ "</td></tr>";
 			}
 		}
 		result = result + "</table>";
