@@ -222,4 +222,4 @@ VALUES (4, 5, 'b002', '002', 'Amazing, greatly written.');
 
 /* - - - - - - - - - - - */
 
-
+alter table address add column city Varchar(30) after street;

@@ -223,19 +223,27 @@ public class Start extends HttpServlet {
 
 			}
 		} else if (currPage.equals("login")) {
-			String email = request.getParameter("loginName");
-			String pwd = request.getParameter("password");
-			UserBean user = null;
-			try {
-				user = bModel.getUserFromEmail(email);
-				if (PasswordUtils.verifyUserPassword(pwd, user.getPassword(), uModel.getSalt())) {
+			String req = request.getParameter("toCreate");
+			if ((req == null) || (req == "")) {
+				String email = request.getParameter("loginName");
+				String pwd = request.getParameter("password");
+				UserBean user = null;
+				try {
+					user = bModel.getUserFromEmail(email);
+					if (PasswordUtils.verifyUserPassword(pwd, user.getPassword(), uModel.getSalt())) {
+
+					}
+				} catch (SQLException e) {
+					request.setAttribute("response", "Invalid Username or Password!");
+					request.getRequestDispatcher("./LoginPage.jspx").forward(request, response);
 
 				}
-			} catch (SQLException e) {
-				request.setAttribute("response", "Invalid Username or Password!");
-				request.getRequestDispatcher("./LoginPage.jspx").forward(request, response);
+			} else {
 
+				request.getRequestDispatcher("./createUser.jspx").forward(request, response);
 			}
+		} else if (currPage.equals("addUser")) {
+			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
 
 		} else {
 			request.getRequestDispatcher("./index.html").forward(request, response);
