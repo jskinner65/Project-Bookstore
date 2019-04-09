@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import beans.AddressBean;
 import beans.POBean;
 import beans.UserBean;
+import model.PasswordUtils;
 import model.bookstoreModel;
 import model.userModel;
 
@@ -46,7 +47,7 @@ public class Start extends HttpServlet {
 		try {
 			uModel = new userModel();
 			bModel = uModel.getbookStoreModel();
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
@@ -222,6 +223,19 @@ public class Start extends HttpServlet {
 
 			}
 		} else if (currPage.equals("login")) {
+			String email = request.getParameter("loginName");
+			String pwd = request.getParameter("password");
+			UserBean user = null;
+			try {
+				user = bModel.getUserFromEmail(email);
+				if (PasswordUtils.verifyUserPassword(pwd, user.getPassword(), uModel.getSalt())) {
+
+				}
+			} catch (SQLException e) {
+				request.setAttribute("response", "Invalid Username or Password!");
+				request.getRequestDispatcher("./LoginPage.jspx").forward(request, response);
+
+			}
 
 		} else {
 			request.getRequestDispatcher("./index.html").forward(request, response);

@@ -20,7 +20,7 @@
 
 </head>
 <body background="res/Images/Books.jpg">
-	<form action='Start' method="GET">
+	<form action='Start?currPage=login' method="GET">
 		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
 			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
 			<br /> <a href="javascript:void(0)" onclick="w3_close()"
@@ -103,17 +103,17 @@
 						<label for="password" style="margin-right: 130px"
 							class="w3-medium w3-text-red"><br>
 							<font size="4" color="#e8e0d9"><b>Password : </b></font></br></label> <input
-							name="password" id="password" type="text" value=""
+							name="password" id="password" type="password" value=""
 							placeholder="Enter your password"></input></br></td>
 					</tr>
 
 
 					<tr>
 						<td><br>
-						<button action='Submit' name='signIn' label='signIn'
-								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
-								<font color="#701e6e"></font>Sign In
-							</button> </br></td>
+						<input type="Submit" action='Submit' name='signIn' label='signIn'
+								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge " value="Submit">
+								
+							</input> </br></td>
 					</tr>
 
 					<tr>

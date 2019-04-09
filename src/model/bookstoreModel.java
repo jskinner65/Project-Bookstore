@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.Date;
@@ -395,7 +396,7 @@ public class bookstoreModel {
 	}
 
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
-	public void test() throws SQLException {
+	public void test() throws SQLException, ClassNotFoundException, IOException {
 //		System.out.println(this.getAllBooks());
 //		System.out.println(this.getBookbyName("Keyboard"));
 //		System.out.println(this.getBookbyName("Mouse"));
@@ -433,15 +434,16 @@ public class bookstoreModel {
 //		}
 //
 //		String myPassword = "testing123";
-//		String salt = PasswordUtils.getSalt(50);
+//		String salt = PasswordUtils.getSalt(1000);
 //		String encPassword = PasswordUtils.generateSecurePassword(myPassword, salt);
+//		System.out.println("SALT   " + salt);
 //		System.out.println("MyPWORD: " + myPassword);
 //		System.out.println("EncrPWD: " + encPassword);
 //		System.out.println("Checking password '123': " + PasswordUtils.verifyUserPassword("123", encPassword, salt));
 //		System.out.println(
 //				"Checking password 'testing123': " + PasswordUtils.verifyUserPassword("testing123", encPassword, salt));
-		System.out.println(this.displayCart(1));
-
+//		System.out.println(this.displayCart(1));
+		userModel uModel = new userModel();
 	}
 
 	public void addToCartPlus(String bid, int uid) throws SQLException {
@@ -461,6 +463,11 @@ public class bookstoreModel {
 			VisitEventBean bean = new VisitEventBean(bid, bid, uid, "cart", 1, bookDAO.getPrice(bid));
 			visitEventDAO.addToCart(bean);
 		}
+
+	}
+
+	public UserBean getUserFromEmail(String email) throws SQLException {
+		return userDAO.getUserBean(email);
 
 	}
 

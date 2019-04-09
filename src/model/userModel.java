@@ -1,5 +1,9 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,12 +23,42 @@ public class userModel {
 	String email;
 	String salt;
 
-	public userModel() throws ClassNotFoundException {
+	public String getSalt() {
+		return salt;
+	}
+
+	public userModel() throws ClassNotFoundException, IOException {
 
 		uid = 2;// MUST CHANGE
 				// LATER____________________________________________________________________________***
 		model = new bookstoreModel();
-		salt = PasswordUtils.getSalt(50);
+		salt = ioGetSalt();
+	}
+
+	public String ioGetSalt() {
+		FileReader fr;
+		BufferedReader br = null;
+
+		try {
+			fr = new FileReader("salty.txt");
+			br = new BufferedReader(fr);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("File Not Found!!");
+		}
+
+		String salty = "";
+		try {
+			salty = br.readLine();
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(salty);
+
+		return salty;
+
 	}
 
 	public boolean checkPassword(String email, String password) throws SQLException {

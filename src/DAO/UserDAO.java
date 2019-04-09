@@ -81,4 +81,22 @@ public class UserDAO {
 		return rv;
 
 	}
+
+	public UserBean getUserBean(String email) throws SQLException {
+		UserBean user = null;
+		String query = "SELECT * FROM user WHERE email=" + email + ";";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+
+			user = new UserBean(r.getInt("uid"), r.getString("fname"), r.getString("lname"), r.getString("email"),
+					r.getString("password"), r.getString("privilege"));
+
+		}
+		r.close();
+		p.close();
+		con.close();
+		return user;
+	}
 }
