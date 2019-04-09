@@ -72,7 +72,7 @@ public class VisitEventDAO {
 			PreparedStatement p = con.prepareStatement(query);
 			ResultSet r = p.executeQuery();
 			while (r.next()) {
-				String name = r.getString("day") + r.getString("bid") + r.getInt("uid");
+				String name = r.getString("bid") + r.getInt("uid");
 
 				VisitEventBean book = new VisitEventBean(r.getString("day"), r.getString("bid"), r.getInt("uid"),
 						r.getString("eventtype"), r.getInt("quantity"), r.getDouble("price"));

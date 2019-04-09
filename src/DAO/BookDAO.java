@@ -116,4 +116,9 @@ public class BookDAO {
 		}
 		return true;
 	}
+
+	public double getPrice(String bid) throws SQLException {
+		Map<String, BookBean> beans = this.retrieveByBID(bid);
+		return beans.get(bid).getPrice();
+	}
 }

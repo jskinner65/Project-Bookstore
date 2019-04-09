@@ -76,6 +76,14 @@ public class Start extends HttpServlet {
 		} else if (currPage.equals("categories")) {
 			try {
 				String category = request.getParameter("category");
+				String bid = request.getParameter("addToCart");
+				if (bid == null) {
+					request.setAttribute("addedToCart", " ");
+
+				} else {
+					request.setAttribute("addedToCart", "Cart (" + uModel.getCartSize() + ")");
+					uModel.addToCart(bid);
+				}
 				if (category == null) {
 					request.setAttribute("results", (bModel.getAllBooks()));
 
@@ -107,7 +115,19 @@ public class Start extends HttpServlet {
 
 		} else if (currPage.equals("cart")) {
 			try {
+				// Adjusting Quantity begin
+				String bid = request.getParameter("bid");
+				String adjust = request.getParameter("adjust");
+				if (!(bid == null) && !(adjust == null)) {
+					if (adjust.equals("plus")) {
+						uModel.cartPlus(bid);
+					} else {
+						uModel.cartMinus(bid);
+					}
 
+				}
+
+				// Adjusting Quantity end
 				request.setAttribute("sSize", uModel.getCartSize());
 				double subtotal = uModel.getSubtotal();
 				request.setAttribute("subtotal", formatter.format(subtotal));

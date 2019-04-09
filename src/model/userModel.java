@@ -132,4 +132,19 @@ public class userModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public void cartPlus(String bid) throws SQLException {
+		model.cartPlus(bid, uid);
+
+	}
+
+	public void cartMinus(String bid) throws SQLException {
+		model.cartMinus(bid, uid);
+
+	}
+
+	public void addToCart(String bid) throws SQLException {
+		model.addToCartPlus(bid, uid);
+
+	}
 }

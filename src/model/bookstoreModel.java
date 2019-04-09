@@ -70,7 +70,8 @@ public class bookstoreModel {
 				result = result + "<tr><td>" + pair.getValue().getBid()
 						+ "</td><td><img width=\"100\" height=\"100\" src='" + pair.getValue().getPicture()
 						+ "' /></td><td>" + pair.getValue().getTitle() + "</td><td>" + pair.getValue().getPrice()
-						+ "</td></tr>";
+						+ "</td><td>  <a href=\"Start?currPage=categories&amp;addToCart=" + pair.getValue().getBid()
+						+ "\">Add to Cart</a></td></tr>";
 			}
 		}
 		result = result + "</table>";
@@ -226,6 +227,23 @@ public class bookstoreModel {
 	}
 
 //_________________________________________VISIT EVENTS_________________________________________
+	public void cartPlus(String bid, int uid) throws SQLException {
+		Map<String, VisitEventBean> visitEvents = visitEventDAO.retrieveCartByUID(uid);
+		VisitEventBean bean = visitEvents.get(bid + uid);
+		visitEventDAO.updateCart(bean.getDay(), bid, uid, bean.getQuantity() + 1);
+
+	}
+
+	public void cartMinus(String bid, int uid) throws SQLException {
+		Map<String, VisitEventBean> visitEvents = visitEventDAO.retrieveCartByUID(uid);
+		VisitEventBean bean = visitEvents.get(bid + uid);
+		if (bean.getQuantity() == 1) {
+			visitEventDAO.removeFromCart(bean.getDay(), bid, uid);
+		} else {
+			visitEventDAO.updateCart(bean.getDay(), bid, uid, bean.getQuantity() - 1);
+		}
+	}
+
 	public VisitEventDAO getVisitEventDAO() {
 		return visitEventDAO;
 	}
@@ -282,7 +300,10 @@ public class bookstoreModel {
 				result = result + "<tr><td colspan = \"2\">" + title + "</td></tr>";
 				result = result + "<tr><td><img height=\"100\" width=\"100\" src=\"" + image + "\"></td><td><p>"
 						+ description + "</td></tr>";
-				result = result + "<tr><td>Price: " + price + "</td><td>Quantity:  " + quantity + "</td></tr>";
+				result = result + "<tr><td>Price: " + price
+						+ "</td><td>Quantity: <a href=\"Start?currPage=cart&amp;adjust=plus&amp;bid=" + bean.getBid()
+						+ "\"><b>+</b></a> " + quantity + " <a href=\"Start?currPage=cart&amp;adjust=minus&amp;bid="
+						+ bean.getBid() + "\"><b>-</b></a></td></tr>";
 			}
 			result = result + "</table>";
 		}
@@ -355,6 +376,24 @@ public class bookstoreModel {
 		return userDAO.addUser(user);
 	}
 
+	public UserBean getUser(int UID) throws SQLException {
+		return userDAO.getUserBean(UID);
+	}
+
+	public AddressBean getShippingID(int uid) throws SQLException {
+		Map<String, AddressBean> addresses = addressDAO.retrieve(uid);
+		AddressBean bean = null;
+		if (addresses.size() > 0) {
+			for (Map.Entry<String, AddressBean> pair : addresses.entrySet()) {
+				bean = pair.getValue();
+				if (bean.getAddressType().equals("Shipping")) {
+					break;
+				}
+			}
+		}
+		return bean;
+	}
+
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 	public void test() throws SQLException {
 //		System.out.println(this.getAllBooks());
@@ -405,23 +444,26 @@ public class bookstoreModel {
 
 	}
 
-	public UserBean getUser(int UID) throws SQLException {
-		return userDAO.getUserBean(UID);
+	public void addToCartPlus(String bid, int uid) throws SQLException {
+		Map<String, VisitEventBean> visitEvents = null;
+		try {
+			visitEvents = visitEventDAO.retrieveCartByUID(uid);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if ((visitEvents.size() > 0) && (!(visitEvents.get(bid + uid) == null))) {
+			VisitEventBean bean = visitEvents.get(bid + uid);
+
+			visitEventDAO.updateCart(bean.getDay(), bid, uid, bean.getQuantity() + 1);
+
+		} else {
+			VisitEventBean bean = new VisitEventBean(bid, bid, uid, "cart", 1, bookDAO.getPrice(bid));
+			visitEventDAO.addToCart(bean);
+		}
+
 	}
 
-	public AddressBean getShippingID(int uid) throws SQLException {
-		Map<String, AddressBean> addresses = addressDAO.retrieve(uid);
-		AddressBean bean = null;
-		if (addresses.size() > 0) {
-			for (Map.Entry<String, AddressBean> pair : addresses.entrySet()) {
-				bean = pair.getValue();
-				if (bean.getAddressType().equals("Shipping")) {
-					break;
-				}
-			}
-		}
-		return bean;
-	}
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 
 }
