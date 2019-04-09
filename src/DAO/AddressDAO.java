@@ -57,9 +57,9 @@ public class AddressDAO {
 		}
 	}
 
-	public int getShippingAddress(String email) throws SQLException {
+	public int getShippingAddress(int uid) throws SQLException {
 
-		String query = "select * from Address WHERE email='" + email + "' AND addresstype='Shipping';";
+		String query = "select * from Address WHERE uid='" + uid + "' AND addresstype='Shipping';";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
@@ -73,9 +73,9 @@ public class AddressDAO {
 		return id;
 	}
 
-	public Map<String, AddressBean> retrieve(String email) throws SQLException {
+	public Map<String, AddressBean> retrieve(int uid) throws SQLException {
 
-		String query = "select * from Address WHERE email=" + email + ";";
+		String query = "select * from Address WHERE uid=" + uid + ";";
 		Map<String, AddressBean> rv = new HashMap<String, AddressBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);

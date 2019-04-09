@@ -72,10 +72,15 @@ public class userModel {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String dateString = format.format(new Date());
 		POBean poID = null;
+		int address = 0;
 		try {
 			user = model.getUser(this.uid);
-			poID = model.createPO(user.getEmail(), user.getLname(), user.getFname(), "ORDERED",
-					model.getShippingID(user.getEmail()), dateString);
+			try {
+				address = model.getShippingID(this.uid);
+			} catch (SQLException e) {
+				address = 1;
+			}
+			poID = model.createPO(user.getUid(), user.getLname(), user.getFname(), "ORDERED", address, dateString);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

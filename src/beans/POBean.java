@@ -2,17 +2,17 @@ package beans;
 
 public class POBean {
 	private int id;
-	private String email;
+	private int uid;
 	private String lname;
 	private String fname;
 	private String status;
 	private int address;
 	private String day;
 
-	public POBean(int id, String email, String lname, String fname, String status, int address, String day) {
+	public POBean(int id, int uid, String lname, String fname, String status, int address, String day) {
 		super();
 		this.id = id;
-		this.email = email;
+		this.setUid(uid);
 		this.lname = lname;
 		this.fname = fname;
 		this.status = status;
@@ -26,14 +26,6 @@ public class POBean {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getLname() {
@@ -74,6 +66,14 @@ public class POBean {
 
 	public void setDay(String day) {
 		this.day = day;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 }

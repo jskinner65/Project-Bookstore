@@ -148,8 +148,8 @@ public class bookstoreModel {
 		return addressDAO;
 	}
 
-	public Map<String, AddressBean> getAddressByEmail(String email) throws SQLException {
-		return addressDAO.retrieve(email);
+	public Map<String, AddressBean> getAddressByUID(int uid) throws SQLException {
+		return addressDAO.retrieve(uid);
 	}
 
 	public boolean updateAddress(int id, int uid, String street, String province, String country, String zip,
@@ -189,13 +189,13 @@ public class bookstoreModel {
 		return po.get(ID + "");
 	}
 
-	public Map<String, POBean> getPOByEmail(String email) throws SQLException {
-		return poDAO.retrieveByEmail(email);
+	public Map<String, POBean> getPOByEmail(int uid) throws SQLException {
+		return poDAO.retrieveByUID(uid);
 	}
 
-	public POBean createPO(String email, String lname, String fname, String status, int address, String day)
+	public POBean createPO(int uid, String lname, String fname, String status, int address, String day)
 			throws SQLException {
-		POBean newPO = new POBean(1, email, lname, fname, status, address, day);
+		POBean newPO = new POBean(1, uid, lname, fname, status, address, day);
 		int newPOID = poDAO.addPO(newPO);
 		newPO.setId(newPOID);
 		return newPO;
@@ -408,8 +408,8 @@ public class bookstoreModel {
 		return userDAO.getUserBean(UID);
 	}
 
-	public int getShippingID(String email) throws SQLException {
-		return addressDAO.getShippingAddress(email);
+	public int getShippingID(int uid) throws SQLException {
+		return addressDAO.getShippingAddress(uid);
 	}
 //TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING 
 

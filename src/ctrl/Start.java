@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.POBean;
+import beans.UserBean;
 import model.bookstoreModel;
 import model.userModel;
 
@@ -148,13 +149,26 @@ public class Start extends HttpServlet {
 					e.printStackTrace();
 				}
 			} else { // Allows credit card to go through
-
+				UserBean user = null;
 				POBean poID = uModel.createPO();
-
+				int uid = poID.getUid();
+				try {
+					user = bModel.getUser(uid);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				request.setAttribute("validity", " ");
-				request.setAttribute("receiptNumber", poID.getId());
-				request.setAttribute("name", uModel.getFname() + " " + uModel.getLname());
+				request.setAttribute("receiptNumber", uid);
+				request.setAttribute("name", user.getFname() + " " + user.getLname());
 				request.setAttribute("receiptDate", poID.getDay());
+				try {
+					request.setAttribute("address", bModel.getAddressByUID(uid));
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					request.setAttribute("address", "Shipping Address not on file.  Please update your profile");
+
+				}
 				request.getRequestDispatcher("./Receipt.jspx").forward(request, response);
 
 			}
