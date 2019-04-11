@@ -293,7 +293,7 @@ public class bookstoreModel {
 	public String displayCart(int uid) throws SQLException {
 		Map<String, VisitEventBean> cart = this.getVisitsCartByUID(uid);
 		String result = "<table>";
-		int i = 0;
+
 		NumberFormat formatter = NumberFormat.getCurrencyInstance();
 		if (cart.size() == 0) {
 			result = "<b> YOUR CART IS EMPTY </b>";
@@ -322,7 +322,7 @@ public class bookstoreModel {
 	public String displayCartSimple(int uid) throws SQLException {
 		Map<String, VisitEventBean> cart = this.getVisitsCartByUID(uid);
 		String result = "<table>";
-		int i = 0;
+
 		NumberFormat formatter = NumberFormat.getCurrencyInstance();
 		if (cart.size() == 0) {
 			result = "<b> YOUR CART IS EMPTY </b>";
@@ -451,7 +451,7 @@ public class bookstoreModel {
 //		System.out.println(
 //				"Checking password 'testing123': " + PasswordUtils.verifyUserPassword("testing123", encPassword, salt));
 //		System.out.println(this.displayCart(1));
-		userModel uModel = new userModel();
+
 	}
 
 	public void addToCartPlus(String bid, int uid) throws SQLException {

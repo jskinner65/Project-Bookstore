@@ -64,9 +64,6 @@ public class Start extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-//		String uri = request.getRequestURI();
-		String uri = request.getRequestURI();
-//		System.out.println("URI string is: " + uri);
 		currPage = request.getParameter("currPage");
 		if (currPage == null) {
 			currPage = "home";
