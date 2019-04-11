@@ -122,6 +122,54 @@
 			</div>
 		</table>
 
+		<table>
+			<tr>
+				<td>
+					<div style="margin-left: 310px">
+						<button id="janBtn">Zip Code</button>
+						<!--The Modal  -->
+						<div id="jan" class="modal">
+							<div class="modal-content">
+								<span class="close"> </span>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<script>
+				// Get the modal
+				var modal = document.getElementById('jan');
+
+				// Get the button that opens the modal
+				var btn = document.getElementById('janBtn');
+
+				// Get the span element that closes the modal
+				var span = document.getElementsByClassName("close")[0];
+
+				// When the user clicks the button, open the modal 
+				btn.onclick = function() {
+					modal.style.display = "block";
+				}
+
+				// When the user clicks on span (x), close the modal
+				span.onclick = function() {
+					modal.style.display = "none";
+				}
+
+				// When the user clicks anywhere outside of the modal, close it
+				window.onclick = function(event) {
+					if (event.target == modal) {
+						modal.style.display = "none";
+					}
+				}
+			</script>
+		</table>
+
+
+
+
+
+
 
 		<!--  	Trigger/Open The Modal -->
 		<!-- 	This is for the Modal that is divided based on each month -->
