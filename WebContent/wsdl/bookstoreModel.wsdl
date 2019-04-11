@@ -81,7 +81,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:port binding="impl:bookstoreModelSoapBinding" name="bookstoreModel">
 
-         <wsdlsoap:address location="http://localhost:8080/Bookstore/services/bookstoreModel"/>
+         <wsdlsoap:address location="http://localhost:8080/%28Project-Bookstore%29/services/bookstoreModel"/>
 
       </wsdl:port>
 

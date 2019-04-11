@@ -128,6 +128,9 @@ public class bookstoreModel {
 	public String getBYBIDExternal(String bid) throws SQLException {
 		String result = "";
 		BookBean bean = getByBIDBean(bid);
+		if (bean == null) {
+			return "(BOOK DOES NOT EXIST)";
+		}
 		result = "(bid: " + bid + ")  (Book Title:  " + bean.getTitle() + ")    (Book Description:  "
 				+ bean.getDescription() + ")  (Price:  " + bean.getPrice() + ")";
 		return result;
