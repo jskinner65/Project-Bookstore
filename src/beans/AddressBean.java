@@ -4,18 +4,20 @@ public class AddressBean {
 	private int id;
 	private int uid;
 	private String street;
+	private String city;
 	private String province;
 	private String country;
 	private String zip;
 	private String phone;
 	private String addressType;
 
-	public AddressBean(int id, int uid, String street, String province, String country, String zip, String phone,
-			String addressType) {
+	public AddressBean(int id, int uid, String street, String city, String province, String country, String zip,
+			String phone, String addressType) {
 		super();
 		this.id = id;
 		this.setUid(uid);
 		this.street = street;
+		this.setCity(city);
 		this.province = province;
 		this.country = country;
 		this.zip = zip;
@@ -73,8 +75,8 @@ public class AddressBean {
 
 	@Override
 	public String toString() {
-		String result = this.getId() + ", " + this.getStreet() + ", " + this.getProvince() + ", " + this.getCountry()
-				+ ", " + this.getPhone();
+		String result = this.getId() + ", " + this.getStreet() + ", " + this.getCity() + ", " + this.getProvince()
+				+ ", " + this.getCountry() + ", " + this.getPhone();
 		return result;
 	}
 
@@ -92,6 +94,14 @@ public class AddressBean {
 
 	public void setAddressType(String addressType) {
 		this.addressType = addressType;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 }

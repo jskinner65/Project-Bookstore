@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 import beans.AddressBean;
 
 public class AddressDAO {
-
+//AddressDAO 
 	DataSource ds;
 
 	public AddressDAO(DataSource passedDS) throws ClassNotFoundException {
@@ -31,8 +31,8 @@ public class AddressDAO {
 		while (r.next()) {
 			String name = r.getInt("id") + "";
 			AddressBean book = new AddressBean(r.getInt("id"), r.getInt("uid"), r.getString("street"),
-					r.getString("province"), r.getString("country"), r.getString("zip"), r.getString("phone"),
-					r.getString("addressType"));
+					r.getString("city"), r.getString("province"), r.getString("country"), r.getString("zip"),
+					r.getString("phone"), r.getString("addressType"));
 			rv.put(name, book);
 		}
 		r.close();
@@ -68,8 +68,8 @@ public class AddressDAO {
 		while (r.next()) {
 			String name = r.getInt("id") + "";
 			AddressBean book = new AddressBean(r.getInt("id"), r.getInt("uid"), r.getString("street"),
-					r.getString("province"), r.getString("country"), r.getString("zip"), r.getString("phone"),
-					r.getString("addressType"));
+					r.getString("city"), r.getString("province"), r.getString("country"), r.getString("zip"),
+					r.getString("phone"), r.getString("addressType"));
 			rv.put(name, book);
 		}
 		r.close();

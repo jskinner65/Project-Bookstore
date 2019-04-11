@@ -159,9 +159,9 @@ public class bookstoreModel {
 		return addressDAO.updateAddress(id, uid, street, province, country, zip, phone);
 	}
 
-	public boolean addAddress(int id, int uid, String street, String province, String country, String zip, String phone,
-			String addressType) throws SQLException {
-		AddressBean ab = new AddressBean(id, uid, street, province, country, zip, phone, addressType);
+	public boolean addAddress(int id, int uid, String street, String city, String province, String country, String zip,
+			String phone, String addressType) throws SQLException {
+		AddressBean ab = new AddressBean(id, uid, street, city, province, country, zip, phone, addressType);
 		return addressDAO.addAddress(ab);
 	}
 
