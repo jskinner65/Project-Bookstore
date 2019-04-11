@@ -20,8 +20,8 @@ public class UserDAO {
 
 	public boolean addUser(UserBean newUser) throws SQLException {
 		String query = "INSERT INTO user (uid, fname, lname, email, password, privilege) VALUES (";
-		query = query + newUser.getUid() + ", " + newUser.getFname() + ", " + newUser.getLname() + ", "
-				+ newUser.getEmail() + ", " + newUser.getPassword() + ", " + newUser.getPrivilege() + "); ";
+		query = query + newUser.getUid() + ", '" + newUser.getFname() + "', '" + newUser.getLname() + "', '"
+				+ newUser.getEmail() + "', '" + newUser.getPassword() + "', '" + newUser.getPrivilege() + "'); ";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		return p.execute();
@@ -84,7 +84,7 @@ public class UserDAO {
 
 	public UserBean getUserBean(String email) throws SQLException {
 		UserBean user = null;
-		String query = "SELECT * FROM user WHERE email=" + email + ";";
+		String query = "SELECT * FROM user WHERE email='" + email + "';";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();

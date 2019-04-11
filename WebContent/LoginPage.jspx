@@ -20,79 +20,84 @@
 
 </head>
 <body background="res/Images/Books.jpg">
-	<form action='Start?currPage=login' method="GET">
-		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
-			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
-			<br /> <a href="javascript:void(0)" onclick="w3_close()"
-				class="w3-button w3-hide-large w3-display-topleft"
-				style="width: 100%; font-size: 22px">Close Menu</a>
-			<div class="w3-container">
-				<h3 class="w3-padding-64"></h3>
-			</div>
-					<div class="w3-bar-block">
-							<a href="Start?currPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
-							<a href="Start?currPage=categories" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Categories</a> 
-							<a href="Start?currPage=cart" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Cart</a> 
-<!-- 							<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
-							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Account Management</a> 
-<!-- 							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
-<!-- 							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
-					</div>
-		</nav>
-		<table>
+	<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+		style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
+		<br /> <a href="javascript:void(0)" onclick="w3_close()"
+			class="w3-button w3-hide-large w3-display-topleft"
+			style="width: 100%; font-size: 22px">Close Menu</a>
+		<div class="w3-container">
+			<h3 class="w3-padding-64"></h3>
+		</div>
+		<div class="w3-bar-block">
+			<a href="Start?currPage=home" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Home</a> <a
+				href="Start?currPage=categories" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
+				href="Start?currPage=cart" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Cart</a>
+			<!-- 							<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
+			<a href="Start?currPage=login" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Account Management</a>
+			<!-- 							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
+			<!-- 							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
+		</div>
+	</nav>
+	<table>
 
-			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
+		<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
 
-				<!-- Header -->
-				<div class="w3-container" style="margin-top: 80px; color: Red;"
-					id="showcase">
-					<h1 class="w3-jumbo" style="display: inline">
-						<b>Swag EECS Bookstore</b>
-					</h1>
-				</div>
-
-				<form name='browseForm' action="Start" method="POST"
-					onsubmit="return validate();">
-					<table style="width: 100%">
-						
-						<tr align="right">
-							<td><input type='text' style="margin-right: 10px"
-								name='browse' placeholder='Browse Books'></input>
-								<input type="submit" action='Submit' name='createAccount'
-									label='createAccount' style="margin-top: 30px"
-									class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
-									
-								</input></td>
-						</tr>
-
-						<tr>
-							<td><p name='results'></p></td>
-						</tr>
-					</table>
-				</form>
+			<!-- Header -->
+			<div class="w3-container" style="margin-top: 80px; color: Red;"
+				id="showcase">
+				<h1 class="w3-jumbo" style="display: inline">
+					<b>Swag EECS Bookstore</b>
+				</h1>
 			</div>
 
-			<div class="w3-main" style="margin-left: 340px; margin-right: 100px">
-				<div class="w3-container" style="margin-top: 80px; color: Red;"
-					id="showcase">
-					<h1 class="w3-xxxlarge w3-text-blue"
-						style="display: inline; margin-right: 100px; color: Red">
-						<font size="10" color="#313551"><b>SIGN IN</b></font>
-					</h1>
+			<form name='browseForm' action="Start" method="POST"
+				onsubmit="return validate();">
+				<table style="width: 100%">
 
-				</div>
+					<tr align="right">
+						<td><input type='text' style="margin-right: 10px"
+							name='browse' placeholder='Browse Books'></input> <input
+							type="submit" action='Submit' name='createAccount'
+							label='createAccount' style="margin-top: 30px"
+							class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
+
+						</input></td>
+					</tr>
+
+					<tr>
+						<td><p name='results'></p></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+		<div class="w3-main" style="margin-left: 340px; margin-right: 100px">
+			<div class="w3-container" style="margin-top: 80px; color: Red;"
+				id="showcase">
+				<h1 class="w3-xxxlarge w3-text-blue"
+					style="display: inline; margin-right: 100px; color: Red">
+					<font size="10" color="#313551"><b>SIGN IN</b></font>
+				</h1>
+
 			</div>
-			
+		</div>
+
+		<form action='Start?currPage=login' method="post">
 			<div class="w3-main" style="margin-left: 300px; margin-right: 100px">
 				<div class="w3-container" style="margin-top: 0px; color: Red;"
 					id="showcase">
 					<h1 class="w3-container">
-						<font size="6" color="#750a30"><b>Access your account, write reviews and more</b></font>
+						<font size="6" color="#750a30"><b>Access your account,
+								write reviews and more</b></font>
 					</h1>
 
 					<tr>
 						<td><label for="loginName" style="margin-right: 100px"
-							class="w3-medium w3-text-red"><br>
+							class="w3-medium w3-text-red"><h2>${response}</h2> <br>
 							<font size="4" color="#e8e0d9"><b>Email address: </b></font></br></label> <input
 							name="loginName" id="loginName" type="text" value=""
 							placeholder="Enter your email ID"> </input></td>
@@ -111,80 +116,49 @@
 					<tr>
 						<td><br>
 						<input type="Submit" action='Submit' name='signIn' label='signIn'
-								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge " value="Submit">
-								
-							</input> </br></td>
+							class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge "
+							value="Submit"> </input> </br></td>
 					</tr>
 
-					<tr>
-						<td><br>
-						<button action='Submit' name='forgotPassword'
-								label='forgotPassword' style="margin-top: 10px"
-								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
-								<font color="#701e6e"> Forgot your password?</font>
-							</button> </br></td>
-					</tr>
-				</div>
-			</div>
-
-			<div class="w3-main" style="margin-left: 340px; margin-right: 100px">
-				<div class="w3-container" style="margin-top: 80px; color: Red;"
-					id="showcase">
-					<h1 class="w3-xxxlarge w3-text-blue"
-						style="display: inline; margin-right: 10px; color: Red">
-						<font size="10" color="#313551"><b>SIGN UP</b></font>
-
-					</h1>
-				</div>
-			</div>
-			<div class="w3-main" style="margin-left: 300px; margin-right: 100px">
-
-				<div class="w3-container" style="margin-top: 0px; color: Red;"
-					id="showcase">
-					<h1 class="w3-container">
-						<font size="6" color="#750a30"><b>Not a member yet?
-								Sign up now!</b></font>
-					</h1>
-					<!-- Get the first name, last name, email address, address, phone -->
-					<tr>
-						<td><label for="loginFirstName"
-							style="display: inline; margin-right: 5000px"
-							class="w3-medium w3-text-red"><font size="4"
-								color="#e8e0d9"><b>Your first name </b></font></label> <input
-							name="loginFirstName" id="loginFirstName" type="text" value=""
-							placeholder="Eg: Jane"> </input></td>
-					</tr>
-
-					<tr>
-						<td><label for="loginLastName" style="margin-right: 5000px"
-							class="w3-medium w3-text-red"><font size="4"
-								color="#e8e0d9"><br>
-								<b>Your last name</b></br></font></label> <input name="loginLastName"
-							id="loginLastName" type="text" value="" placeholder="Eg: Doe">
-						</input></td>
-					</tr>
-
-					<tr>
-						<td><label for="userPassword" style="margin-right: 5000px"
-							class="w3-medium w3-text-red"><font size="4"
-								color="#e8e0d9"><b>Password</b></font></label> <input
-							name="userPassword" id="userPassword" type="text" value="">
-						</input></td>
-					</tr>
-
-					<tr>
-						<td><br>
-						<button action='Submit' name='createAccount' label='createAccount'
-								style="margin-top: 30px"
-								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
-								<font color="#701e6e"></font> Create your account
-							</button> </br></td>
-					</tr>
 
 				</div>
 			</div>
-		</table>
-	</form>
+		</form>
+		<div class="w3-main" style="margin-left: 340px; margin-right: 100px">
+			<div class="w3-container" style="margin-top: 80px; color: Red;"
+				id="showcase">
+				<h1 class="w3-xxxlarge w3-text-blue"
+					style="display: inline; margin-right: 10px; color: Red">
+					<font size="10" color="#313551"><b>SIGN UP</b></font>
+
+				</h1>
+			</div>
+		</div>
+		<div class="w3-main" style="margin-left: 300px; margin-right: 100px">
+
+			<div class="w3-container" style="margin-top: 0px; color: Red;"
+				id="showcase">
+				<h1 class="w3-container">
+					<font size="6" color="#750a30"><b>Not a member yet? Sign
+							up now!</b></font>
+				</h1>
+				<!-- Get the first name, last name, email address, address, phone -->
+		<tr>
+			<td><br>
+			<form action='Start?currPage=addUser' method="post">
+
+					<button action='Submit' name='createAccount' label='createAccount'
+						style="margin-top: 30px"
+						class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
+						<font color="#701e6e"></font> Create your account
+					</button>
+				</form>
+				</br></td>
+		</tr>
+
+		</div>
+		</div>
+	</table>
 
 	<footer>
 		<table>

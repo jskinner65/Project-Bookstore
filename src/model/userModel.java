@@ -29,7 +29,7 @@ public class userModel {
 		uid = 2;// MUST CHANGE
 				// LATER____________________________________________________________________________***
 		model = new bookstoreModel();
-		// salt = ioGetSalt();
+		salt = ioGetSalt();
 	}
 
 	public String ioGetSalt() {

@@ -20,69 +20,74 @@
 
 </head>
 <body background="res/Images/Books.jpg">
-	<form action='Start?currPage=addUser' method="GET">
-		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
-			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
-			<br /> <a href="javascript:void(0)" onclick="w3_close()"
-				class="w3-button w3-hide-large w3-display-topleft"
-				style="width: 100%; font-size: 22px">Close Menu</a>
-			<div class="w3-container">
-				<h3 class="w3-padding-64"></h3>
-			</div>
-			<div class="w3-bar-block">
-				<a href="Start?currPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
-				<a href="Start?currPage=categories" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Categories</a> 
-				<a href="Start?currPage=cart" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Cart</a> 
-<!-- 				<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
-				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Account Management</a>
-<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
-<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
-			</div>
-		</nav>
-		<table>
+	<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+		style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
+		<br /> <a href="javascript:void(0)" onclick="w3_close()"
+			class="w3-button w3-hide-large w3-display-topleft"
+			style="width: 100%; font-size: 22px">Close Menu</a>
+		<div class="w3-container">
+			<h3 class="w3-padding-64"></h3>
+		</div>
+		<div class="w3-bar-block">
+			<a href="Start?currPage=home" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Home</a> <a
+				href="Start?currPage=categories" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
+				href="Start?currPage=cart" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Cart</a>
+			<!-- 				<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
+			<a href="Start?currPage=login" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Account Management</a>
+			<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
+			<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
+		</div>
+	</nav>
+	<table>
 
-			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
+		<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
 
-				<!-- Header -->
-				<div class="w3-container" style="margin-top: 80px; color: Red;"
-					id="showcase">
-					<h1 class="w3-jumbo" style="display: inline">
-						<b>Swag EECS Bookstore</b>
-					</h1>
-				</div>
-
-				<form name='browseForm' action="Start" method="POST"
-					onsubmit="return validate();">
-					<table style="width: 100%">
-
-						<tr align="right">
-							<td><input type='text' style="margin-right: 10px"
-								name='browse' placeholder='Browse Books'></input> <input
-								type="submit" action='Submit' name='createAccount'
-								label='createAccount' style="margin-top: 30px"
-								class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
-
-							</input></td>
-						</tr>
-
-						<tr>
-							<td><p name='results'></p></td>
-						</tr>
-					</table>
-				</form>
+			<!-- Header -->
+			<div class="w3-container" style="margin-top: 80px; color: Red;"
+				id="showcase">
+				<h1 class="w3-jumbo" style="display: inline">
+					<b>Swag EECS Bookstore</b>
+				</h1>
 			</div>
 
+			<form name='browseForm' action="Start" method="POST"
+				onsubmit="return validate();">
+				<table style="width: 100%">
 
-			<div class="w3-main" style="margin-left: 340px; margin-right: 100px">
-				<div class="w3-container" style="margin-top: 80px; color: Red;"
-					id="showcase">
-					<h1 class="w3-xxxlarge w3-text-blue"
-						style="display: inline; margin-right: 10px; color: Red">
-						<font size="10" color="#313551"><b>SIGN UP</b></font>
+					<tr align="right">
+						<td><input type='text' style="margin-right: 10px"
+							name='browse' placeholder='Browse Books'></input> <input
+							type="submit" action='Submit' name='createAccount'
+							label='createAccount' style="margin-top: 30px"
+							class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
 
-					</h1>
-				</div>
+						</input></td>
+					</tr>
+
+					<tr>
+						<td><p name='results'></p></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+		<div class="w3-main" style="margin-left: 340px; margin-right: 100px">
+			<div class="w3-container" style="margin-top: 80px; color: Red;"
+				id="showcase">
+				<h1 class="w3-xxxlarge w3-text-blue"
+					style="display: inline; margin-right: 10px; color: Red">
+					<font size="10" color="#313551"><b>SIGN UP</b></font>
+
+				</h1>
 			</div>
+		</div>
+
+		<form action='Start?currPage=addUser' method="post">
 			<div class="w3-main" style="margin-left: 300px; margin-right: 100px">
 
 				<div class="w3-container" style="margin-top: 0px; color: Red;"
@@ -97,21 +102,21 @@
 							<td><label for="loginFirstName"
 								class="w3-medium w3-text-red"><font size="4"
 									color="#e8e0d9"><b>Your first name </b></font></label></td>
-							<td><input name="loginFirstName" id="loginFirstName"
-								type="text" value="" placeholder="Eg: Jane"> </input></td>
+							<td><input name="fname" id="fname" type="text"
+								value="${fname }" placeholder="Eg: Jane"> </input></td>
 						</tr>
 
 						<tr>
 							<td><label for="loginLastName" class="w3-medium w3-text-red"><font
 									size="4" color="#e8e0d9"> <b>Your last name</b></font></label></td>
-							<td><input name="loginLastName" id="loginLastName"
-								type="text" value="" placeholder="Eg: Doe"> </input></td>
+							<td><input name="lname" id="lname" type="text"
+								value="${lname }" placeholder="Eg: Doe"> </input></td>
 						</tr>
 						<tr>
 							<td><label for="email" class="w3-medium w3-text-red"><font
 									size="4" color="#e8e0d9"><b>Email</b></font></label></td>
-							<td><input name="email" id="email" type="email" value="">
-							</input></td>
+							<td><input name="email" id="email" type="email"
+								value="${email }"> </input></td>
 						</tr>
 						<tr>
 							<td><label for="userPassword" class="w3-medium w3-text-red"><font
@@ -129,56 +134,103 @@
 						<tr>
 							<td colspan="2">
 								<h1 class="w3-container">
-									<font size="6" color="#750a30"><b>Address</b></font>
+									<font size="6" color="#750a30"><b>Billing Address</b></font>
 								</h1>
 							</td>
 						</tr>
 						<tr>
 							<td><label for="street" class="w3-medium w3-text-red"><font
 									size="4" color="#e8e0d9"><b>Street</b></font></label></td>
-							<td><input name="street" id="street" type="text" value="">
-							</input></td>
+							<td><input name="street" id="street" type="text"
+								value="${street }"> </input></td>
 						</tr>
 						<tr>
 							<td><label for="city" class="w3-medium w3-text-red"><font
 									size="4" color="#e8e0d9"><b>City</b></font></label></td>
-							<td><input name="city" id="city" type="text" value="">
-							</input></td>
+							<td><input name="city" id="city" type="text"
+								value="${city }"> </input></td>
 						</tr>
 						<tr>
 							<td><label for="province" class="w3-medium w3-text-red"><font
 									size="4" color="#e8e0d9"><b>Province</b></font></label></td>
 							<td><input name="province" id="province" type="text"
-								value=""> </input></td>
+								value="${province }"> </input></td>
 						</tr>
 						<tr>
 							<td><label for="country" class="w3-medium w3-text-red"><font
 									size="4" color="#e8e0d9"><b>Country</b></font></label></td>
-							<td><input name="country" id="country" type="text" value="">
-							</input></td>
+							<td><input name="country" id="country" type="text"
+								value="${country }"> </input></td>
 						</tr>
 						<tr>
 							<td><label for="zip" class="w3-medium w3-text-red"><font
 									size="4" color="#e8e0d9"><b>Zip / Postal Code</b></font></label></td>
-							<td><input name="zip" id="zip" type="text" value="">
+							<td><input name="zip" id="zip" type="text" value="${zip }">
 							</input></td>
 						</tr>
 						<tr>
 							<td><label for="phone" class="w3-medium w3-text-red"><font
 									size="4" color="#e8e0d9"><b>Phone</b></font></label></td>
-							<td><input name="phone" id="phone" type="text" value="">
-							</input></td>
+							<td><input name="phone" id="phone" type="text"
+								value="${phone }"> </input></td>
 						</tr>
-						<tr>
-							<td><label for="type" class="w3-medium w3-text-red"><font
-									size="4" color="#e8e0d9"><b>Type</b></font></label></td>
-							<td><input name="type" id="type" type="text"
-								value="Shipping"> </input></td>
-						</tr>
+
 						<tr>
 							<td colspan="2">
 								<h1 class="w3-container">
-									<font size="4" color="#750a30"><input type="submit" value="Submit" width="1--"></input></font>
+									<font size="6" color="#750a30"><b>Shipping Address</b></font>
+								</h1>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="sameAsBilling"
+								class="w3-medium w3-text-red"><font size="4"
+									color="#e8e0d9"><b>Same as Billing Address</b></font></label></td>
+							<td><input type="checkbox" id="sameAsBilling"></input></td>
+						</tr>
+						<tr>
+							<td><label for="street" class="w3-medium w3-text-red"><font
+									size="4" color="#e8e0d9"><b>Street</b></font></label></td>
+							<td><input name="sstreet" id="sstreet" type="text"
+								value="${sstreet }"> </input></td>
+						</tr>
+						<tr>
+							<td><label for="city" class="w3-medium w3-text-red"><font
+									size="4" color="#e8e0d9"><b>City</b></font></label></td>
+							<td><input name="scity" id="scity" type="text"
+								value="${scity }"> </input></td>
+						</tr>
+						<tr>
+							<td><label for="province" class="w3-medium w3-text-red"><font
+									size="4" color="#e8e0d9"><b>Province</b></font></label></td>
+							<td><input name="sprovince" id="sprovince" type="text"
+								value="${sprovince }"> </input></td>
+						</tr>
+						<tr>
+							<td><label for="country" class="w3-medium w3-text-red"><font
+									size="4" color="#e8e0d9"><b>Country</b></font></label></td>
+							<td><input name="scountry" id="scountry" type="text"
+								value="${scountry }"> </input></td>
+						</tr>
+						<tr>
+							<td><label for="zip" class="w3-medium w3-text-red"><font
+									size="4" color="#e8e0d9"><b>Zip / Postal Code</b></font></label></td>
+							<td><input name="szip" id="szip" type="text" value="${szip }">
+							</input></td>
+						</tr>
+						<tr>
+							<td><label for="phone" class="w3-medium w3-text-red"><font
+									size="4" color="#e8e0d9"><b>Phone</b></font></label></td>
+							<td><input name="sphone" id="sphone" type="text"
+								value="${sphone }"> </input></td>
+						</tr>
+
+						<tr>
+							<td colspan="2">
+								<h1 class="w3-container">
+									<font size="4" color="#750a30"><button action="Submit"
+											type="submit" value="Submit" name="create" width="1--">Create
+											Account</button></font>
 								</h1>
 							</td>
 						</tr>
@@ -186,8 +238,8 @@
 					</table>
 				</div>
 			</div>
-		</table>
-	</form>
+		</form>
+	</table>
 
 	<footer>
 		<table>

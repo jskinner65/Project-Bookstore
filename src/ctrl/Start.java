@@ -225,15 +225,23 @@ public class Start extends HttpServlet {
 
 			}
 		} else if (currPage.equals("login")) {
-			String req = request.getParameter("toCreate");
-			if ((req == null) || (req == "")) {
+			String req = request.getParameter("signIn");
+			if (!((req == null) || (req == ""))) {
 				String email = request.getParameter("loginName");
 				String pwd = request.getParameter("password");
 				UserBean user = null;
 				try {
 					user = bModel.getUserFromEmail(email);
 					if (PasswordUtils.verifyUserPassword(pwd, user.getPassword(), uModel.getSalt())) {
+						request.setAttribute("UserName", email);
+						request.setAttribute("response", "");
+						uModel.setUid(user.getUid());
+						request.getRequestDispatcher("./Browse.jspx").forward(request, response);
 
+					} else {
+
+						request.setAttribute("response", "Invalid Username or Password!");
+						request.getRequestDispatcher("./LoginPage.jspx").forward(request, response);
 					}
 				} catch (SQLException e) {
 					request.setAttribute("response", "Invalid Username or Password!");
@@ -241,12 +249,31 @@ public class Start extends HttpServlet {
 
 				}
 			} else {
+				request.getRequestDispatcher("./LoginPage.jspx").forward(request, response);
 
-				request.getRequestDispatcher("./createUser.jspx").forward(request, response);
 			}
 		} else if (currPage.equals("addUser")) {
-			request.getRequestDispatcher("./Browse.jspx").forward(request, response);
+			String create = request.getParameter("create");
+			if (!(create == null)) {
+				String fname = request.getParameter("fname");
+				String lname = request.getParameter("lname");
+				String email = request.getParameter("email");
+				String password = request.getParameter("userPassword");
+				if ((fname == "") || lname == "" || email == "" || password == "") {
+					request.setAttribute("response", " Please enter the required fields!");
+					request.getRequestDispatcher("./createUser.jspx").forward(request, response);
+				} else {
+					try {
+						uModel.createUser(fname, lname, email, password, "General");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						request.getRequestDispatcher("./createUser.jspx").forward(request, response);
+					}
+				}
 
+			} else {
+				request.getRequestDispatcher("./createUser.jspx").forward(request, response);
+			}
 		} else {
 			request.getRequestDispatcher("./index.html").forward(request, response);
 		}
