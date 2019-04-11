@@ -125,6 +125,14 @@ public class bookstoreModel {
 		return book.get(bid);
 	}
 
+	public String getBYBIDExternal(String bid) throws SQLException {
+		String result = "";
+		BookBean bean = getByBIDBean(bid);
+		result = "(bid: " + bid + ")  (Book Title:  " + bean.getTitle() + ")    (Book Description:  "
+				+ bean.getDescription() + ")  (Price:  " + bean.getPrice() + ")";
+		return result;
+	}
+
 	public boolean addBook(String bid, String title, String picture, double price, String category, String courseCode,
 			String courseTitle, String description) throws SQLException {
 		if (bookDAO.retrieveAll().containsKey(bid)) {
