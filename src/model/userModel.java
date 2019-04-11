@@ -1,8 +1,5 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -32,33 +29,12 @@ public class userModel {
 		uid = 2;// MUST CHANGE
 				// LATER____________________________________________________________________________***
 		model = new bookstoreModel();
-	//	salt = ioGetSalt();
+		// salt = ioGetSalt();
 	}
 
 	public String ioGetSalt() {
-		FileReader fr;
-		BufferedReader br = null;
-
-		try {
-			fr = new FileReader("salty.txt");
-			br = new BufferedReader(fr);
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("File Not Found!!");
-		}
-
-		String salty = "";
-		try {
-		//	salty = br.readLine();
-			br.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(salty);
-
+		String salty = "Fn6qsAc8FWxWUmlEOIliO6EscUAWMEh9bT55HlllQIRVU5AeRcJYN2fWdOrNzNePVCgorivXhgnJIEpMK30XjisrRcKlaBzMKlqHiIsa5GOD6xWPGVlGDjaYyAWSWhxlBMSPFHHhhxLw6Bx3QVuKYYM0PCBXgbhCGQaZ6sWMIskymz8JQ6tw9oqasfesOdtJUmCyyWtnIhJirOMGot5IJqLvuTY5Q7zmoL9H6I9Cstu4MYPfrCJn4gzkQK3ADE4SNbMeVVsHstX6dZxnWyL3gFDOlepVVShbilw2ZlehHbX8jdmR3GEV69cgNx1AVO1a0h3orLbmGLHNpSAQzsep9B6OIj1VpkcfkfL5HVyqpEoSW5kdUUq1MG9vKi2dlgkFvSNSSOefLH2pOV9UtQBejBTwqCafLCVs8TmXVyvSW18IGj0o3u5sr4YI8a8zyAAA7bowlmN3877ci0cqpPZ443tqV3tAMO9PajU8jl8pIgTc4TmI8jwK6kU6duiHa8qOHnnICGNEH6IHjVMqHW4zF6UfCn0xZR3YHtHBJSQwF5UiLWG0EHXS3ycSm1CP5Lf1JPVO5fpWvjTrrfpjuhSWYr90y0YN1tL9KeHx03a32ekjenTxfLLMNX7cHmq8DulzzQRmUy1BIlq6hEmibEmzAEnhcKEEpXH63ZfhAUWEdxDafomAZnRXwBwQM75U4tnpzCL79B6TSIAR5jUXEmMxobFxCJSxfhQwkTX4TpZxfr49LHMc0IsNWvoGBWNtPlAZKPJ18Va5VK7NmxvkgvBfYWDZERFOm3V0ukrxP366ECEG47ESqy27lqAMH6LfAGmK8NnRfwWBF3hXCyL0wfvcRGS7lQPYghTs8lswLZtctRu5vMSLQ4PK4dtFOuoTmilaAjmjNBttzMqBU3Thnatb0rN1fRfGDTjOKlnXckNEYAk7NhmI4NnosHDDLWjc3g8vv00W5O97D2nHAnztnXrAvK7aNUh8WW9j7lSShZfs";
 		return salty;
-
 	}
 
 	public boolean checkPassword(String email, String password) throws SQLException {
