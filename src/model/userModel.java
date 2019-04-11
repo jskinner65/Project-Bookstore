@@ -32,7 +32,7 @@ public class userModel {
 		uid = 2;// MUST CHANGE
 				// LATER____________________________________________________________________________***
 		model = new bookstoreModel();
-		salt = ioGetSalt();
+	//	salt = ioGetSalt();
 	}
 
 	public String ioGetSalt() {
@@ -49,7 +49,7 @@ public class userModel {
 
 		String salty = "";
 		try {
-			salty = br.readLine();
+		//	salty = br.readLine();
 			br.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

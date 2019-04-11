@@ -23,7 +23,7 @@
 </head>
 <body background="">
 	<form action='Start' method="GET">
-		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+			<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
 			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
 			<br /> <a href="javascript:void(0)" onclick="w3_close()"
 				class="w3-button w3-hide-large w3-display-topleft"
@@ -37,50 +37,36 @@
 					href="Start?currPage=categories" onclick="w3_close()"
 					class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
 					href="Start?currPage=cart" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Cart</a> <a
-					href="Start?currPage=team" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Our Team</a> <a
-					href="Start?currPage=login" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Account Management</a>
+					class="w3-bar-item w3-button w3-hover-white">Cart</a>
+				<!-- 				<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
 				<a href="Start?currPage=login" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Membership</a> <a
-					href="Start?currPage=login" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Contact</a>
+					class="w3-bar-item w3-button w3-hover-white">Account Management</a>
+				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
+				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
 			</div>
 		</nav>
 		<table>
 
 			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
 
-				<!-- Header -->
-				<div class="w3-container" style="margin-top: 80px; color: Red;"
-					id="showcase">
-					<h1 class="w3-jumbo" style="display: inline">
-						<b>Swag EECS Bookstore</b>
-					</h1>
-				</div>
-
-				<form name='browseForm' action="Start" method="POST"
-					onsubmit="return validate();">
-					<table style="width: 100%">
-
-						<tr align="right">
-							<td><input type='text' style="margin-right: 10px"
-								name='browse' placeholder='Browse Books'></input>
-								<button action='Submit' name='createAccount'
-									label='createAccount' style="margin-top: 30px"
-									class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
-									<font color="#701e6e"></font> Search
-								</button></td>
-						</tr>
-
-						<tr>
-							<td><p name='results'></p></td>
-						</tr>
-					</table>
-				</form>
+			<!-- Header -->
+			<div class="w3-container" style="margin-top: 80px" id="showcase">
+				<h1 class="w3-jumbo">
+					<b>Swag EECS Bookstore</b>
+				</h1>
 			</div>
-
+		<form name='browseForm' action="Start?currPage=search" method="POST"
+			onsubmit="Start?currPage=search">
+			<table style="width: 100%">
+				<tr align="right">
+					<td><input type='text' name='searchField' id="searchField"
+						placeholder='Browse Books'></input><input type="submit" name="Search" value="Search"></input></td> 
+				</tr>
+				<tr>
+					<td><p id='resultDisplay'></p></td>
+				</tr>
+			</table>
+		</form>
 			<div class="w3-light-grey"
 				style="margin-left: 320px; margin-right: 90px">
 				<div class="w3-container" style="color: #FF0000;" id="showcase">
@@ -224,7 +210,7 @@
 				</div>
 
 			</div>
-
+</div>
 		</table>
 	</form>
 

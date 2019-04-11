@@ -20,6 +20,7 @@
 <script type="text/javascript" src="./res/browse.js">
 	;
 </script>
+
 <style>
 body {
 	margin: 0;
@@ -49,93 +50,130 @@ body {
 	background-color: #4CAF50;
 	color: white;
 }
-</style>
-</head>
-<body>
-	Browse
 
+body, h1, h2, h3, h4, h5 {
+	font-family: "Poppins", sans-serif
+}
+
+body {
+	font-size: 16px;
+}
+
+.w3-half img {
+	margin-bottom: -6px;
+	margin-top: 16px;
+	opacity: 0.8;
+	cursor: pointer
+}
+
+.w3-half img:hover {
+	opacity: 1
+}
+</style>
+
+</head>
+<body background="">
+	<form action='Start' method="GET">
+
+		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
+			<br /> <a href="javascript:void(0)" onclick="w3_close()"
+				class="w3-button w3-hide-large w3-display-topleft"
+				style="width: 100%; font-size: 22px">Close Menu</a>
+			<div class="w3-container">
+				<h3 class="w3-padding-64"></h3>
+			</div>
+			<div class="w3-bar-block">
+				<a href="Start?currPage=home" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Home</a> <a
+					href="Start?currPage=categories" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
+					href="Start?currPage=cart" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Cart</a>
+				<!-- 				<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
+				<a href="Start?currPage=login" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Account Management</a>
+				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
+				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
+			</div>
+		</nav>
 		<table>
 
-			<tr>
-				<td width="300px">
-					<div class="topnav" style="margin-left: 340px; margin-right: 100px">
-						<a href="Start?currPage=categories">All Books</a> <a
-							href="Start?currPage=categories&amp;category=EECS1">EECS -
-							First Year</a> <a href="Start?currPage=categories&amp;category=EECS2">EECS
-							- Second Year</a> <a
-							href="Start?currPage=categories&amp;category=EECS3">EECS -
-							Third Year</a> <a href="Start?currPage=categories&amp;category=EECS4">EECS
-							- Fourth Year</a>
-					</div>
+			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
 
-					<nav
-						class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
-						style="z-index: 3; width: 300px; font-weight: bold;"
-						id="mySidebar">
-						<br /> <a href="javascript:void(0)" onclick="w3_close()"
-							class="w3-button w3-hide-large w3-display-topleft"
-							style="width: 100%; font-size: 22px">Close Menu</a>
-						<div class="w3-container">
-							<h3 class="w3-padding-64"></h3>
+			<!-- Header -->
+			<div class="w3-container" style="margin-top: 80px" id="showcase">
+				<h1 class="w3-jumbo">
+					<b>Swag EECS Bookstore</b>
+				</h1>
+			</div>
+		<form name='browseForm' action="Start?currPage=search" method="POST"
+			onsubmit="Start?currPage=search">
+			<table style="width: 100%">
+				<tr align="right">
+					<td><input type='text' name='searchField' id="searchField"
+						placeholder='Browse Books'></input><input type="submit" name="Search" value="Search"></input></td> 
+				</tr>
+				<tr>
+					<td><p id='resultDisplay'></p></td>
+				</tr>
+			</table>
+		</form>
+
+
+				<tr>
+					<td width="300px">
+						<div class="topnav"
+							style="margin-left: 340px; margin-right: 100px">
+							<a href="Start?currPage=categories">All Books</a> <a
+								href="Start?currPage=categories&amp;category=EECS1">EECS -
+								First Year</a> <a
+								href="Start?currPage=categories&amp;category=EECS2">EECS -
+								Second Year</a> <a
+								href="Start?currPage=categories&amp;category=EECS3">EECS -
+								Third Year</a> <a
+								href="Start?currPage=categories&amp;category=EECS4">EECS -
+								Fourth Year</a>
 						</div>
-						<div class="w3-bar-block">
-							<a href="Start?currPage=home" onclick="w3_close()"
-								class="w3-bar-item w3-button w3-hover-white">Home</a> <a
-								href="Start?currPage=categories" onclick="w3_close()"
-								class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
-								href="Start?currPage=cart" onclick="w3_close()"
-								class="w3-bar-item w3-button w3-hover-white">Cart</a> <a
-								href="Start?currPage=team" onclick="w3_close()"
-								class="w3-bar-item w3-button w3-hover-white">Our Team</a> <a
-								href="Start?currPage=login" onclick="w3_close()"
-								class="w3-bar-item w3-button w3-hover-white">Account
-								Management</a> <a href="Start?currPage=login" onclick="w3_close()"
-								class="w3-bar-item w3-button w3-hover-white">Membership</a> <a
-								href="Start?currPage=login" onclick="w3_close()"
-								class="w3-bar-item w3-button w3-hover-white">Contact</a>
-						</div>
-					</nav>
-				</td>
-				<td>
-					<!-- Header -->
-					<div class="w3-container" style="margin-top: 80px" id="showcase">
-						<h1 class="w3-jumbo">
-							<b>Swag EECS Bookstore</b>
-						</h1>
-					</div>
-					<form name='browseForm' action="Start?currPage=search"
-						method="POST" onsubmit="Start?currPage=search">
-						<table style="width: 100%">
-							<tr align="right">
-								<td><input type='text' name='searchField' id="searchField"
-									placeholder='Browse Books'></input><input type="submit"
-									name="Search" value="Search"></input></td>
-							</tr>
-							<tr>
-								<td><p id='resultDisplay'></p></td>
-							</tr>
-						</table>
-					</form>
-					<table>
+					</td>
+				</tr>
+
+
+
+
+
+				<form name='browseForm' action="Start" method="POST"
+					onsubmit="return validate();">
+					<table style="width: 100%">
+
+
+
 						<tr>
-							<td>
-								<h1>${addedToCart }</h1> <label for="bookID"
-								style="margin-right: 100px" class="w3-medium w3-text-red" /><br />
-							</td>
-						</tr>
-						<tr>
-							<td>	<font size="4" color="#e8e0d9"><b>Display Books: </b></font>
-						
-						
-							</td>
-						</tr>
-						<tr>
-							<td align="right">${results}</td>
+							<td><p name='results'></p></td>
 						</tr>
 					</table>
-				</td>
-			</tr>
+				</form>
+			</div>
+
+
+			<table style="margin-left: 350px">
+				<tr>
+					<td>
+						<h1>${addedToCart }</h1> <label for="bookID"
+						class="w3-medium w3-text-red" /><br />
+					</td>
+				</tr>
+				<tr>
+					<td><font size="4" color="#000000"><b>Display
+								Books: </b></font></td>
+				</tr>
+				<tr>
+					<td align="right">${results}</td>
+				</tr>
+			</table>
+
 		</table>
+	</form>
 </body>
 	</html>
 </jsp:root>

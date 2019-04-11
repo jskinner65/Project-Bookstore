@@ -61,31 +61,37 @@
 </style>
 </head>
 <body background="res/Images/Books.jpg">
-	<form action='' method="GET">
-		<!-- 		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" -->
-		<!-- 			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar"> -->
-		<!-- 			<br /> <a href="javascript:void(0)" onclick="w3_close()" -->
-		<!-- 				class="w3-button w3-hide-large w3-display-topleft" -->
-		<!-- 				style="width: 100%; font-size: 22px">Close Menu</a> -->
-		<!-- 			<div class="w3-container"> -->
-		<!-- 				<h3 class="w3-padding-64"></h3> -->
-		<!-- 			</div> -->
-		<!-- 					<div class="w3-bar-block"> -->
-		<!-- 							<a href="Start?currPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>  -->
-		<!-- 							<a href="Start?currPage=categories" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Categories</a>  -->
-		<!-- 							<a href="Start?currPage=cart" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Cart</a>  -->
-		<!-- 							<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
-		<!-- 							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Account Management</a>  -->
-		<!-- 							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
-		<!-- 							<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
-		<!-- 					</div> -->
-		<!-- 		</nav> -->
+	<form action='Start' method="GET">
+
+		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
+			<br /> <a href="javascript:void(0)" onclick="w3_close()"
+				class="w3-button w3-hide-large w3-display-topleft"
+				style="width: 100%; font-size: 22px">Close Menu</a>
+			<div class="w3-container">
+				<h3 class="w3-padding-64"></h3>
+			</div>
+			<div class="w3-bar-block">
+				<a href="Start?currPage=home" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Home</a> <a
+					href="Start?currPage=categories" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
+					href="Start?currPage=cart" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Cart</a>
+				<!-- 				<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
+				<a href="Start?currPage=login" onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white">Account Management</a>
+				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
+				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
+			</div>
+		</nav>
 		<table>
 
 			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
-				<div class="w3-container" style="margin-top: 80px; color: Red;"
-					id="showcase">
-					<h1 class="w3-jumbo" style="display: inline">
+
+				<!-- Header -->
+				<div class="w3-container" style="margin-top: 80px" id="showcase">
+					<h1 class="w3-jumbo">
 						<b>Swag EECS Bookstore</b>
 					</h1>
 				</div>
@@ -97,6 +103,9 @@
 							<td><input type='text' name='browse'
 								placeholder='Browse Books'></input><input type='submit'
 								name='Search' value='Search'></input></td>
+						</tr>
+						<tr>
+							<td><p id='resultDisplay'></p></td>
 						</tr>
 						<!--  Books sold each month.  We were talking about having a start and end date and the search by zip. -->
 						<tr align="right">
@@ -119,7 +128,7 @@
 		<table>
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="janBtn">January</button>
 						<!--The Modal  -->
 						<div id="jan" class="modal">
@@ -160,7 +169,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="febBtn">February</button>
 						<!--The Modal  -->
 						<div id="feb" class="modal">
@@ -201,7 +210,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="marBtn">March</button>
 						<!--The Modal  -->
 						<div id="mar" class="modal">
@@ -242,7 +251,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="aprBtn">April</button>
 						<!--The Modal  -->
 						<div id="apr" class="modal">
@@ -283,7 +292,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="mayBtn">May</button>
 						<!--The Modal  -->
 						<div id="may" class="modal">
@@ -324,7 +333,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="junBtn">June</button>
 						<!--The Modal  -->
 						<div id="jun" class="modal">
@@ -365,7 +374,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="julBtn">July</button>
 						<!--The Modal  -->
 						<div id="jul" class="modal">
@@ -406,7 +415,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="augBtn">August</button>
 						<!--The Modal  -->
 						<div id="aug" class="modal">
@@ -447,7 +456,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="sepBtn">September</button>
 						<!--The Modal  -->
 						<div id="sep" class="modal">
@@ -488,7 +497,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="octBtn">October</button>
 						<!--The Modal  -->
 						<div id="oct" class="modal">
@@ -529,7 +538,7 @@
 
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="novBtn">November</button>
 						<!--The Modal  -->
 						<div id="nov" class="modal">
@@ -569,7 +578,7 @@
 			</script>
 			<tr>
 				<td>
-					<div>
+					<div style="margin-left: 310px">
 						<button id="decBtn">December</button>
 						<!--The Modal  -->
 						<div id="dec" class="modal">

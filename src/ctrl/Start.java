@@ -74,7 +74,9 @@ public class Start extends HttpServlet {
 		if (currPage.equals("home")) {
 
 			request.getRequestDispatcher("./index.html").forward(request, response);
-		} else if (currPage.equals("categories")) {
+		} else if (currPage.equals("categories"))
+
+		{
 			try {
 				String category = request.getParameter("category");
 				String bid = request.getParameter("addToCart");
