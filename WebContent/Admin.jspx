@@ -23,6 +23,11 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <style>
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 .modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -58,6 +63,25 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+body, h1, h2, h3, h4, h5 {
+	font-family: "Poppins", sans-serif
+}
+
+body {
+	font-size: 16px;
+}
+
+.w3-half img {
+	margin-bottom: -6px;
+	margin-top: 16px;
+	opacity: 0.8;
+	cursor: pointer
+}
+
+.w3-half img:hover {
+	opacity: 1
+}
+
 </style>
 </head>
 <body background="res/Images/Books.jpg">
