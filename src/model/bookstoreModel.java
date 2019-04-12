@@ -73,7 +73,10 @@ public class bookstoreModel {
 						+ "</td><td><img width=\"100\" height=\"100\" src='" + pair.getValue().getPicture()
 						+ "' /></td><td>" + pair.getValue().getTitle() + "</td><td>" + pair.getValue().getPrice()
 						+ "</td><td>  <a href=\"Start?currPage=categories&amp;addToCart=" + pair.getValue().getBid()
-						+ "\">Add to Cart</a></td></tr>";
+						+ "\">Add to Cart</a></td>"
+						+ "<td>  <a href=\"Start?currPage=categories&amp;addReview=" + pair.getValue().getBid()
+						+ "\">Add Review</a></td>"
+						+ "</tr>";
 			}
 		}
 		result = result + "</table>";
