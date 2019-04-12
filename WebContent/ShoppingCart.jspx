@@ -98,29 +98,32 @@ body {
 		<table>
 
 			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
-	<form name="logout" action="Start?currPage=logout" method="post"
-			onsubmit="Start?currPage=logout">
-			<div align="right"><button value="Logout">Logout</button></div>
-		</form>
+				<form name="logout" action="Start?currPage=logout" method="post"
+					onsubmit="Start?currPage=logout">
+					<div align="right">
+						<button value="Logout">Logout</button>
+					</div>
+				</form>
 				<!-- Header -->
-			<!-- Header -->
-			<div class="w3-container" style="margin-top: 80px" id="showcase">
-				<h1 class="w3-jumbo">
-					<b>Swag EECS Bookstore</b>
-				</h1>
-			</div>
-			<form name='browseForm' action="Start?currPage=search" method="POST"
-				onsubmit="Start?currPage=search">
-				<table style="width: 100%">
-					<tr align="right">
-						<td><input type='text' name='searchField' id="searchField"
-							placeholder='Browse Books'></input><input type="submit" name="Search" value="Search"></input></td> 
-					</tr>
-					<tr>
-						<td><p id='resultDisplay'></p></td>
-					</tr>
-				</table>
-			</form>
+				<!-- Header -->
+				<div class="w3-container" style="margin-top: 80px" id="showcase">
+					<h1 class="w3-jumbo">
+						<b>Swag EECS Bookstore</b>
+					</h1>
+				</div>
+				<form name='browseForm' action="Start?currPage=search" method="POST"
+					onsubmit="Start?currPage=search">
+					<table style="width: 100%">
+						<tr align="right">
+							<td><input type='text' name='searchField' id="searchField"
+								placeholder='Browse Books'></input><input type="submit"
+								name="Search" value="Search"></input></td>
+						</tr>
+						<tr>
+							<td><p id='resultDisplay'></p></td>
+						</tr>
+					</table>
+				</form>
 			</div>
 
 			<div class="w3-light-grey"
@@ -144,9 +147,10 @@ body {
 					<td>
 						<button action='Submit' name='home' label='home'
 							class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
-							<font color="#701e6e"></font><a href="Start?currPage=home"><b>Continue Shopping</b></a>
+							<font color="#701e6e"></font><a href="Start?currPage=home"><b>Continue
+									Shopping</b></a>
 						</button>
-
+	<form action="Start?currPage=payment" method="post">
 						<table class="w3-light-grey" align="right"
 							style="margin-left: 900px; margin-right: -30px; border-collapse: collapse; width: 30%">
 							<tr>
@@ -160,25 +164,27 @@ body {
 							<tr>
 								<td style="border: 1px solid #ddd; padding: 8px;"><font
 									size="4" color="#750a30"> + HST:</font></td>
-								<td style="border: 1px solid #ddd; padding: 8px; text-align: right;"><font
+								<td
+									style="border: 1px solid #ddd; padding: 8px; text-align: right;"><font
 									size="4" color="#750a30">${tax }</font></td>
 							</tr>
 							<tr>
 								<td style="border: 1px solid #ddd; padding: 8px;"><font
 									size="4" color="#750a30"><b>Total:</b></font></td>
-								<td style="border: 1px solid #ddd; padding: 8px; text-align: right;"><font
+								<td
+									style="border: 1px solid #ddd; padding: 8px; text-align: right;"><font
 									size="4" color="#750a30"><b>${total}</b></font></td>
 							</tr>
 
 							<tr>
 								<td style="border: 1px solid #ddd; padding: 8px;" colspan="2"><font
-									size="4" color="#750a30"><a href="Start?currPage=payment"><button type="submit"
-							class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">
-							<b>Proceed to Checkout</b>
-						</button></a></font></td>
+									size="4" color="#750a30"><button type="submit"
+												class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">
+												<b>Proceed to Checkout</b>
+											</button></font></td>
 							</tr>
 						</table>
-				
+</form>
 					</td>
 
 
@@ -220,7 +226,7 @@ body {
 
 		</table>
 	</form>
-	
+
 
 	<footer>
 		<table>

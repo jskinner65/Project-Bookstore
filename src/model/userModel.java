@@ -85,28 +85,21 @@ public class userModel {
 	}
 
 	public POBean createPO() {
-		UserBean user = null;
 
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String dateString = format.format(new Date());
 		POBean poID = null;
 		AddressBean address = null;
-		try {
-			user = model.getUser(this.uid);
-			try {
-				address = model.getShippingID(this.uid);
-				poID = model.createPO(user.getUid(), user.getLname(), user.getFname(), "ORDERED", address.getId(),
-						dateString);
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		try {
+			address = model.getShippingID(this.uid);
+			poID = model.createPO(user.getUid(), user.getLname(), user.getFname(), "ORDERED", address.getId(),
+					dateString);
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-
 		}
+
 		return poID;
 	}
 

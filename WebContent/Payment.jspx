@@ -22,60 +22,63 @@
 
 </head>
 <body background="">
-	<form action='Start' method="GET">
-			<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
-			style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
-			<br /> <a href="javascript:void(0)" onclick="w3_close()"
-				class="w3-button w3-hide-large w3-display-topleft"
-				style="width: 100%; font-size: 22px">Close Menu</a>
-			<div class="w3-container">
-				<h3 class="w3-padding-64"></h3>
-			</div>
-			<div class="w3-bar-block">
-				<a href="Start?currPage=home" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Home</a> <a
-					href="Start?currPage=categories" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
-					href="Start?currPage=cart" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Cart</a>
-				<!-- 				<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
-				<a href="Start?currPage=login" onclick="w3_close()"
-					class="w3-bar-item w3-button w3-hover-white">Account Management</a>
-				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
-				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
-			</div>
-		</nav>
-		<table>
+	<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding"
+		style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
+		<br /> <a href="javascript:void(0)" onclick="w3_close()"
+			class="w3-button w3-hide-large w3-display-topleft"
+			style="width: 100%; font-size: 22px">Close Menu</a>
+		<div class="w3-container">
+			<h3 class="w3-padding-64"></h3>
+		</div>
+		<div class="w3-bar-block">
+			<a href="Start?currPage=home" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Home</a> <a
+				href="Start?currPage=categories" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
+				href="Start?currPage=cart" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Cart</a>
+			<!-- 				<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
+			<a href="Start?currPage=login" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Account Management</a>
+			<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
+			<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
+		</div>
+	</nav>
+	<table>
 
-			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
-	<form name="logout" action="Start?currPage=logout" method="post"
-			onsubmit="Start?currPage=logout">
-			<div align="right"><button value="Logout">Logout</button></div>
-		</form>
+		<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
+			<form name="logout" action="Start?currPage=logout" method="post"
+				onsubmit="Start?currPage=logout">
+				<div align="right">
+					<button value="Logout">Logout</button>
+				</div>
+			</form>
 			<!-- Header -->
 			<div class="w3-container" style="margin-top: 80px" id="showcase">
 				<h1 class="w3-jumbo">
 					<b>Swag EECS Bookstore</b>
 				</h1>
 			</div>
-		<form name='browseForm' action="Start?currPage=search" method="POST"
-			onsubmit="Start?currPage=search">
-			<table style="width: 100%">
-				<tr align="right">
-					<td><input type='text' name='searchField' id="searchField"
-						placeholder='Browse Books'></input><input type="submit" name="Search" value="Search"></input></td> 
-				</tr>
-				<tr>
-					<td><p id='resultDisplay'></p></td>
-				</tr>
-			</table>
-		</form>
+			<form name='browseForm' action="Start?currPage=search" method="POST"
+				onsubmit="Start?currPage=search">
+				<table style="width: 100%">
+					<tr align="right">
+						<td><input type='text' name='searchField' id="searchField"
+							placeholder='Browse Books'></input><input type="submit"
+							name="Search" value="Search"></input></td>
+					</tr>
+					<tr>
+						<td><p id='resultDisplay'></p></td>
+					</tr>
+				</table>
+			</form>
 			<div class="w3-light-grey"
 				style="margin-left: 320px; margin-right: 90px">
 				<div class="w3-container" style="color: #FF0000;" id="showcase">
 					<h1 class="w3-xxxlarge w3-text-blue"
 						style="display: inline; margin-right: 100px">
-						<font color="#313551"><b>Books to Buy (${sSize}) ${validity }</b></font>
+						<font color="#313551"><b>Books to Buy (${sSize})
+								${validity }</b></font>
 					</h1>
 
 				</div>
@@ -91,90 +94,92 @@
 					<td>
 						<button action='Submit' name='home' label='home'
 							class="w3-medium w3-text-black,w3-button w3-khaki w3-round-xlarge ">
-							<font color="#701e6e"></font><a href="Start?currPage=home"><b>Continue Shopping</b></a>
+							<font color="#701e6e"></font><a href="Start?currPage=home"><b>Continue
+									Shopping</b></a>
 						</button>
+						<form action="Start?currPage=receipt" method="post">
+							<table class="w3-light-grey" align="right"
+								style="margin-left: 900px; margin-right: -30px; border-collapse: collapse; width: 30%">
+								<tr>
+									<th
+										style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font
+										size="6" color="#750a30">Payment Details: Total =
+											${total }</font></th>
+								</tr>
+								<tr>
+									<td style="border: 1px solid #ddd; padding: 8px;"><font
+										size="4" color="#750a30">Enter Payment Information:</font> <i
+										class="fa fa-cc-visa" style="font-size: 48px; color: red"></i>
 
-						<table class="w3-light-grey" align="right"
-							style="margin-left: 900px; margin-right: -30px; border-collapse: collapse; width: 30%">
-							<tr>
-								<th
-									style="border: 1px solid #ddd; padding: 8px; text-align: left;"><font
-									size="6" color="#750a30">Payment Details: Total =
-										${total }</font></th>
-							</tr>
-							<tr>
-								<td style="border: 1px solid #ddd; padding: 8px;"><font
-									size="4" color="#750a30">Enter Payment Information:</font> <i
-									class="fa fa-cc-visa" style="font-size: 48px; color: red"></i>
+										<i class="fa fa-cc-mastercard"
+										style="font-size: 48px; color: red"></i><i
+										class="fa fa-cc-paypal" style="font-size: 48px; color: red"></i>
+										<i class="fa fa-cc-amex" style="font-size: 48px; color: red"></i>
+									</td>
+								</tr>
+								<tr>
+									<td class="w3-section"><font color="#750a30"> <input
+											class="w3-input w3-border" type="text" name="ccard"
+											placeholder="Credit Card Number"></input></font></td>
 
-									<i class="fa fa-cc-mastercard"
-									style="font-size: 48px; color: red"></i><i
-									class="fa fa-cc-paypal" style="font-size: 48px; color: red"></i>
-									<i class="fa fa-cc-amex" style="font-size: 48px; color: red"></i>
-								</td>
-							</tr>
-							<tr>
-								<td class="w3-section"><font color="#750a30"> <input
-										class="w3-input w3-border" type="text" name="ccard"
-										placeholder="Credit Card Number"></input></font></td>
+								</tr>
+								<tr>
+									<td class="w3-section"><font color="#750a30"> <input
+											class="w3-input w3-border" type="text" name="cname"
+											placeholder="Name on Credit Card"></input></font></td>
 
-							</tr>
-							<tr>
-								<td class="w3-section"><font color="#750a30"> <input
-										class="w3-input w3-border" type="text" name="cname"
-										placeholder="Name on Credit Card"></input></font></td>
+								</tr>
 
-							</tr>
+								<tr>
+									<td class="w3-section"><font color="#750a30"> <input
+											class="w3-input w3-border" type="text" name="cvc"
+											placeholder="CVC"></input></font></td>
 
-							<tr>
-								<td class="w3-section"><font color="#750a30"> <input
-										class="w3-input w3-border" type="text" name="cvc"
-										placeholder="CVC"></input></font></td>
+								</tr>
 
-							</tr>
+								<tr>
+									<td class="w3-section" id="expiration-date"
+										style="border: 1px solid #ddd; padding: 8px;"><font
+										size="4" color="#750a30"> <label><b>Expiration
+													Date:</b></label></font><br /> <select
+										style="border: 1px solid #ddd; padding: 8px; width: 50%">
+											<option value="01">January</option>
+											<option value="02">February</option>
+											<option value="03">March</option>
+											<option value="04">April</option>
+											<option value="05">May</option>
+											<option value="06">June</option>
+											<option value="07">July</option>
+											<option value="08">August</option>
+											<option value="09">September</option>
+											<option value="10">October</option>
+											<option value="11">November</option>
+											<option value="12">December</option>
+									</select> <select
+										style="border: 1px solid #ddd; padding: 8px; width: 50%">
+											<option value="16">2016</option>
+											<option value="17">2017</option>
+											<option value="18">2018</option>
+											<option value="19">2019</option>
+											<option value="20">2020</option>
+											<option value="21">2021</option>
+											<option value="22">2022</option>
+									</select></td>
 
-							<tr>
-								<td class="w3-section" id="expiration-date"
-									style="border: 1px solid #ddd; padding: 8px;"><font
-									size="4" color="#750a30"> <label><b>Expiration
-												Date:</b></label></font><br /> <select
-									style="border: 1px solid #ddd; padding: 8px; width: 50%">
-										<option value="01">January</option>
-										<option value="02">February</option>
-										<option value="03">March</option>
-										<option value="04">April</option>
-										<option value="05">May</option>
-										<option value="06">June</option>
-										<option value="07">July</option>
-										<option value="08">August</option>
-										<option value="09">September</option>
-										<option value="10">October</option>
-										<option value="11">November</option>
-										<option value="12">December</option>
-								</select> <select
-									style="border: 1px solid #ddd; padding: 8px; width: 50%">
-										<option value="16">2016</option>
-										<option value="17">2017</option>
-										<option value="18">2018</option>
-										<option value="19">2019</option>
-										<option value="20">2020</option>
-										<option value="21">2021</option>
-										<option value="22">2022</option>
-								</select></td>
-
-							</tr>
-							<tr>
-								<td style="border: 1px solid #ddd; padding: 8px;" colspan="2"><font
-									size="4" color="#750a30"><a href="Start?currPage=receipt"><button type="submit"
-											class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">
-											<b>Pay Now</b>
-										</button></a></font></td>
-							</tr>
+								</tr>
+								<tr>
+									<td style="border: 1px solid #ddd; padding: 8px;" colspan="2"><font
+										size="4" color="#750a30"><a
+											href="Start?currPage=receipt"><button type="submit"
+													class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">
+													<b>Pay Now</b>
+												</button></a></font></td>
+								</tr>
 
 
 
-						</table>
-
+							</table>
+						</form>
 					</td>
 
 
@@ -213,9 +218,8 @@
 				</div>
 
 			</div>
-</div>
-		</table>
-	</form>
+		</div>
+	</table>
 
 	<footer>
 		<table>

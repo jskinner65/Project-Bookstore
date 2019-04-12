@@ -158,8 +158,10 @@
 
 		</div>
 		</div>
+	
 	</table>
-
+	<form action='Admin' method="post">
+<table align="right"><tr><td><button type="submit" name="submit">Admin Login</button></td></tr></table></form>
 	<footer>
 		<table>
 			<div class="w3-container"
