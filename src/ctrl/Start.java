@@ -23,8 +23,6 @@ import model.userModel;
 @WebServlet("/Start")
 public class Start extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String searchField = "";
-	private int sCartSize = 0;
 	private bookstoreModel bModel;
 	private userModel uModel;
 	private String currPage;
@@ -43,7 +41,6 @@ public class Start extends HttpServlet {
 	public void init() throws ServletException {
 		// ServletContext context = getServletContext();
 		formatter = NumberFormat.getCurrencyInstance();
-
 		try {
 			uModel = new userModel();
 			bModel = uModel.getbookStoreModel();
@@ -63,7 +60,6 @@ public class Start extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		currPage = request.getParameter("currPage");
 		if (currPage == null) {
 			currPage = "home";
@@ -158,13 +154,17 @@ public class Start extends HttpServlet {
 				request.setAttribute("tax", formatter.format(subtotal * tax));
 				request.setAttribute("total", formatter.format(subtotal * (1 + tax)));
 				request.setAttribute("displaysimple", uModel.getCartSimple());
-				System.out.println(uModel.getCartSimple());
+
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.getRequestDispatcher("./Payment.jspx").forward(request, response);
-
+			if (uModel.getUid() > 1000000000) {
+				request.setAttribute("response", "Please Login");
+				request.getRequestDispatcher("./LoginPage.jspx").forward(request, response);
+			} else {
+				request.getRequestDispatcher("./Payment.jspx").forward(request, response);
+			}
 		} else if (currPage.equals("receipt")) {
 			cardTries++;
 			if (cardTries == 3) { // Denies third try on credit card
@@ -221,6 +221,14 @@ public class Start extends HttpServlet {
 				request.getRequestDispatcher("./Receipt.jspx").forward(request, response);
 
 			}
+		} else if (currPage.equals("logout")) {
+			try {
+				uModel = new userModel();
+				bModel = uModel.getbookStoreModel();
+				request.getRequestDispatcher("./index.html").forward(request, response);
+			} catch (ClassNotFoundException e) {
+				request.getRequestDispatcher("./index.html").forward(request, response);
+			}
 		} else if (currPage.equals("login")) {
 			String req = request.getParameter("signIn");
 			if (!((req == null) || (req == ""))) {
@@ -231,9 +239,10 @@ public class Start extends HttpServlet {
 					user = bModel.getUserFromEmail(email);
 					if (PasswordUtils.verifyUserPassword(pwd, user.getPassword(), uModel.getSalt())) {
 						request.setAttribute("UserName", email);
+						getServletContext().setAttribute("UserName", email);
 						request.setAttribute("response", "");
 						uModel.setUid(user.getUid());
-						request.getRequestDispatcher("./Browse.jspx").forward(request, response);
+						request.getRequestDispatcher("./index.html").forward(request, response);
 
 					} else {
 

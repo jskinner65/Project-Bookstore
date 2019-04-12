@@ -48,7 +48,10 @@
 		<table>
 
 			<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
-
+	<form name="logout" action="Start?currPage=logout" method="post"
+			onsubmit="Start?currPage=logout">
+			<div align="right"><button value="Logout">Logout</button></div>
+		</form>
 			<!-- Header -->
 			<div class="w3-container" style="margin-top: 80px" id="showcase">
 				<h1 class="w3-jumbo">

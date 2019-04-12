@@ -127,4 +127,11 @@ public class VisitEventDAO {
 		PreparedStatement p = con.prepareStatement(query);
 		return p.execute();
 	}
+
+	public boolean changeUserVisit(int uid, int uid2) throws SQLException {
+		String query = "update visitevent set uid=" + uid2 + " WHERE uid=" + uid + ";";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		return p.execute();
+	}
 }

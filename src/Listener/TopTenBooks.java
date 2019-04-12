@@ -22,102 +22,107 @@ import beans.TopTenBean;
  *
  */
 @WebListener
-public class TopTenBooks implements HttpSessionListener, HttpSessionAttributeListener, HttpSessionActivationListener, HttpSessionBindingListener, HttpSessionIdListener {
+public class TopTenBooks implements HttpSessionListener, HttpSessionAttributeListener, HttpSessionActivationListener,
+		HttpSessionBindingListener, HttpSessionIdListener {
 
-    /**
-     * Default constructor. 
-     */
-	
+	/**
+	 * Default constructor.
+	 */
+
 	DataSource ds;
-    public TopTenBooks() {
-        // TODO Auto-generated constructor stub
-    }
+
+	public TopTenBooks() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-     * @see HttpSessionListener#sessionCreated(HttpSessionEvent)
-     */
-    public void sessionCreated(HttpSessionEvent arg0)  { 
-         // TODO Auto-generated method stub
-    }
+	 * @see HttpSessionListener#sessionCreated(HttpSessionEvent)
+	 */
 
 	/**
-     * @see HttpSessionBindingListener#valueBound(HttpSessionBindingEvent)
-     */
-    public void valueBound(HttpSessionBindingEvent arg0)  { 
-         // TODO Auto-generated method stub
-    }
+	 * @see HttpSessionBindingListener#valueBound(HttpSessionBindingEvent)
+	 */
+	public void valueBound(HttpSessionBindingEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 
 	/**
-     * @see HttpSessionIdListener#sessionIdChanged(HttpSessionEvent, String)
-     */
-    public void sessionIdChanged(HttpSessionEvent arg0, String arg1)  { 
-         // TODO Auto-generated method stub
-    }
+	 * @see HttpSessionIdListener#sessionIdChanged(HttpSessionEvent, String)
+	 */
+	public void sessionIdChanged(HttpSessionEvent arg0, String arg1) {
+		// TODO Auto-generated method stub
+	}
 
 	/**
-     * @see HttpSessionListener#sessionDestroyed(HttpSessionEvent)
-     */
-    public void sessionDestroyed(HttpSessionEvent arg0)  { 
-         // TODO Auto-generated method stub
-    }
+	 * @see HttpSessionListener#sessionDestroyed(HttpSessionEvent)
+	 */
+	public void sessionDestroyed(HttpSessionEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 
 	/**
-     * @see HttpSessionActivationListener#sessionDidActivate(HttpSessionEvent)
-     */
-    public void sessionDidActivate(HttpSessionEvent arg0)  { 
-         // TODO Auto-generated method stub
-    }
+	 * @see HttpSessionActivationListener#sessionDidActivate(HttpSessionEvent)
+	 */
+	public void sessionDidActivate(HttpSessionEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 
 	/**
-     * @see HttpSessionAttributeListener#attributeAdded(HttpSessionBindingEvent)
-     */
-    public void attributeAdded(HttpSessionBindingEvent arg0)  { 
-         // TODO Auto-generated method stub
-    }
+	 * @see HttpSessionAttributeListener#attributeAdded(HttpSessionBindingEvent)
+	 */
+	public void attributeAdded(HttpSessionBindingEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 
 	/**
-     * @see HttpSessionAttributeListener#attributeRemoved(HttpSessionBindingEvent)
-     */
-    public void attributeRemoved(HttpSessionBindingEvent arg0)  { 
-         // TODO Auto-generated method stub
-    }
+	 * @see HttpSessionAttributeListener#attributeRemoved(HttpSessionBindingEvent)
+	 */
+	public void attributeRemoved(HttpSessionBindingEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 
 	/**
-     * @see HttpSessionAttributeListener#attributeReplaced(HttpSessionBindingEvent)
-     */
-    public void attributeReplaced(HttpSessionBindingEvent arg0)  { 
-         // TODO Auto-generated method stub
-    
-    	POitemDAO g = null;
+	 * @see HttpSessionAttributeListener#attributeReplaced(HttpSessionBindingEvent)
+	 */
+	public void attributeReplaced(HttpSessionBindingEvent arg0) {
+		// TODO Auto-generated method stub
+
+		POitemDAO g = null;
 		try {
 			g = new POitemDAO((DataSource) arg0);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	try {
-    		Map<String, TopTenBean> topTenListener = new HashMap<String, TopTenBean>();
-    		topTenListener = g.retrieveTen();
+		try {
+			Map<String, TopTenBean> topTenListener = new HashMap<String, TopTenBean>();
+			topTenListener = g.retrieveTen();
 			arg0.getSession().getServletContext().setAttribute("topTenListener", topTenListener);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
-    }
+
+	}
 
 	/**
-     * @see HttpSessionActivationListener#sessionWillPassivate(HttpSessionEvent)
-     */
-    public void sessionWillPassivate(HttpSessionEvent arg0)  { 
-         // TODO Auto-generated method stub
-    }
+	 * @see HttpSessionActivationListener#sessionWillPassivate(HttpSessionEvent)
+	 */
+	public void sessionWillPassivate(HttpSessionEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 
 	/**
-     * @see HttpSessionBindingListener#valueUnbound(HttpSessionBindingEvent)
-     */
-    public void valueUnbound(HttpSessionBindingEvent arg0)  { 
-         // TODO Auto-generated method stub
-    }
-	
+	 * @see HttpSessionBindingListener#valueUnbound(HttpSessionBindingEvent)
+	 */
+	public void valueUnbound(HttpSessionBindingEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void sessionCreated(HttpSessionEvent se) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

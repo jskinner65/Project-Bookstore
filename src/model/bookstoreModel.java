@@ -3,6 +3,7 @@ package model;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -471,7 +472,9 @@ public class bookstoreModel {
 			visitEventDAO.updateCart(bean.getDay(), bid, uid, bean.getQuantity() + 1);
 
 		} else {
-			VisitEventBean bean = new VisitEventBean(bid, bid, uid, "cart", 1, bookDAO.getPrice(bid));
+			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+			String dateString = format.format(new Date());
+			VisitEventBean bean = new VisitEventBean(dateString, bid, uid, "cart", 1, bookDAO.getPrice(bid));
 			visitEventDAO.addToCart(bean);
 		}
 
@@ -479,6 +482,11 @@ public class bookstoreModel {
 
 	public UserBean getUserFromEmail(String email) throws SQLException {
 		return userDAO.getUserBean(email);
+
+	}
+
+	public void changeUsersVisitEvent(int uid, int uid2) throws SQLException {
+		visitEventDAO.changeUserVisit(uid, uid2);
 
 	}
 

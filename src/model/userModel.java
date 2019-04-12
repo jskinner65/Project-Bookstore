@@ -15,10 +15,18 @@ public class userModel {
 	int uid;
 	String usertype;
 	bookstoreModel model;
-	String fname;
-	String lname;
-	String email;
 	String salt;
+	UserBean user;
+
+	public UserBean getUser() {
+		return user;
+	}
+
+	public void setUser(UserBean user) throws SQLException {
+		this.user = user;
+		model.changeUsersVisitEvent(uid, user.getUid());
+		uid = user.getUid();
+	}
 
 	public String getSalt() {
 		return salt;
@@ -26,8 +34,7 @@ public class userModel {
 
 	public userModel() throws ClassNotFoundException, IOException {
 
-		uid = 2;// MUST CHANGE
-				// LATER____________________________________________________________________________***
+		uid = (int) (Math.random() * 1000000000) + 1000000000; // Set a blank user;
 		model = new bookstoreModel();
 		salt = ioGetSalt();
 	}
@@ -117,30 +124,6 @@ public class userModel {
 
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
-	}
-
-	public String getFname() {
-		return fname;
-	}
-
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-
-	public String getLname() {
-		return lname;
-	}
-
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public void cartPlus(String bid) throws SQLException {
