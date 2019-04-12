@@ -223,7 +223,7 @@ public class Start extends HttpServlet {
 			}
 		} else if (currPage.equals("logout")) {
 			try {
-				uModel = new userModel();
+				uModel = new userModel(); // Create new model when logout
 				bModel = uModel.getbookStoreModel();
 				request.getRequestDispatcher("./index.html").forward(request, response);
 			} catch (ClassNotFoundException e) {
