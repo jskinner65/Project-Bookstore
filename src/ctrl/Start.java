@@ -240,6 +240,7 @@ public class Start extends HttpServlet {
 						getServletContext().setAttribute("UserName", email);
 						request.setAttribute("response", "");
 						uModel.setUid(user.getUid());
+						uModel.setUser(user);
 						request.getRequestDispatcher("./index.html").forward(request, response);
 
 					} else {
@@ -263,17 +264,55 @@ public class Start extends HttpServlet {
 				String lname = request.getParameter("lname");
 				String email = request.getParameter("email");
 				String password = request.getParameter("userPassword");
+
 				if ((fname == "") || lname == "" || email == "" || password == "") {
 					request.setAttribute("response", " Please enter the required fields!");
 					request.getRequestDispatcher("./createUser.jspx").forward(request, response);
 				} else {
 					try {
+						String street;
+						String city;
+						String province;
+						String country;
+						String zip;
+						String phone;
+						String same;
 						uModel.createUser(fname, lname, email, password, "General");
+
+						same = request.getParameter("sameAsBilling");
+						street = request.getParameter("street");
+						city = request.getParameter("city");
+						province = request.getParameter("province");
+						country = request.getParameter("country");
+						zip = request.getParameter("zip");
+						int uid = uModel.getUid();
+						phone = request.getParameter("phone");
+						if (same == null) {
+							String sstreet = request.getParameter("sstreet");
+							String scity = request.getParameter("scity");
+							String sprovince = request.getParameter("sprovince");
+							String scountry = request.getParameter("scountry");
+							String szip = request.getParameter("szip");
+							String sphone = request.getParameter("sphone");
+							if (sstreet == "" || scity == "" || sprovince == "" || scountry == "" || szip == ""
+									|| sphone == "") {
+								bModel.addAddress(0, uid, street, city, province, country, zip, phone, "Shipping");
+
+							} else {
+								bModel.addAddress(0, uid, sstreet, scity, sprovince, scountry, szip, sphone,
+										"Shipping");
+							}
+						} else {
+							bModel.addAddress(0, uid, street, city, province, country, zip, phone, "Shipping");
+
+						}
+						bModel.addAddress(0, uid, street, city, province, country, zip, phone, "Billing");
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						request.getRequestDispatcher("./createUser.jspx").forward(request, response);
 					}
 				}
+				request.getRequestDispatcher("Start?currPage=categories").forward(request, response);
 
 			} else {
 				request.getRequestDispatcher("./createUser.jspx").forward(request, response);

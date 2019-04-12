@@ -186,7 +186,7 @@
 							<td><label for="sameAsBilling"
 								class="w3-medium w3-text-red"><font size="4"
 									color="#e8e0d9"><b>Same as Billing Address</b></font></label></td>
-							<td><input type="checkbox" id="sameAsBilling"></input></td>
+							<td><input type="checkbox" name="sameAsBilling" id="sameAsBilling"></input></td>
 						</tr>
 						<tr>
 							<td><label for="street" class="w3-medium w3-text-red"><font

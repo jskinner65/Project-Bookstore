@@ -52,9 +52,17 @@ public class userModel {
 
 	public boolean createUser(String fname, String lname, String email, String password, String privilege)
 			throws SQLException {
+		boolean created = false;
 		String encPassword = PasswordUtils.generateSecurePassword(password, salt);
-		return model.addUser(fname, lname, email, encPassword, privilege);
+		try {
+			created = model.addUser(fname, lname, email, encPassword, privilege);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		this.user = model.getUserFromEmail(email);
+		this.uid = user.getUid();
 
+		return created;
 	}
 
 	public String getCartSimple() throws SQLException {

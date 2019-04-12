@@ -46,10 +46,10 @@ public class AddressDAO {
 		if (address == null) {
 			return false;
 		} else {
-			String query = "INSERT INTO address (id, uid, street, province, country, zip, phone, addressType) Values (";
-			query = query + address.getId() + ", " + address.getUid() + ", " + address.getStreet() + ", "
-					+ address.getProvince() + ", " + address.getCountry() + ", " + address.getZip() + ", "
-					+ address.getPhone() + ", " + address.getAddressType() + ");";
+			String query = "INSERT INTO address (id, uid, street,city, province, country, zip, phone, addressType) Values ('";
+			query = query + address.getId() + "', '" + address.getUid() + "', '" + address.getStreet() + "', '"
+					+ address.getCity() + "', '" + address.getProvince() + "', '" + address.getCountry() + "', '"
+					+ address.getZip() + "', '" + address.getPhone() + "', '" + address.getAddressType() + "');";
 			Connection con = this.ds.getConnection();
 
 			PreparedStatement p = con.prepareStatement(query);
@@ -79,12 +79,13 @@ public class AddressDAO {
 
 	}
 
-	public boolean updateAddress(int id, int uid, String street, String province, String country, String zip,
-			String phone) throws SQLException {
+	public boolean updateAddress(int id, int uid, String street, String city, String province, String country,
+			String zip, String phone) throws SQLException {
 
 		try {
-			String query = "UPDATE TABLE address SET street=" + street + ", province=" + province + ", country="
-					+ country + ", zip=" + zip + ", phone=" + phone + " WHERE id=" + id + ";";
+			String query = "UPDATE TABLE address SET street='" + street + "', city='" + city + "', province='"
+					+ province + "', country='" + country + "', zip='" + zip + "', phone='" + phone + "' WHERE id=" + id
+					+ ";";
 
 			Connection con = this.ds.getConnection();
 			PreparedStatement p = con.prepareStatement(query);

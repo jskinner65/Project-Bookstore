@@ -39,7 +39,7 @@
 							<h3 class="w3-padding-64"></h3>
 						</div>
 						<div class="w3-bar-block">
-							<a href="Start?currPage=home" onclick="w3_close()"
+							
 								<a href="Start?currPage=home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
 								<a href="Start?currPage=categories" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Categories</a> 
 								<a href="Start?currPage=cart" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Cart</a> 

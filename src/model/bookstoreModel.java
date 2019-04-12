@@ -73,10 +73,8 @@ public class bookstoreModel {
 						+ "</td><td><img width=\"100\" height=\"100\" src='" + pair.getValue().getPicture()
 						+ "' /></td><td>" + pair.getValue().getTitle() + "</td><td>" + pair.getValue().getPrice()
 						+ "</td><td>  <a href=\"Start?currPage=categories&amp;addToCart=" + pair.getValue().getBid()
-						+ "\">Add to Cart</a></td>"
-						+ "<td>  <a href=\"Start?currPage=categories&amp;addReview=" + pair.getValue().getBid()
-						+ "\">Add Review</a></td>"
-						+ "</tr>";
+						+ "\">Add to Cart</a></td>" + "<td>  <a href=\"Start?currPage=categories&amp;addReview="
+						+ pair.getValue().getBid() + "\">Add Review</a></td>" + "</tr>";
 			}
 		}
 		result = result + "</table>";
@@ -169,9 +167,9 @@ public class bookstoreModel {
 		return addressDAO.retrieve(uid);
 	}
 
-	public boolean updateAddress(int id, int uid, String street, String province, String country, String zip,
-			String phone) throws SQLException {
-		return addressDAO.updateAddress(id, uid, street, province, country, zip, phone);
+	public boolean updateAddress(int id, int uid, String street, String city, String province, String country,
+			String zip, String phone) throws SQLException {
+		return addressDAO.updateAddress(id, uid, street, city, province, country, zip, phone);
 	}
 
 	public boolean addAddress(int id, int uid, String street, String city, String province, String country, String zip,
