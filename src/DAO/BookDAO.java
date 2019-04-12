@@ -60,7 +60,7 @@ public class BookDAO {
 			return null;
 		} else {
 			if ((namePrefix != null) || (namePrefix != "") || namePrefix.equals("null")) {
-				namePrefix = " WHERE title like '%" + namePrefix + "%' or description like '%" + namePrefix + "%' ;";
+				namePrefix = " WHERE title like '%" + namePrefix + "%';";
 			}
 			String query = "select * from Book" + namePrefix;
 			return this.retrieveFromQuery(query);
