@@ -276,8 +276,7 @@ public class bookstoreModel {
 
 //test
 	public boolean changeToPurchased(int uid) throws SQLException {
-		Map<String, VisitEventBean> cart = this.getVisitsCartByUID(uid);
-		return visitEventDAO.changeToPurchased(cart);
+		return visitEventDAO.changeToPurchased(uid);
 	}
 
 	public boolean updateQuantity(String day, String bid, int uid, int quantity) throws SQLException {

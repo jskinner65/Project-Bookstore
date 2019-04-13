@@ -166,57 +166,70 @@ public class Start extends HttpServlet {
 				request.getRequestDispatcher("./Payment.jspx").forward(request, response);
 			}
 		} else if (currPage.equals("receipt")) {
-			cardTries++;
-			if (cardTries == 3) { // Denies third try on credit card
-				cardTries = 0;
-				try {
-					request.setAttribute("validity",
-							uModel.getCartSize() + " <h1>Card Not Valid! Please try again.</h1>");
-					request.getRequestDispatcher("./Payment.jspx").forward(request, response);
+			if (uModel.getUid() > 1000000000) {
+				request.setAttribute("response", "Please Login");
+				request.getRequestDispatcher("./LoginPage.jspx").forward(request, response);
+			} else {
 
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else { // Allows credit card to go through
-				UserBean user = null;
-				POBean poID = uModel.createPO();
-				int uid = poID.getUid();
-				user = uModel.getUser();
-				if (user == null) {
-					request.getRequestDispatcher("./LoginPage.jspx").forward(request, response);
-				} else {
-					request.setAttribute("validity", " ");
-					request.setAttribute("receiptNumber", uid);
-					request.setAttribute("name", user.getFname() + " " + user.getLname());
-					request.setAttribute("receiptDate", poID.getDay());
-					double subtotal = 0;
+				cardTries++;
+				if (cardTries == 3) { // Denies third try on credit card
+					cardTries = 0;
 					try {
-						subtotal = uModel.getSubtotal();
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					request.setAttribute("subtotal", formatter.format(subtotal));
-					request.setAttribute("tax", formatter.format(subtotal * tax));
-					request.setAttribute("total", formatter.format(subtotal * (1 + tax)));
-					try {
-						AddressBean addr = bModel.getShippingID(uid);
-						request.setAttribute("address", addr.getStreet() + ", " + addr.getProvince() + "<br />"
-								+ addr.getZip() + "<br />" + addr.getCountry() + ", " + addr.getPhone());
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						request.setAttribute("address", "Shipping Address not on file.  Please update your profile");
+						request.setAttribute("validity",
+								uModel.getCartSize() + " <h1>Card Not Valid! Please try again.</h1>");
+						request.getRequestDispatcher("./Payment.jspx").forward(request, response);
 
-					}
-					try {
-						request.setAttribute("booksBought", uModel.getCartSimple());
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					// change from cart to purchase
-					request.getRequestDispatcher("./Receipt.jspx").forward(request, response);
+				} else { // Allows credit card to go through
+					UserBean user = null;
+					POBean poID = uModel.createPO();
+					int uid = poID.getUid();
+					user = uModel.getUser();
+					if (user == null) {
+						request.getRequestDispatcher("./LoginPage.jspx").forward(request, response);
+					} else {
+						request.setAttribute("validity", " ");
+						request.setAttribute("receiptNumber", poID.getId());
+						request.setAttribute("name", user.getFname() + " " + user.getLname());
+						request.setAttribute("receiptDate", poID.getDay());
+						double subtotal = 0;
+						try {
+							subtotal = uModel.getSubtotal();
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						request.setAttribute("subtotal", formatter.format(subtotal));
+						request.setAttribute("tax", formatter.format(subtotal * tax));
+						request.setAttribute("total", formatter.format(subtotal * (1 + tax)));
+						try {
+							AddressBean addr = bModel.getShippingID(uid);
+							request.setAttribute("address", addr.getStreet() + ", " + addr.getProvince() + "<br />"
+									+ addr.getZip() + "<br />" + addr.getCountry() + ", " + addr.getPhone());
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							request.setAttribute("address",
+									"Shipping Address not on file.  Please update your profile");
+
+						}
+						try {
+							request.setAttribute("booksBought", uModel.getCartSimple());
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						// change from cart to purchase
+						try {
+							bModel.changeToPurchased(uid);
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						request.getRequestDispatcher("./Receipt.jspx").forward(request, response);
+					}
 				}
 			}
 		} else if (currPage.equals("logout")) {

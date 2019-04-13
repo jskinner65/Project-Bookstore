@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.sql.DataSource;
 
@@ -97,12 +96,10 @@ public class VisitEventDAO {
 		return p.execute();
 	}
 
-	public boolean changeToPurchased(Map<String, VisitEventBean> events) throws SQLException {
+	public boolean changeToPurchased(int uid) throws SQLException {
 		String query = "";
-		for (Entry<String, VisitEventBean> visit : events.entrySet()) {
-			query = query + "update visitevent set eventtype='PURCHASE' where day='" + visit.getValue().getDay()
-					+ "' and bid='" + visit.getValue().getBid() + "' and uid=" + visit.getValue().getUid() + "; ";
-		}
+		query = query + "delete from  visitevent where uid='" + uid + "'; ";
+
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		return p.execute();
