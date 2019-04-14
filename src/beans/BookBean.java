@@ -86,5 +86,9 @@ public class BookBean {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
+	
+	public int ratingBid(int rating)
+	{
+		return rating;
+	}
 }

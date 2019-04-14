@@ -158,27 +158,29 @@ body {
 						<td>$${review}</td>
 					</tr>
 
+
+
 					<tr>
 						<td><label for="rating" style="margin-right: 100px"
 							class="w3-medium w3-text-red"><br>
 							<font size="4" color="#e8e0d9"><b>Rate this book: </b></font></br></label></td>
-						<td><input type="radio" id="rate1" name="rate1" value="rate1"
+						<td><input type="radio" id="rate1" name="rate" value="rate1"
 							style="margin: 0 10px 0 10px;"><label for="rate1">1</label>
-							</input></td>
-
-						<td><input type="radio" id="rate2" name="rate2" value="rate2"
+							</input>
+							<input type="radio" id="rate2" name="rate" value="rate2"
 							style="margin: 0 10px 0 10px;"><label for="rate2">2</label>
-							</input></td>
-
-						<td><input type="radio" id="rate3" name="rate3" value="rate3"
+							</input>
+							<input type="radio" id="rate3" name="rate" value="rate3"
 							style="margin: 0 10px 0 10px;"><label for="rate3">3</label>
-							</input></td>
-
-						<td><input type="radio" id="rate4" name="rate4" value="rate4"
+							</input>
+							<input type="radio" id="rate4" name="rate" value="rate4"
 							style="margin: 0 10px 0 10px;"><label for="rate4">4</label>
-							</input></td>
+							</input>
+							<input type="radio" id="rate5" name="rate" value="rate5"
+							style="margin: 0 10px 0 10px;"><label for="rate5">5</label>
+							</input>
+							</td>
 					</tr>
-
 					<tr>
 						<td><br>
 						<button action='Submit' name='rateSubmit' label='rateSubmit'

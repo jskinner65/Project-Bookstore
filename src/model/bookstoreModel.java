@@ -1,12 +1,16 @@
 package model;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -40,6 +44,7 @@ public class bookstoreModel {
 	private AnalyticsDAO analyticsDAO;
 	private UserDAO userDAO;
 	DataSource ds;
+	private ReviewBean rb;
 
 // ___________________________________CONSTRUCTOR____________________________________________
 	public bookstoreModel() throws ClassNotFoundException {
@@ -59,28 +64,87 @@ public class bookstoreModel {
 		this.userDAO = new UserDAO(ds);
 
 	}
+	
+	public Map<String, Integer> getReviewBID(Map<String, ReviewBean> rb) {
+		Map<String, Integer> rv = new HashMap<String, Integer>();
+		for (Map.Entry<String, ReviewBean> pair : rb.entrySet()) {
+			rv.put(pair.getValue().getBid(), pair.getValue().getRating());
+		}
+		return rv;
+	}
+	
+	
+	
 
 // ___________________________DISPLAYING THE BOOKS ________________________________________
-	public String displayBooks(Map<String, BookBean> rv) {
+	public String displayBooks(Map<String, BookBean> rv) throws SQLException {
 		String result = "";
 		result = "<table>";
+		
 		if (rv == null) {
 			result = result + "<tr><td>Sorry, no books match your search</td></tr>";
 		} else {
 			for (Map.Entry<String, BookBean> pair : rv.entrySet()) {
-
+			
+				//Map<String, ReviewBean> review = getReviewsByBIDMap(pair.getValue().getBid());
+					
 				result = result + "<tr><td>" + pair.getValue().getBid()
 						+ "</td><td><img width=\"100\" height=\"100\" src='" + pair.getValue().getPicture()
 						+ "' /></td><td>" + pair.getValue().getTitle() + "</td><td>" + pair.getValue().getPrice()
 						+ "</td><td>  <a href=\"Start?currPage=categories&amp;addToCart=" + pair.getValue().getBid()
 						+ "\">Add to Cart</a></td>" + "<td>  <a href=\"Start?currPage=categories&amp;addReview="
-						+ pair.getValue().getBid() + "\">Add Review</a></td>" + "</tr>";
+						+ pair.getValue().getBid() + "\">Add Review</a></td>" + "					<tr>\r\n" + 
+								"						<td><label for=\"rating\" style=\"margin-right: 70px\"\r\n" + 
+								"							class=\"w3-medium w3-text-red\"><br>\r\n" + 
+								"							<font size=\"3\" color=\"#FF0000\"><b>Rate this book: </b></font></br></label></td>\r\n" + 
+								"						<td><input type=\"radio\" id=\"rate1\" name=\"rate\" value=\"rate1\"\r\n" + 
+								"							style=\"margin: 0 5px 0 5px;\"><label for=\"rate1\">1</label>\r\n" + 
+								"							</input>\r\n" + 
+								"							<input type=\"radio\" id=\"rate2\" name=\"rate\" value=\"rate2\"\r\n" + 
+								"							style=\"margin: 0 5px 0 5px;\"><label for=\"rate2\">2</label>\r\n" + 
+								"							</input>\r\n" + 
+								"							<input type=\"radio\" id=\"rate3\" name=\"rate\" value=\"rate3\"\r\n" + 
+								"							style=\"margin: 0 5px 0 5px;\"><label for=\"rate3\">3</label>\r\n" + 
+								"							</input>\r\n" + 
+								"							<input type=\"radio\" id=\"rate4\" name=\"rate\" value=\"rate4\"\r\n" + 
+								"							style=\"margin: 0 5px 0 5px;\"><label for=\"rate4\">4</label>\r\n" + 
+								"							</input>\r\n" + 
+								"							<input type=\"radio\" id=\"rate5\" name=\"rate\" value=\"rate5\"\r\n" + 
+								"							style=\"margin: 0 5px 0 5px;\"><label for=\"rate5\">5</label>\r\n" + 
+								"							</input>\r\n" + 
+								"							</td>\r\n" + 
+								"					</tr>"  + "</tr>";
+				} 
 			}
-		}
+		//System.out.println(result);
 		result = result + "</table>";
 		return result;
 	}
-
+	
+	
+	
+//	//___________________________DISPLAYING THE REVIEWS ________________________________________
+//	public String displayReviews(Map<String, ReviewBean> rev) throws SQLException {
+//		String result1 = "";
+//		result1 = "<table>";
+//		
+//		if (rev == null) {
+//			result1 = result1 + "<tr><td>Sorry, no review exists</td></tr>";
+//		} else {
+//			for (Map.Entry<String, ReviewBean> pair : rev.get(key)) {
+//				System.out.print("set is empty");
+//				//Map<String, ReviewBean> review = getReviewsByBIDMap(pair.getValue().getBid());
+//					
+//				result1 = result1 + "<tr><td>" + pair.getValue().getBid()+ "</td></tr>"
+//						+ "<tr><td>" + pair.getValue().getRating() + "</td></tr>";
+//				} 
+//			
+//			}
+//		result1 = result1 + "</table>";
+//		System.out.println(result1);
+//		return result1;
+//	}
+	
 // _________________________ BOOKS___________________________________________________
 	public String getBookbyName(String bookName) throws SQLException {
 		String result = "";
@@ -181,8 +245,15 @@ public class bookstoreModel {
 //_____________________________________GETTING REVIEWS________________________________________
 
 	public Map<String, ReviewBean> getReviewsByBIDMap(String bid) throws SQLException {
+	 
 		return reviewDAO.getReviews(bid);
 	}
+	
+	public ReviewBean getByReviewIDBean(String bid) throws SQLException {
+		Map<String, ReviewBean> book = reviewDAO.getReviews(bid);
+		return book.get(bid);
+	}
+
 
 	public boolean addReview(int reviewID, int rating, String bid, int uid, String reviewtext) throws SQLException {
 		ReviewBean bean = new ReviewBean(reviewID, rating, bid, uid, reviewtext);
@@ -293,7 +364,38 @@ public class bookstoreModel {
 		VisitEventBean bean = new VisitEventBean(day, bid, uid, eventtype, quantity, price);
 		return visitEventDAO.addToCart(bean);
 	}
+	
+	//NEED TO WORK ON THIS AT HOME
 
+	public String displayReviews(String bid) throws SQLException {
+		System.out.println("I can get here");
+		Map<String, ReviewBean> review = this.getReviewsByBIDMap(bid);
+		String result = "<table>";
+
+		//NumberFormat formatter = NumberFormat.getCurrencyInstance();
+		if (review.size() == 0) {
+			result = "<b> NO REVIEWS </b>";
+		} else {
+			for (Map.Entry<String, ReviewBean> pair : review.entrySet()) {
+				//String bid = pair.getValue().getBid()
+				String bookid = pair.getValue().getBid();
+				ReviewBean bean = this.getByReviewIDBean(bookid);
+				int rating = bean.getRating();
+				
+				result = result + "<tr><td colspan = \"2\">" + bean.getBookRating(bookid, rating ) + "</td></tr>" + "<tr><td>" + rating + "</td></tr>";
+//				result = result + "<tr><td><img height=\"100\" width=\"100\" src=\"" + image + "\"></td><td><p>"
+//						+ description + "</td></tr>";
+//				result = result + "<tr><td>Price: " + price
+//						+ "</td><td>Quantity: <a href=\"Start?currPage=cart&amp;adjust=plus&amp;bid=" + bean.getBid()
+//						+ "\"><b>+</b></a> " + quantity + " <a href=\"Start?currPage=cart&amp;adjust=minus&amp;bid="
+//						+ bean.getBid() + "\"><b>-</b></a></td></tr>";
+			}
+			result = result + "</table>";
+		}
+		System.out.println(result);
+		return result;
+	}
+	
 	public String displayCart(int uid) throws SQLException {
 		Map<String, VisitEventBean> cart = this.getVisitsCartByUID(uid);
 		String result = "<table>";

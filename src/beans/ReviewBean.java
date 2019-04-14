@@ -1,5 +1,8 @@
 package beans;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ReviewBean {
 
 	private int reviewID;
@@ -7,6 +10,8 @@ public class ReviewBean {
 	private String bid;
 	private int uid;
 	private String reviewtext;
+	private String bookIDRev;
+	private int ratingRev;
 
 	public ReviewBean(int reviewID, int rating, String bid, int uid, String reviewtext) {
 		super();
@@ -27,6 +32,16 @@ public class ReviewBean {
 
 	public int getRating() {
 		return rating;
+	}
+	
+	public Map<String , Integer> getBookRating(String bookIDRev, int ratingRev)
+	{
+		this.bookIDRev = bid;
+		this.ratingRev = rating;
+		Map<String, Integer> revBook = new HashMap<String, Integer>();
+		revBook.put(this.bookIDRev, this.ratingRev);
+		return revBook;
+		
 	}
 
 	public void setRating(int rating) {

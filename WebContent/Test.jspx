@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Insert title here</title>
+<style>
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<div style="margin-left: 310px">
+		<button id="janBtn">January</button>
+		<!--The Modal  -->
+		<div id="jan" class="modal">
+			<div class="modal-content">
+				<span class="close"> </span>
+				<p>fhgjkdhahfjkhsbcnxzbvaueryruihbznvbzjdfgusg</p>
+				<p>fhskdfhdsjkfhjdzruewoiruekhdvmbvaeytiuaeyut</p>
+				<p>hfjksdnfcmxbjhewyruieawurlfhbdsnvhG</p>
+				<p>fhdsjkfhcjsdkaklyruiewuarfzbvnbjfeuiaeiwyrihffvbcvn</p>
+
+				<div class="modal-body">
+					<p>I got here bitch</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+				// Get the modal
+				var modal = document.getElementById('jan');
+
+				// Get the button that opens the modal
+				var btn = document.getElementById('janBtn');
+
+				// Get the span element that closes the modal
+				var span = document.getElementsByClassName("close")[0];
+
+				// When the user clicks the button, open the modal 
+				btn.onclick = function() {
+					modal.style.display = "block";
+				}
+
+				// When the user clicks on span (x), close the modal
+				span.onclick = function() {
+					modal.style.display = "none";
+				}
+
+				// When the user clicks anywhere outside of the modal, close it
+				window.onclick = function(event) {
+					if (event.target == modal) {
+						modal.style.display = "none";
+					}
+				}
+			</script>
+</body>
+	</html>
+</jsp:root>
