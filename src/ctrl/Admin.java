@@ -17,7 +17,7 @@ import model.adminModel;
 @WebServlet("/Admin")
 public class Admin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private adminModel aModel;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -49,6 +49,12 @@ public class Admin extends HttpServlet {
 			String pword = request.getParameter("pword");
 			try {
 				if ((model.isLoggedIn()) || (model.checkID(email, pword))) {
+					// general template:
+					// if request.getparameter("janary value in uri") != null:
+						// request.setAttribute("jan", aModel.getAnalyticsbyMonth("jan")) --> make a function in adminModel that retrieves analytics by month, similar to getCategorybyMap in bookstoreModel. Called getAnalyticsbyMonth. 
+					// This function will call AnalyticsDAO and query all the data by the month you specify, will need to write an sql query...
+					// Finally you will have a function in adminModel called displayAnalytics (similar to display books but instead you simply display analytics info, can be plain html. To get a specific month you need to map it -- with getAnalyticsbyMonth.
+					// within admin.jspx, call ${jan} in a separate <tr> tag with <td> in it, ex for Jan should be called after line 208 (not sure about this tho)
 					request.getRequestDispatcher("./Admin.jspx").forward(request, response);
 
 				} else {
