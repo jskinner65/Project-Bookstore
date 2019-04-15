@@ -54,6 +54,7 @@ public class PODAO {
 			beginning = df.format(d2);
 			end = df.format(d1);
 		}
+		
 		System.out.println(beginning + " " + end);
 		String query = "select book.bid, sum(quantity) as qty from book, po, poitem where po.id=poitem.id and book.bid=poitem.bid and po.day>'"
 				+ beginning + "' and po.day<'" + end + "' group by book.bid order by qty desc;";

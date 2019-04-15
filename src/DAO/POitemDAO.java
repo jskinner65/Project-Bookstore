@@ -88,11 +88,6 @@ public class POitemDAO {
 
 	}
 	
-//	public int XX(int x) {
-//		
-//	}
-//	
-
 	public Map<String, POitemBean> mostPopular(int PO) throws SQLException {
 		String query = "select * from PO where status=ORDERED;";
 		
@@ -103,9 +98,9 @@ public class POitemDAO {
 		
 		while (r.next()) {
 			String name = r.getString("day");
-//			POitemBean book = new POitemBean(r.getInt("id"), r.getString("bid"), r.getInt("quantity"),
-//					r.getInt("price"));
-//			rv.put(name, book);
+			POitemBean book = new POitemBean(r.getInt("id"), r.getString("bid"), r.getInt("quantity"),
+					r.getInt("price"));
+			rv.put(name, book);
 			name.substring(3,6);
 			System.out.println(name.substring(3,6));
 		}
