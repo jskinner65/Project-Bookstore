@@ -112,7 +112,7 @@ public class bookstoreModel {
 								"							<input type=\"radio\" id=\"rate5\" name=\"rate\" value=\"rate5\"\r\n" + 
 								"							style=\"margin: 0 5px 0 5px;\"><label for=\"rate5\">5</label>\r\n" + 
 								"							</input>\r\n" + 
-								"							</td>\r\n" + 
+								"							</td>\r\n"  +
 								"					</tr>"  + "</tr>";
 				} 
 			}
@@ -366,34 +366,28 @@ public class bookstoreModel {
 	}
 	
 	//NEED TO WORK ON THIS AT HOME
-
+	
 	public String displayReviews(String bid) throws SQLException {
-		System.out.println("I can get here");
+		System.out.println("I can get here too");
 		Map<String, ReviewBean> review = this.getReviewsByBIDMap(bid);
-		String result = "<table>";
+		String reviewResult = "<table>";
 
 		//NumberFormat formatter = NumberFormat.getCurrencyInstance();
 		if (review.size() == 0) {
-			result = "<b> NO REVIEWS </b>";
+			reviewResult = "<b> NO REVIEWS </b>";
 		} else {
 			for (Map.Entry<String, ReviewBean> pair : review.entrySet()) {
-				//String bid = pair.getValue().getBid()
 				String bookid = pair.getValue().getBid();
 				ReviewBean bean = this.getByReviewIDBean(bookid);
 				int rating = bean.getRating();
-				
-				result = result + "<tr><td colspan = \"2\">" + bean.getBookRating(bookid, rating ) + "</td></tr>" + "<tr><td>" + rating + "</td></tr>";
-//				result = result + "<tr><td><img height=\"100\" width=\"100\" src=\"" + image + "\"></td><td><p>"
-//						+ description + "</td></tr>";
-//				result = result + "<tr><td>Price: " + price
-//						+ "</td><td>Quantity: <a href=\"Start?currPage=cart&amp;adjust=plus&amp;bid=" + bean.getBid()
-//						+ "\"><b>+</b></a> " + quantity + " <a href=\"Start?currPage=cart&amp;adjust=minus&amp;bid="
-//						+ bean.getBid() + "\"><b>-</b></a></td></tr>";
+				//System.out.println(rating);
+				reviewResult = reviewResult + "<tr><td colspan = \"2\">" + bean.getBookRating(bookid, rating ) + "</td></tr>" 
+											+ "<tr><td>" + rating + "</td></tr>";
 			}
-			result = result + "</table>";
+			reviewResult = reviewResult + "</table>";
 		}
-		System.out.println(result);
-		return result;
+		System.out.println(reviewResult);
+		return reviewResult;
 	}
 	
 	public String displayCart(int uid) throws SQLException {
@@ -446,7 +440,7 @@ public class bookstoreModel {
 			}
 			result = result + "</table>";
 		}
-		System.out.println(result);
+		
 		return result;
 	}
 //_______________________________________ANALYTICS__________________________________________________

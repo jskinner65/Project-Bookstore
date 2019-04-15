@@ -20,7 +20,8 @@ public class AnalyticsDAO {
 	}
 
 	public Map<String, AnalyticsBean> retrieve() throws SQLException {
-		String query = "select address.zip, user.uid, sum(poItem.price * poItem.quantity) as amount FROM user, address, poitem, po WHERE user.email=po.email AND po.id=poitem.id AND user.email=address.email Group by zip;";
+		String query = "select address.zip, user.uid, sum(poItem.price * poItem.quantity) as amount FROM user, "
+				+ "address, poitem, po WHERE user.email=po.email AND po.id=poitem.id AND user.email=address.email Group by zip;";
 		Map<String, AnalyticsBean> rv = new HashMap<String, AnalyticsBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);

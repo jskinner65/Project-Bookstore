@@ -102,11 +102,11 @@ body {
 					class="w3-bar-item w3-button w3-hover-white">Categories</a> <a
 					href="Start?currPage=cart" onclick="w3_close()"
 					class="w3-bar-item w3-button w3-hover-white">Cart</a>
-				<!-- 				<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a>  -->
+								<a href="Start?currPage=team" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Our Team</a> 
 				<a href="Start?currPage=login" onclick="w3_close()"
 					class="w3-bar-item w3-button w3-hover-white">Account Management</a>
-				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a>  -->
-				<!-- 				<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a> -->
+								<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Membership</a> 
+								<a href="Start?currPage=login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
 			</div>
 		</nav>
 		<table>
@@ -148,6 +148,7 @@ body {
 
 		<table>
 			<tr>
+			<td>${popular}</td>
 				<td>
 					<div style="margin-left: 310px">
 						<button id="janBtn">Zip Code</button>
@@ -156,6 +157,7 @@ body {
 							<div class="modal-content">
 								<span class="close"> </span>
 							</div>
+						
 						</div>
 					</div>
 				</td>
@@ -188,12 +190,6 @@ body {
 				}
 			</script>
 		</table>
-
-
-
-
-
-
 
 		<!--  	Trigger/Open The Modal -->
 		<!-- 	This is for the Modal that is divided based on each month -->

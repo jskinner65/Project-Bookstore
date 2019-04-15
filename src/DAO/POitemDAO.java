@@ -39,7 +39,7 @@ public class POitemDAO {
 		while (r.next()) {
 			String name = i + "";
 			TopTenBean bean = new TopTenBean(i, r.getString("bid"), r.getInt("cBid"));
-			rv.put(name, bean);
+			rv.put(name+r.getString("bid"), bean);
 			i++;
 		}
 		r.close();
@@ -66,7 +66,7 @@ public class POitemDAO {
 		p.close();
 		con.close();
 		return rv;
-		}
+	}
 
 	public Map<String, POitemBean> retrieveByPO(int PO) throws SQLException {
 
@@ -86,5 +86,33 @@ public class POitemDAO {
 		con.close();
 		return rv;
 
+	}
+	
+//	public int XX(int x) {
+//		
+//	}
+//	
+
+	public Map<String, POitemBean> mostPopular(int PO) throws SQLException {
+		String query = "select * from PO where status=ORDERED;";
+		
+		Map<String, POitemBean> rv = new HashMap<String, POitemBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		
+		while (r.next()) {
+			String name = r.getString("day");
+//			POitemBean book = new POitemBean(r.getInt("id"), r.getString("bid"), r.getInt("quantity"),
+//					r.getInt("price"));
+//			rv.put(name, book);
+			name.substring(3,6);
+			System.out.println(name.substring(3,6));
+		}
+		
+		r.close();
+		p.close();
+		con.close();
+		return rv;
 	}
 }

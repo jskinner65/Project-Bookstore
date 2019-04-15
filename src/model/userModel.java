@@ -54,8 +54,9 @@ public class userModel {
 			throws SQLException {
 		boolean created = false;
 		String encPassword = PasswordUtils.generateSecurePassword(password, salt);
+		String newPriv = "Admin";
 		try {
-			created = model.addUser(fname, lname, email, encPassword, privilege);
+			created = model.addUser(fname, lname, email, encPassword, newPriv);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

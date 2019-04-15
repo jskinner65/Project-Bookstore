@@ -35,6 +35,7 @@ public class TEST extends HttpServlet {
 		try {
 			bookstoreModel model = new bookstoreModel();
 			model.test();
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

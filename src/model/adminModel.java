@@ -2,8 +2,11 @@ package model;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Map;
 
 import beans.UserBean;
+import beans.AnalyticsBean;
+import beans.POitemBean;
 
 public class adminModel {
 	bookstoreModel bModel;
@@ -39,4 +42,6 @@ public class adminModel {
 		}
 		return false;
 	}
+	
+	
 }
